@@ -1,3 +1,5 @@
+@import "_veriables.scss";
+
 .navbar {
   padding-top: 36px;
 
@@ -8,7 +10,7 @@
   .nav-link {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     color: white;
     font-weight: 300;
 
@@ -29,7 +31,7 @@
   align-items: center;
 
   .nav-link {
-    color: #EF7F1A;
+    color: $color-orange;
     padding-left: 0 !important;
   }
 
@@ -45,7 +47,7 @@
 .vertical-line {
   width: 100%;
   height: 1px;
-  background-color: #EF7F1A;
+  background-color: $color-orange;
   opacity: 0.3;
 }
 
