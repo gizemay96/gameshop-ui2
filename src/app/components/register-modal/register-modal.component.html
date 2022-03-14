@@ -1,1 +1,43 @@
-<p>register-modal works!</p>
+<div class="register">
+     <div class="header ">
+          <div class="logo d-flex justify-content-center">
+               <img src="../../../assets/img/logo.png" alt="logo">
+          </div>
+          <div class="form mt-4" id="grayInput">
+               <form [formGroup]="registerForm" (submit)="register()" autocomplete="off">
+                    <!-- Full Name -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>Full Name</mat-label>
+                         <input matInput type="text" formControlName="fullName" class="w-100">
+                    </mat-form-field>
+
+                    <!-- Username -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>Username</mat-label>
+                         <input matInput type="text" class="w-100" formControlName="username">
+                    </mat-form-field>
+
+                    <!-- E-mail -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>E-Mail</mat-label>
+                         <input matInput type="text" class="w-100" formControlName="email">
+                    </mat-form-field>
+
+                    <!-- Password -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>Password</mat-label>
+                         <input matInput type="password" class="w-100" formControlName="password" autocomplete="new-password">
+                    </mat-form-field>
+
+                    <!-- Confirm Password -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>Confirm Password </mat-label>
+                         <input matInput type="password" class="w-100" formControlName="confirmPassword">
+                    </mat-form-field>
+
+                    <button type="submit" class="btn bg-orange w-100 btn-orange">Register</button>
+               </form>
+
+          </div>
+     </div>
+</div>

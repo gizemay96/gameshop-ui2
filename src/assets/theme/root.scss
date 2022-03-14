@@ -23,7 +23,16 @@
   }
 }
 
+.nav-link {
+  cursor: pointer;
+}
 
+.full-width {
+  width: 100vw !important;
+  position: relative;
+  left: 50.7%;
+  margin-left: -51vw;
+}
 
 
 .modal-smc {
@@ -47,4 +56,30 @@
   .modal-footer {
     padding: 1rem 1.75rem;
   }
+}
+
+.btn-orange {
+  color: white;
+  border-radius: 15px;
+  height: 45px;
+  font-size: 20px;
+
+  &:hover {
+    color: white;
+  }
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+  transition: background-color 5000s ease-in-out 0s;
 }

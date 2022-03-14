@@ -1,64 +1,32 @@
 <div class="home-page">
-     <div class="container">
-
-          <!-- Navbar -->
-          <div class="navbar">
-               <ul class="nav justify-content-between align-items-center w-100">
-                    <div><img src="../../../assets/img/logo.png" alt=""></div>
-                    <div class="d-flex">
-                         <li class="nav-item">
-                              <a class="nav-link" (click)="getProductDetail()">Login <img class="icon" src="../../../assets/icons/login.png"
-                                        alt=""></a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="#">Cart <img class="icon" src="../../../assets/icons/cart.png"
-                                        alt=""></a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link">EN <img class="icon" src="../../../assets/icons/language.png"
-                                        alt=""></a>
-                         </li>
-                    </div>
-               </ul>
-          </div>
-
+     <div class="">
           <!-- Tabs -->
           <div class="tab-list">
                <ul class="tabs nav">
-                    <li class="nav-item active">
-                         <a class="nav-link" href="#">All Games</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Pc Games</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link">Playstation</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link">Xbox</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link">Nintendo</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link">Game News</a>
-                    </li>
+                    <span *ngFor="let category of categories">
+                         <li [ngClass]="activeTab === category.id ? 'active' : ''" class="nav-item"
+                              (click)="getPage(category.id); activeTab = category.id">
+                              <a class="nav-link">{{category.translateKey}}</a>
+                         </li>
+                    </span>
                </ul>
           </div>
      </div>
-     <div class="vertical-line"></div>
-     <div class="container">
-          <div class="product-list d-flex align-items-center row gx-5">
-               <div class="product col-3">
-                    <img class="product-img" src="../../../assets/img/testimg.jfif" alt="">
-                    <div class="product-footer">
-                         <div class="price-add">
-                              <div class="price">$ 120.00</div>
-                              <div class="add-button">Add to Cart <span><img class="icon"
-                                             src="../../../assets/icons/cart.png" alt=""></span></div>
-                         </div>
+     <!-- Vertical Line -->
+     <div class="vertical-line full-width"></div>
+
+     <!-- Product List -->
+     <div class="product-list d-flex align-items-center row gx-5">
+          <div class="product col-3 mb-5" *ngFor="let product of products">
+               <img class="product-img" [src]="product.image" alt="">
+               <div class="product-footer">
+                    <div class="price-add">
+                         <div class="price">$ {{product.price}}</div>
+                         <div class="add-button">Add to Cart <span><img class="icon"
+                                        src="../../../assets/icons/cart.png" alt=""></span></div>
                     </div>
                </div>
           </div>
      </div>
+
 </div>

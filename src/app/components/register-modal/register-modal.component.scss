@@ -1,0 +1,70 @@
+
+@import '../../assets/theme/veriables';
+
+.register {
+     padding: 25px;
+   
+     .logo {
+       img {
+         max-width: 150px;
+       }
+     }
+   }
+
+mat-form-field {
+     margin: 5px 0;
+   }
+   
+   #grayInput ::ng-deep .mat-form-field-hide-placeholder .mat-form-field-label-wrapper {
+     font-family: 'Poppins', sans-serif;
+     font-size: 16px;
+     font-weight: 500;
+     color: rgb(255, 255, 255, 43%);
+   }
+   
+   
+   /* Font color */
+   #grayInput ::ng-deep input.mat-input-element {
+     color: white;
+   }
+   
+   #grayInput ::ng-deep .mat-form-field-flex {
+     border-radius: 15px;
+     background: #80808082;
+     border: 1px solid $color-orange;
+     height: 50px;
+   }
+   
+   #grayInput ::ng-deep .mat-form-field-infix {
+     top: -6px;
+   }
+   
+   #grayInput ::ng-deep .mat-form-field {
+     .mat-form-field-label {
+       color: $color-orange !important;
+     }
+   }
+   
+   #grayInput ::ng-deep .mat-form-field:is(.mat-form-field-invalid) {
+     .mat-form-field-flex {
+       border: 1px solid red !important;
+     }
+   
+     .mat-form-field-label {
+       color: red !important;
+     }
+   }
+   
+   #grayInput ::ng-deep .mat-form-field:is(.ng-valid) {
+     .mat-form-field-flex {
+       border: 1px solid green !important;
+     }
+   
+     .mat-form-field-label {
+       color: green !important;
+     }
+   }
+   
+   #grayInput ::ng-deep .mat-form-field-underline {
+     display: none;
+   }

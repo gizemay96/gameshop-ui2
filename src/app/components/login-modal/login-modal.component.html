@@ -3,37 +3,26 @@
           <div class="logo d-flex justify-content-center">
                <img src="../../../assets/img/logo.png" alt="logo">
           </div>
-          <div class="form mt-4" id="customForm">
+          <div class="d-flex justify-content-center mt-4">
+               <h3 class="text-white">Welcome Back !</h3>
+          </div>
+          <div class="form mt-4" id="grayInput">
+               <form [formGroup]="loginForm" (submit)="login()">
+                    <!-- E-mail -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>E-Mail</mat-label>
+                         <input matInput type="email" class="w-100" formControlName="email" autocomplete="off">
+                    </mat-form-field>
 
-               <!-- Full Name -->
-               <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Full Name</mat-label>
-                    <input matInput class="w-100" autocomplete="off">
-               </mat-form-field>
+                    <!-- Password -->
+                    <mat-form-field appearance="fill" class="w-100">
+                         <mat-label>Password</mat-label>
+                         <input matInput type="password" class="w-100" formControlName="password" autocomplete="new-password">
+                    </mat-form-field>
 
-               <!-- Username -->
-               <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Username</mat-label>
-                    <input matInput class="w-100" autocomplete="off">
-               </mat-form-field>
+                    <button type="submit" class="btn bg-orange w-100 btn-orange">Register</button>
+               </form>
 
-               <!-- E-mail -->
-               <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>E-Mail</mat-label>
-                    <input matInput class="w-100" autocomplete="off">
-               </mat-form-field>
-
-               <!-- Password -->
-               <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Password</mat-label>
-                    <input matInput class="w-100" autocomplete="off">
-               </mat-form-field>
-
-               <!-- Confirm Password -->
-               <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Confirm Password </mat-label>
-                    <input matInput class="w-100" autocomplete="off">
-               </mat-form-field>
           </div>
      </div>
 </div>
