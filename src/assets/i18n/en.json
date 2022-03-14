@@ -1,0 +1,101 @@
+{
+    "general": {
+        "press-start": "Press Start",
+        "wait":"Wait Please",
+        "join-us": "Join Us",
+        "delete": "Delete",
+        "loading": "Loading....",
+        "name": " Name",
+        "send": "Send",
+        "page": "Page",
+        "yes": "Yes",
+        "no": "No",
+        "save":"Save",
+        "edit":"Edit"
+    },
+    "error-message": {
+        "required": "This Field Is Required !",
+        "min-character": "Please enter minimum {{character}} character.",
+        "select-delivery-address": "Please Select Delivery Address",
+        "empty-order": "Your Order Is Empty",
+        "invalid-email":"Please Enter Valid Email."
+    },
+    "alert-messages":{
+        "delete-product":"Are you sure you want to delete product ?",
+        "empty-card":"Are you sure you want to empty the cart ?"
+    },
+    "navbar": {
+        "login": "Login",
+        "register": "Register",
+        "greeting": "Welcome",
+        "profile": "Profile",
+        "log-out": "Log Out"
+    },
+    "payment": {
+        "order-taken": "Your {{bougthOrderCount}} Order Has Been Taken !",
+        "address-name": "Delivery Address Name",
+        "card-number": "Card number",
+        "security-code": "Security Code",
+        "exp-date": "Exp Date",
+        "enter-card-name":"Enter Card Name",
+        "enter-random-numbers":"Enter Random Numbers"
+    },
+    "detail-modal": {
+        "please-login": "Please login.",
+        "add-cart": "Add Cart"
+    },
+    "edit-address": {
+        "form-title": "Edit Address Form",
+        "address-name":"Address Name",
+        "apartment":" Apartment",
+        "street-name":"Street Name",
+        "country":"Country",
+        "city":"City"
+    },
+    "edit-profile":{
+        "form-title":"Edit Profile Form",
+        "user-name":"User Name",
+        "first-name":"Name",
+        "last-name":"Last Name",
+        "email":"Email",
+        "phone":"Phone"
+    },
+    "login-register":{
+        "password":"Password",
+        "confirm-password":"Confirm Password",
+        "register":"Register"
+    },
+    "user-info":{
+        "user-card":"User Card",
+        "addresses":"Addresses",
+        "add-new":"Add New",
+        "full":"FULL"
+    },
+    "check-out":{
+        "check-out-page":"Check-Out Page",
+        "order-list":"Order List",
+        "your-orders":"Your Orders",
+        "empty-cart":"Empty The Cart",
+        "bill":"Bill",
+        "total-price":"Total Price",
+        "bill-name":"Name",
+        "select-address":"Select Delivery Address",
+        "payment":"Payment"
+    },
+    "profile-tabs":{
+        "user-info":"User Info",
+        "previous-orders":"Previous Orders",
+        "my coupons":"My Coupons"
+    },
+    "product-tabs":{
+        "game-news":"Game News",
+        "all-games":"ALL Games",
+        "pc-games":"PC Games",
+        "playstation":"Playstation",
+        "xbox": "Xbox",
+        "nintendo": "nintendo"
+    },
+    "game-news":{
+        "read-more":"Read More..."
+    }
+}

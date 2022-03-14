@@ -4,6 +4,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { UserService } from './services/user.service';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +16,11 @@ export class AppComponent implements OnInit {
   constructor(
     private userService: UserService,
     public dialog: MatDialog,
-  ) { }
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'tr']);
+    translate.setDefaultLang('en');
+  }
 
   ngOnInit() {
     this.userService.tryToLogin();

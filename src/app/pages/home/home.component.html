@@ -6,7 +6,7 @@
                     <span *ngFor="let category of categories">
                          <li [ngClass]="activeTab === category.id ? 'active' : ''" class="nav-item"
                               (click)="getPage(category.id); activeTab = category.id">
-                              <a class="nav-link">{{category.translateKey}}</a>
+                              <a class="nav-link">{{ 'product-tabs.' + category.translateKey | translate }}</a>
                          </li>
                     </span>
                </ul>
