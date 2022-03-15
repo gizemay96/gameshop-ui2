@@ -29,7 +29,7 @@ mat-form-field {
 
 #grayInput ::ng-deep .mat-form-field-flex {
   border-radius: 15px;
-  background: #80808082;
+  background: #5f5f5fd0;
   border: 1px solid $color-orange;
   height: 50px;
 }
@@ -56,11 +56,11 @@ mat-form-field {
 
 #grayInput ::ng-deep .mat-form-field:is(.ng-valid) {
   .mat-form-field-flex {
-    border: 1px solid green !important;
+    border: 1px solid $color-green !important;
   }
 
   .mat-form-field-label {
-    color: green !important;
+    color: $color-green  !important;
   }
 }
 

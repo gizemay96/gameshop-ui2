@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginModalComponent } from '@app/components/login-modal/login-modal.component';
+import { ProductDetailComponent } from '@app/components/product-detail/product-detail.component';
 import { RegisterModalComponent } from '@app/components/register-modal/register-modal.component';
 import { CartService } from '@app/services/cart.service';
 import { DataService } from '@app/services/data.service';
 import { ProductService } from '@app/services/product.service';
 import { UserService } from '@app/services/user.service';
 import { User } from '@app/types/user.type';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -24,13 +26,14 @@ export class HomeComponent implements OnInit {
   limit = 12;
   totalCount: any
 
-  activeTab = 0;
+  activeTab: any = '';
 
 
   constructor(
     private userService: UserService,
     private productService: ProductService,
-    private dataService: DataService
+    private dataService: DataService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -40,10 +43,14 @@ export class HomeComponent implements OnInit {
   }
 
   async getPage(categoryId = '', page = this.page, limit = this.limit) {
+    this.loading = true;
     let params = { page, categoryId, limit };
-    const response = await this.productService.getProductsWithPagination(params).toPromise();
+    const response = await lastValueFrom(this.productService.getProductsWithPagination(params));
     this.products = response.products;
     this.totalCount = response.totalCount;
+    setTimeout(() => {
+      this.loading = false;
+    }, 500);
   }
 
 
@@ -58,6 +65,16 @@ export class HomeComponent implements OnInit {
       }
       this.getPage(categoryId);
     }
+  }
+
+
+  openProductDetail(product: any){
+    const data = { panelClass: 'modal-lgc' , data: product};
+    const dialogRef = this.dialog.open(ProductDetailComponent, data);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 

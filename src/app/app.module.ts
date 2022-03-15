@@ -20,6 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CartComponent,
     LoginModalComponent,
     RegisterModalComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatInputModule,
     MatFormFieldModule,
     HttpClientModule,
+    MatProgressBarModule,
 
     TranslateModule.forRoot({
       loader: {

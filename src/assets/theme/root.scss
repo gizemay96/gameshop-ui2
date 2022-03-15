@@ -23,6 +23,15 @@
   }
 }
 
+.mat-progress-bar .mat-progress-bar-element, .mat-progress-bar .mat-progress-bar-fill::after {
+  height: 20% !important;
+  background-color: darken($color: $color-orange, $amount: 20);
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $color-orange !important;
+}
+
 .nav-link {
   cursor: pointer;
 }
@@ -38,6 +47,30 @@
 .modal-smc {
   .mat-dialog-container {
     width: 500px;
+    overflow-y: hidden;
+    @extend .scrollStyle;
+    background: $bg-gray;
+    border-radius: 40px;
+  }
+
+  .modal-header {
+    padding: 1rem 2rem;
+  }
+
+  .modal-body {
+    overflow-y: hidden;
+    padding: 1rem 2rem;
+  }
+
+  .modal-footer {
+    padding: 1rem 1.75rem;
+  }
+}
+
+
+.modal-lgc {
+  .mat-dialog-container {
+    width: 900px;
     overflow-y: hidden;
     @extend .scrollStyle;
     background: $bg-gray;

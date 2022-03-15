@@ -4,8 +4,8 @@
           <div class="tab-list">
                <ul class="tabs nav">
                     <span *ngFor="let category of categories">
-                         <li [ngClass]="activeTab === category.id ? 'active' : ''" class="nav-item"
-                              (click)="getPage(category.id); activeTab = category.id">
+                         <li [ngClass]="activeTab === category.id || (activeTab === '' && category.id === '') ? 'active' : ''"
+                              class="nav-item" (click)="getPage(category.id); activeTab = category.id">
                               <a class="nav-link">{{ 'product-tabs.' + category.translateKey | translate }}</a>
                          </li>
                     </span>
@@ -13,17 +13,20 @@
           </div>
      </div>
      <!-- Vertical Line -->
-     <div class="vertical-line full-width"></div>
+     <div *ngIf="!loading" class="vertical-line full-width"></div>
+     <mat-progress-bar *ngIf="loading" class="full-width" mode="indeterminate"></mat-progress-bar>
 
      <!-- Product List -->
-     <div class="product-list d-flex align-items-center row gx-5">
-          <div class="product col-3 mb-5" *ngFor="let product of products">
-               <img class="product-img" [src]="product.image" alt="">
-               <div class="product-footer">
-                    <div class="price-add">
-                         <div class="price">$ {{product.price}}</div>
-                         <div class="add-button">Add to Cart <span><img class="icon"
-                                        src="../../../assets/icons/cart.png" alt=""></span></div>
+     <div class="product-list">
+          <div class=" d-flex align-items-center row gx-5" *ngIf="!loading">
+               <div class="product col-3 mb-5" *ngFor="let product of products">
+                    <img class="product-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
+                    <div class="product-footer">
+                         <div class="price-add">
+                              <div class="price">$ {{product.price}}</div>
+                              <div class="add-button">Add to Cart <span><img class="icon"
+                                             src="../../../assets/icons/cart.png" alt=""></span></div>
+                         </div>
                     </div>
                </div>
           </div>
