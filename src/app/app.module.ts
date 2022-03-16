@@ -15,6 +15,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+// Rating
+import { NgxStarRatingModule } from 'ngx-star-rating';
 // Material Modules
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     MatFormFieldModule,
     HttpClientModule,
     MatProgressBarModule,
+    NgxStarRatingModule,
+    MatChipsModule,
 
     TranslateModule.forRoot({
       loader: {

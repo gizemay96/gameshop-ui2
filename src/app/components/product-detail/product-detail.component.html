@@ -1,8 +1,53 @@
 <div class="product-detail row text-light">
-     <div class="desc col-7">
-          <h3> {{product.title}} </h3>
-     </div>
-     <div class="img col-5">
+     <div class="desc col-6">
+          <div>
+               <h3> {{product.title}} </h3>
+          </div>
+          <div class="stars">
+               <ngx-star-rating [disabled]="true" [(ngModel)]="rating" aria-readonly="true" [id]="'rating'">
+               </ngx-star-rating>
+          </div>
+          <div class="description-body">
+               The Island you once knew has been turned upside down...literally. Step foot onto the new Island and
+               explore every corner of an undiscovered world in Fortnite Chapter 3 Season 1: Flipped.The Island you once
+               knew has been turned upside down...literally. Step foot onto the new Island and explore every corner of
+               an undiscovered world in Fortnite Chapter 3 Season 1: Flipped.The Island you once knew
+               has been turned upside down...literally. Step foot onto the new Island and explore every corner of an
+               undiscovered world in Fortnite Chapter 3 Season 1: Flipped.
+          </div>
+          <div class="genres d-flex align-items-center">
+               <div class="title">Genres</div>
+               <div class="chips">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                         <mat-chip class="example-box" cdkDrag *ngFor="let genre of genres">
+                              {{genre}}
+                         </mat-chip>
+                    </mat-chip-list>
+               </div>
+          </div>
+          <div class="features d-flex align-items-center">
+               <div class="title">Features</div>
+               <div class="chips">
+                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                         <mat-chip class="example-box" cdkDrag *ngFor="let feature of features">
+                              {{feature}}
+                         </mat-chip>
+                    </mat-chip-list>
+               </div>
+          </div>
 
+          <div class="product-footer">
+               <div class="price-add">
+                    <div class="price">$ {{product.price}}</div>
+                    <div class="add-button">Add to Cart <span><img class="icon" src="../../../assets/icons/cart.png"
+                                   alt=""></span></div>
+               </div>
+          </div>
+
+     </div>
+     <div class="img col-6">
+          <div class="img-case">
+               <img src="../../../assets/img/de88d6v-477ef886-6803-42bf-8ef1-25b58fe87e56 1.png" alt="">
+          </div>
      </div>
 </div>
