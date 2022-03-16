@@ -1,0 +1,150 @@
+.bg-orange {
+  background-color: #EF7F1A;
+}
+
+.scrollStyle, .modal-smc .mat-dialog-container, .modal-lgc .mat-dialog-container {
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.scrollStyle ::-webkit-scrollbar, .modal-smc .mat-dialog-container ::-webkit-scrollbar, .modal-lgc .mat-dialog-container ::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scrollStyle ::-webkit-scrollbar-track, .modal-smc .mat-dialog-container ::-webkit-scrollbar-track, .modal-lgc .mat-dialog-container ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px grey;
+          box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.scrollStyle ::-webkit-scrollbar-thumb, .modal-smc .mat-dialog-container ::-webkit-scrollbar-thumb, .modal-lgc .mat-dialog-container ::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+}
+
+.scrollStyle ::-webkit-scrollbar-thumb:hover, .modal-smc .mat-dialog-container ::-webkit-scrollbar-thumb:hover, .modal-lgc .mat-dialog-container ::-webkit-scrollbar-thumb:hover {
+  background: #EF7F1A;
+}
+
+.mat-progress-bar .mat-progress-bar-element,
+.mat-progress-bar .mat-progress-bar-fill::after {
+  height: 20% !important;
+  background-color: #984e0b;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: #EF7F1A !important;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.vertical-line {
+  width: 100%;
+  height: 1px;
+  background-color: #EF7F1A;
+  opacity: 0.3;
+}
+
+.full-width {
+  width: 100vw !important;
+  position: relative;
+  left: 50.7%;
+  margin-left: -51vw;
+}
+
+.modal-smc .mat-dialog-container {
+  width: 500px;
+  overflow-y: hidden;
+  background: rgba(1, 1, 1, 0.76);
+  border-radius: 40px;
+}
+
+.modal-smc .modal-header {
+  padding: 1rem 2rem;
+}
+
+.modal-smc .modal-body {
+  overflow-y: hidden;
+  padding: 1rem 2rem;
+}
+
+.modal-smc .modal-footer {
+  padding: 1rem 1.75rem;
+}
+
+.modal-lgc .mat-dialog-container {
+  width: 1100px;
+  overflow-y: hidden;
+  background: rgba(0, 0, 0, 0.89);
+  border-radius: 40px;
+  padding-bottom: 0 !important;
+}
+
+.modal-lgc .modal-header {
+  padding: 1rem 2rem;
+}
+
+.modal-lgc .modal-body {
+  overflow-y: hidden;
+  padding: 1rem 2rem;
+}
+
+.modal-lgc .modal-footer {
+  padding: 1rem 1.75rem;
+}
+
+.btn-orange {
+  color: white;
+  border-radius: 15px;
+  height: 45px;
+  font-size: 20px;
+}
+
+.btn-orange:hover {
+  color: white;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.stars {
+  display: inline-block;
+  width: 100%;
+}
+
+.stars input.star ~ label.star {
+  font-size: 15px !important;
+}
+
+.stars input.star:checked ~ label.star:before {
+  color: #EF7F1A !important;
+}
+
+.mat-standard-chip {
+  font-size: 12px;
+  padding: 0px 6px !important;
+  min-height: 25px !important;
+  margin: 4px 10px;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: #e0e0e0a3;
+  color: rgba(0, 0, 0, 0.87);
+}
+/*# sourceMappingURL=root.css.map */

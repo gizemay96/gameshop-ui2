@@ -1,0 +1,48 @@
+@import "_veriables.scss";
+.page-body {
+    background: black;
+    padding: 30px 70px;
+    border-radius: 15px;
+    margin: 80px 0;
+
+    .tabs {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        font-size: 1rem;
+        align-items: center;
+        .nav-link {
+            color: white;
+            padding-left: 0 !important;
+            cursor: pointer;
+        }
+        .nav-item:is(.active) {
+            font-size: 1rem;
+            transition: font-size 100ms;
+            .nav-link {
+                color: $color-orange;
+                transition: color 100ms;
+            }
+        }
+    }
+
+    .tab-content{
+        margin: 60px 0 90px 0;
+        .header{
+            height: 40px;
+            width: 350px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            background-color: black;
+            color: white;
+            margin-bottom: -15px;
+        }
+        .profile-card{
+            padding: 10px;
+            min-height: 300px;
+            border-radius: 10px;
+            border: 1px solid gray;
+        }
+
+    }
+}

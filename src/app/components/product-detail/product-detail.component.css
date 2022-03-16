@@ -1,0 +1,98 @@
+.product-detail {
+  padding: 35px 30px;
+  padding-bottom: 0 !important;
+}
+
+.product-detail .desc,
+.product-detail .img {
+  padding: 0;
+}
+
+.product-detail .description-body {
+  margin-top: -17px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 198.19%;
+  letter-spacing: 0.025em;
+  color: #FFFFFF;
+}
+
+.product-detail .genres,
+.product-detail .features {
+  margin-top: 10px;
+}
+
+.product-detail .genres .title,
+.product-detail .features .title {
+  margin-right: 10px;
+}
+
+.product-detail .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.product-detail .img .img-case {
+  position: absolute;
+  height: 450px;
+}
+
+.product-detail .img .img-case img {
+  height: 100%;
+  width: auto;
+}
+
+.product-detail .product-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px 0 50px 0px;
+}
+
+.product-detail .product-footer .price-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.product-detail .product-footer .price-add .price {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 5px;
+  background: rgba(239, 127, 26, 0.39);
+}
+
+.product-detail .product-footer .price-add .add-button {
+  padding: 0px 10px;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.product-detail .product-footer .price-add .add-button img {
+  width: 14px;
+  margin-bottom: 5px;
+  margin-left: 8px;
+}
+/*# sourceMappingURL=product-detail.component.css.map */

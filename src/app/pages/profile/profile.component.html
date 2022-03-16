@@ -1,6 +1,44 @@
 <div class="profile-page">
-     <!-- Vertical Line -->
-     <div *ngIf="!loading" class="vertical-line full-width"></div>
-     <mat-progress-bar *ngIf="loading" class="full-width" mode="indeterminate"></mat-progress-bar>
-     <h5>sdasd</h5>
+  <!-- Vertical Line -->
+  <div *ngIf="!loading" class="vertical-line full-width"></div>
+  <mat-progress-bar *ngIf="loading" class="full-width" mode="indeterminate"></mat-progress-bar>
+
+  <div class="page-body w-100">
+    <div class="tabs">
+      <!-- Tabs -->
+      <div class="tab-list">
+        <ul class="tabs nav">
+          <li [ngClass]="activeTab === 0 ? 'active' : ''" class="nav-item" (click)="activeTab = 0">
+            <a class="nav-link">User Information</a>
+          </li>
+          <li [ngClass]="activeTab === 1 ? 'active' : ''" class="nav-item" (click)="activeTab = 1">
+            <a class="nav-link">Pass Orders</a>
+          </li>
+          <li [ngClass]="activeTab === 2 ? 'active' : ''" class="nav-item" (click)="activeTab = 2">
+            <a class="nav-link">My Coupons</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="tab-content row gx-5">
+      <div class="col">
+        <div class="header-case d-flex justify-content-center">
+          <div class="header d-flex align-items-center justify-content-center">User Card </div>
+        </div>
+        <div class="p-3 profile-card user-card">Custom column padding</div>
+      </div>
+      <div class="col">
+        <div class="header-case d-flex justify-content-center">
+          <div class="header d-flex align-items-center justify-content-center">Address Card</div>
+        </div>
+        <div class="p-3 profile-card address-card">Custom column padding</div>
+      </div>
+    </div>
+
+
+
+  </div>
+
 </div>

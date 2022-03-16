@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   loading = false;
+  activeTab = 0;
 
   constructor() { }
 
