@@ -161,3 +161,72 @@ select:-webkit-autofill:focus {
   border-radius: 10px;
   height: 37px;
 }
+
+.modal-body {
+  padding: 25px;
+
+  .logo {
+    img {
+      max-width: 150px;
+    }
+  }
+}
+
+
+mat-form-field {
+  margin: 5px 0;
+}
+
+#grayInput .mat-form-field-hide-placeholder .mat-form-field-label-wrapper {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255, 255, 255, 43%);
+}
+
+
+/* Font color */
+#grayInput input.mat-input-element {
+  color: white;
+}
+
+#grayInput .mat-form-field-flex {
+  border-radius: 15px;
+  background: #5f5f5fd0;
+  border: 1px solid $color-orange;
+  height: 50px;
+}
+
+#grayInput .mat-form-field-infix {
+  top: -6px;
+}
+
+#grayInput .mat-form-field {
+  .mat-form-field-label {
+    color: $color-orange !important;
+  }
+}
+
+#grayInput .mat-form-field:is(.mat-form-field-invalid) {
+  .mat-form-field-flex {
+    border: 1px solid red !important;
+  }
+
+  .mat-form-field-label {
+    color: red !important;
+  }
+}
+
+#grayInput .mat-form-field:is(.ng-valid) {
+  .mat-form-field-flex {
+    border: 1px solid $color-green !important;
+  }
+
+  .mat-form-field-label {
+    color: $color-green !important;
+  }
+}
+
+#grayInput .mat-form-field-underline {
+  display: none;
+}

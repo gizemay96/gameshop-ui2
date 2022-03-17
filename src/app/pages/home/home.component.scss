@@ -12,11 +12,12 @@
     color: white;
     padding-left: 0 !important;
     cursor: pointer;
+    font-weight: 300;
   }
-  
+
   .nav-item:is(.active) {
-    
     .nav-link {
+      font-weight: 500;
       color: $color-orange;
       transition: color 100ms;
     }

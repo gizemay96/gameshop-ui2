@@ -23,6 +23,7 @@
             line-height: 161.69%;
             letter-spacing: 0.025em;
             color: #FFFFFF;
+            margin-right: 40px;
         }
 
         .nav-item:is(.active) {
@@ -86,7 +87,7 @@
         }
 
         .input {
-            padding-left: 5px;
+            padding-left: 10px;
             max-width: 330px;
             text-overflow: ellipsis;
             overflow: hidden;
