@@ -1,7 +1,8 @@
 @import "_veriables.scss";
+
 .page-body {
     background: black;
-    padding: 30px 70px;
+    padding: 60px 70px;
     border-radius: 15px;
     margin: 80px 0;
 
@@ -11,24 +12,36 @@
         justify-content: space-between;
         font-size: 1rem;
         align-items: center;
+
         .nav-link {
-            color: white;
             padding-left: 0 !important;
             cursor: pointer;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 18px;
+            line-height: 161.69%;
+            letter-spacing: 0.025em;
+            color: #FFFFFF;
         }
+
         .nav-item:is(.active) {
-            font-size: 1rem;
-            transition: font-size 100ms;
             .nav-link {
-                color: $color-orange;
-                transition: color 100ms;
+                font-weight: 500;
             }
         }
     }
 
-    .tab-content{
+    .tab-content {
         margin: 60px 0 90px 0;
-        .header{
+
+        .user-info,
+        .addresses {
+            margin-top: 15px;
+            padding: 0px 35px;
+        }
+
+        .header {
             height: 40px;
             width: 350px;
             border-radius: 10px;
@@ -37,12 +50,64 @@
             color: white;
             margin-bottom: -15px;
         }
-        .profile-card{
-            padding: 10px;
+
+        .profile-card {
+            padding: 30px 10px;
             min-height: 300px;
             border-radius: 10px;
             border: 1px solid gray;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
     }
+
+
+    .inputs {
+        display: flex;
+        align-items: center;
+        color: white;
+        border: 1px solid gray;
+        border-radius: 10px;
+        width: 90%;
+        margin-top: 20px;
+        height: 40px;
+
+        .input-name {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            padding: 7px 8px;
+            background: rgba(239, 127, 26, 0.39);
+            min-width: 90px;
+            white-space: nowrap;
+        }
+
+        .input {
+            padding-left: 5px;
+            max-width: 330px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .icon {
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+
+    }
+
+    .btn-case {
+        width: 100%;
+        padding: 0 25px;
+        display: flex;
+        justify-content: end;
+    }
+
+
+
+
+
 }
