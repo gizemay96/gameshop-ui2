@@ -27,7 +27,7 @@ export class RegisterModalComponent implements OnInit {
   errorActive = false;
 
   registerForm = new FormGroup({
-    fullName: new FormControl('', [
+    firstName: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
     ]),

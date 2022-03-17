@@ -20,13 +20,13 @@ export class AddressService {
   constructor(private http: HttpClient, private userService: UserService) { }
 
   fetchUserAddress() {
-    const userId = JSON.parse(sessionStorage.getItem('user')).id;
+    const userId = JSON.parse(sessionStorage.getItem('user') || '').id;
     const token = window.sessionStorage.getItem('token');
     const httpOptions = {
       headers: { Authorization: `${token}` },
     };
 
-    const request = this.http.get(`${env.addressApiURL}/${userId}`, httpOptions);
+    const request = this.http.get(`${env.url}/users/userAddresses/${userId}`, httpOptions);
     return request.pipe(map((res: any) => res.payload || []), catchError(() => of([])));
   }
 
@@ -36,17 +36,17 @@ export class AddressService {
       ...address,
     };
 
-    const request = this.http.post(`${env.addressApiURL}`, NewAddress, this.httpOptions);
+    const request = this.http.post(`${env.url}/users/userAddresses`, NewAddress, this.httpOptions);
     return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
   }
 
   editUserAddress(address: Address) {
-    const request = this.http.put(`${env.addressApiURL}`, address, this.httpOptions);
+    const request = this.http.put(`${env.url}/users/userAddresses`, address, this.httpOptions);
     return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
   }
 
   deleteAddress(addressId: number) {
-    const request = this.http.delete(`${env.addressApiURL}/${addressId}`, this.httpOptions);
+    const request = this.http.delete(`${env.url}/users/userAddresses/${addressId}`, this.httpOptions);
     return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
   }
 

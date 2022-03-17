@@ -25,6 +25,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { AddEditAddressComponent } from './components/add-edit-address/add-edit-address.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {MatChipsModule} from '@angular/material/chips';
     LoginModalComponent,
     RegisterModalComponent,
     NavbarComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AddEditAddressComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

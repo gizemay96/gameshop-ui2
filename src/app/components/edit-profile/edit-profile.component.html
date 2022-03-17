@@ -1,0 +1,31 @@
+<div class="register">
+  <div class="header ">
+    <div class="logo d-flex justify-content-center">
+      <img src="../../../assets/img/logo.png" alt="logo">
+    </div>
+    <div class="form mt-4" id="grayInput">
+      <form [formGroup]="editForm" (submit)="editData()" autocomplete="off">
+        <!-- Full Name -->
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Full Name</mat-label>
+          <input matInput type="text" formControlName="firstName" class="w-100" maxlength="10">
+        </mat-form-field>
+
+        <!-- E-mail -->
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>E-Mail</mat-label>
+          <input matInput type="text" class="w-100" formControlName="email">
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Phone</mat-label>
+          <input matInput type="text" class="w-100" formControlName="phoneNumber" maxlength="11">
+        </mat-form-field>
+
+        <button type="submit" class="btn bg-orange w-100 btn-orange">Save</button>
+      </form>
+
+    </div>
+  </div>
+</div>

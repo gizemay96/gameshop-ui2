@@ -5,6 +5,7 @@ import { AuthService } from '@app/services/auth.service';
 import { CartService } from '@app/services/cart.service';
 import { DataService } from '@app/services/data.service';
 import { UserService } from '@app/services/user.service';
+import { lastValueFrom } from 'rxjs';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class LoginModalComponent implements OnInit {
   async login() {
     if (this.loginForm.valid) {
       this.isLoading = true;
-      const response = await this.authService.login(this.loginForm.value).toPromise();
+      const response = await lastValueFrom(this.authService.login(this.loginForm.value));
       if (response.error) {
         this.serverErrors = response.error.responseMessage;
         this.errorActive = true;
