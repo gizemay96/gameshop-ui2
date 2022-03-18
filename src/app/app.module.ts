@@ -29,6 +29,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AddEditAddressComponent } from './components/add-edit-address/add-edit-address.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { NgxMaskModule , IConfig } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     NgxStarRatingModule,
     MatChipsModule,
     MatStepperModule,
+    NgxMaskModule.forRoot(),
 
     TranslateModule.forRoot({
       loader: {

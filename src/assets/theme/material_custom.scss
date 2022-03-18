@@ -1,0 +1,183 @@
+mat-form-field {
+  margin: 5px 0;
+}
+
+
+// Gray Input
+#grayInput .mat-form-field-hide-placeholder .mat-form-field-label-wrapper {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255, 255, 255, 43%);
+}
+
+
+/* Font color */
+#grayInput input.mat-input-element {
+  color: white;
+}
+
+#grayInput .mat-form-field-flex {
+  border-radius: 15px;
+  background: #5f5f5fd0;
+  border: 1px solid $color-orange;
+  height: 50px;
+}
+
+#grayInput .mat-form-field-infix {
+  top: -6px;
+}
+
+#grayInput .mat-form-field {
+  .mat-form-field-label {
+    color: $color-orange !important;
+  }
+}
+
+#grayInput .mat-form-field:is(.mat-form-field-invalid) {
+  .mat-form-field-flex {
+    border: 1px solid red !important;
+  }
+
+  .mat-form-field-label {
+    color: red !important;
+  }
+}
+
+#grayInput .mat-form-field:is(.ng-valid) {
+  .mat-form-field-flex {
+    border: 1px solid $color-green !important;
+  }
+
+  .mat-form-field-label {
+    color: $color-green !important;
+  }
+}
+
+#grayInput .mat-form-field-underline {
+  display: none;
+}
+
+
+
+
+
+
+// Orange Fill input
+
+/* Font color */
+#fillOrange input.mat-input-element {
+  color: white;
+}
+
+#fillOrange .mat-form-field-flex {
+  border-bottom: 1px solid #EF7F1A;
+  height: 50px;
+}
+
+#fillOrange .mat-form-field-infix {
+  top: -6px;
+}
+
+#fillOrange .mat-form-field {
+  .mat-form-field-label {
+    color: white !important;
+  }
+}
+
+#fillOrange .mat-form-field:is(.mat-form-field-invalid) {
+  .mat-form-field-flex {
+    border-bottom: 1px solid red !important;
+  }
+
+  .mat-form-field-label {
+    color: red !important;
+  }
+}
+
+#fillOrange .mat-form-field:is(.ng-valid) {
+  .mat-form-field-flex {
+    border-bottom: 1px solid $color-green !important;
+  }
+
+  .mat-form-field-label {
+    color: $color-green !important;
+  }
+}
+
+#fillOrange .mat-form-field-underline {
+  display: none;
+}
+
+
+
+
+
+// Mat Stepper
+
+.mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+
+.mat-step-header .mat-step-label.mat-step-label-active {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.mat-step-text-label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: white !important;
+}
+
+
+.mat-stepper-vertical,
+.mat-stepper-horizontal {
+  font-family: 'Poppins', "Helvetica Neue", sans-serif !important;
+}
+
+.mat-step-header {
+
+  .mat-step-icon:is(.mat-step-icon-selected),
+  .mat-step-icon:is(.mat-step-icon-state-edit) {
+    background-color: rgb(239 127 26 / 68%) !important;
+    color: #fff;
+  }
+
+  .mat-step-icon {
+    background-color: rgb(201 201 201 / 54%);
+    color: #fff;
+  }
+
+}
+
+.mat-stepper-horizontal-line {
+  border-top-color: rgb(175 175 175);
+}
+
+
+// Mat Chip
+.mat-standard-chip {
+  font-size: 12px;
+  padding: 0px 6px !important;
+  min-height: 25px !important;
+  margin: 4px 10px;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: #e0e0e0a3;
+  color: rgba(0, 0, 0, .87);
+}
+
+
+
+// Mat Progress Bar
+
+.mat-progress-bar .mat-progress-bar-element,
+.mat-progress-bar .mat-progress-bar-fill::after {
+  height: 20% !important;
+  background-color: darken($color: $color-orange, $amount: 20);
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $color-orange !important;
+}

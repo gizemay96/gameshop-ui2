@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 
 @Component({
@@ -9,6 +10,24 @@ import { MatStepper } from '@angular/material/stepper';
 export class CartComponent implements OnInit {
   @ViewChild('stepper') private myStepper: MatStepper | any;
 
+  paymentForm = new FormGroup({
+    cardNumber: new FormControl('', [
+      Validators.required,
+    ]),
+    cardName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    expDate: new FormControl('', [
+      Validators.required
+    ]),
+    cvv: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(3),
+    ]),
+  });
+
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +35,14 @@ export class CartComponent implements OnInit {
 
   goToNextStep(){
     this.myStepper.next();
+  }
+
+  payment(){
+    if(this.paymentForm.valid){
+      this.goToNextStep();
+      this.paymentForm.reset();
+    }
+    console.log(this.paymentForm.getRawValue());
   }
 
 }

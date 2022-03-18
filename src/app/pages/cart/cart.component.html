@@ -3,6 +3,7 @@
   <div class="page-body row w-100">
 
     <mat-stepper linear #stepper>
+
       <!-- Order Step -->
       <mat-step>
         <ng-template matStepLabel>Order</ng-template>
@@ -79,20 +80,60 @@
       <!-- Payment Step -->
       <mat-step>
         <ng-template matStepLabel>Payment</ng-template>
-            <div class="payment-page row">
-                <div class="credit-card col-6">
-                   <img src="../../../assets/img/Vector (3).png" alt="">
-                   <div class="credit-card-info">
-                        <div class="icons">
-                            <img src="../../../assets/icons/sim.png" alt="">
-                            <img src="../../../assets/icons/nfc.png" alt="">
-                        </div>
-                   </div>
+        <div class="payment-page row">
+          <div class="card-side col-5">
+            <div class="credit-card ">
+              <img src="../../../assets/img/Group 189.png" alt="">
+              <div class="credit-card-info">
+                <div class="card-number">
+                  {{paymentForm.get('cardNumber')?.value || '0000 0000 0000 0000' | mask: '0000 0000 0000 0000'}}
                 </div>
-                <div class="payment-form col-6">
-
+                <div class="date">
+                  <img src="../../../assets/icons/right_arrow.svg" alt="">
+                  {{paymentForm.get('expDate')?.value || '00/00' | mask: '00/00'}}
                 </div>
+                <div class="name">
+                  {{paymentForm.get('cardName')?.value || 'Card Name' | uppercase}}
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="payment-form col-6">
+            <form [formGroup]="paymentForm" (submit)="payment()" id="fillOrange">
+              <!-- E-mail -->
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>CARD NUMBER</mat-label>
+                <input matInput mask="0000 0000 0000 0000" formControlName="cardNumber" type="text" class="w-100"
+                  autocomplete="off">
+              </mat-form-field>
+
+              <!-- Password -->
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>CARDHOLDER NAME</mat-label>
+                <input matInput mask="S* S*" type="text" class="w-100" formControlName="cardName"
+                  autocomplete="new-password">
+              </mat-form-field>
+
+              <div class="date-cvv row">
+                <!-- E-mail -->
+                <mat-form-field appearance="fill" class="col-6">
+                  <mat-label>EXPIRY DATE</mat-label>
+                  <input matInput [showMaskTyped]="true" mask="00/00" formControlName="expDate" type="text"
+                    class="w-100" autocomplete="off">
+                </mat-form-field>
+
+                <!-- Password -->
+                <mat-form-field appearance="fill" class="col-6">
+                  <mat-label>CVV</mat-label>
+                  <input matInput mask="000" [showMaskTyped]="true" formControlName="cvv" type="text" class="w-100"
+                    autocomplete="new-password">
+                </mat-form-field>
+              </div>
+
+              <button type="submit" class="btn bg-orange w-100 btn-orange">Pay</button>
+            </form>
+          </div>
+        </div>
       </mat-step>
 
       <!-- Success Message -->
@@ -104,9 +145,8 @@
           <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
       </mat-step>
+
     </mat-stepper>
-
-
 
   </div>
 </div>
