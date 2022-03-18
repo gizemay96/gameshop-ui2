@@ -21,10 +21,12 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatStepperModule} from '@angular/material/stepper';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AddEditAddressComponent } from './components/add-edit-address/add-edit-address.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
@@ -54,6 +56,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     MatProgressBarModule,
     NgxStarRatingModule,
     MatChipsModule,
+    MatStepperModule,
 
     TranslateModule.forRoot({
       loader: {

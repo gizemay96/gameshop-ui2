@@ -1,1 +1,112 @@
-<p>cart works!</p>
+<div class="profile-page">
+
+  <div class="page-body row w-100">
+
+    <mat-stepper linear #stepper>
+      <!-- Order Step -->
+      <mat-step>
+        <ng-template matStepLabel>Order</ng-template>
+        <div class="order-tab row w-100">
+          <div class="order-side col-7">
+
+            <div class="product row">
+              <div class="img col-2 p-0">
+                <img class="w-100" src="../../../assets/img/fortnite-poster 2.png" alt="">
+              </div>
+              <div class="info-case  col-10">
+                <div class="order-info">
+                  <div class="product-name">Fortnite</div>
+                  <div class="product-price">$ 120.00</div>
+                  <div class="add-remove row">
+                    <div class="decrement col-4 row-reset">
+                      <img src="../../../assets/icons/orange-trash.png" alt="">
+                    </div>
+                    <div class="count col-4 row-reset"> 1 </div>
+                    <div class="increment col-4 row-reset">
+                      <img src="../../../assets/icons/plus.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="payment-side col-5">
+
+            <div class="addresses">
+              <div class="inputs">
+                <div class="input-name">asd</div>
+                <div class="input">asd
+                </div>
+                <div class="icon pt-1"><img src="../../../assets/icons/edit.png" alt="">
+                </div>
+              </div>
+              <div class="inputs">
+                <div class="input-name">asd</div>
+                <div class="input">asd
+                </div>
+                <div class="icon pt-1"><img src="../../../assets/icons/edit.png" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="total-info">
+              <div class="total-card">
+                <div class="texts">
+                  <div class="total-item">
+                    <div class="total-price">$ 360.00 </div>
+                    <div class="total-count">3 Items</div>
+                  </div>
+                  <div class="total-item">
+                    <div class="price">$ 12.00 </div>
+                    <div class="delivery">Delivery</div>
+                  </div>
+                </div>
+                <div class="buttons d-flex">
+                  <span class="total-price col-6">$ 350.00</span>
+                  <span class="goto-payment col-6" (click)="goToNextStep()">Go to payment
+                    <img src="../../../assets/icons/fluent_payment-28-filled.svg" alt="">
+                    <img src="../../../assets/icons/arrow-rigth.png" alt="">
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- Payment Step -->
+      <mat-step>
+        <ng-template matStepLabel>Payment</ng-template>
+            <div class="payment-page row">
+                <div class="credit-card col-6">
+                   <img src="../../../assets/img/Vector (3).png" alt="">
+                   <div class="credit-card-info">
+                        <div class="icons">
+                            <img src="../../../assets/icons/sim.png" alt="">
+                            <img src="../../../assets/icons/nfc.png" alt="">
+                        </div>
+                   </div>
+                </div>
+                <div class="payment-form col-6">
+
+                </div>
+            </div>
+      </mat-step>
+
+      <!-- Success Message -->
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+
+
+  </div>
+</div>
