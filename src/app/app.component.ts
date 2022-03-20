@@ -5,6 +5,8 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
 import { UserService } from './services/user.service';
 
 import { TranslateService } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { getCart } from './_store/actions/cart-actions';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,8 @@ export class AppComponent implements OnInit {
   constructor(
     private userService: UserService,
     public dialog: MatDialog,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private store: Store
   ) {
     translate.addLangs(['en', 'tr']);
     translate.setDefaultLang('en');

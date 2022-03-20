@@ -1,5 +1,4 @@
 <div class="profile-page">
-
   <div class="page-body row w-100">
 
     <mat-stepper linear #stepper>
@@ -9,14 +8,15 @@
         <ng-template matStepLabel>Order</ng-template>
         <div class="order-tab row w-100">
           <div class="order-side col-7">
+            
 
-            <div class="product row">
+            <div class="product row" *ngFor="let item of userCart$.products">
               <div class="img col-2 p-0">
                 <img class="w-100" src="../../../assets/img/fortnite-poster 2.png" alt="">
               </div>
               <div class="info-case  col-10">
                 <div class="order-info">
-                  <div class="product-name">Fortnite</div>
+                  <div class="product-name">{{item.product.title}}</div>
                   <div class="product-price">$ 120.00</div>
                   <div class="add-remove row">
                     <div class="decrement col-4 row-reset">

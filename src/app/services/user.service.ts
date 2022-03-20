@@ -4,6 +4,8 @@ import { User } from '../types/user.type';
 import { environment as env } from '../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { getCart } from '@app/_store/actions/cart-actions';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +21,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
+    private store: Store
   ) { }
 
   setUser(user: User) {
@@ -44,6 +47,7 @@ export class UserService {
     } else {
       this.user.avatarUrl = 'assets/images/avatar-placeholder.jpg';
     }
+      this.store.dispatch(getCart());
   }
 
   editUser(editedForm: any) {

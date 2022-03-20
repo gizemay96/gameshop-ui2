@@ -30,6 +30,10 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { AddEditAddressComponent } from './components/add-edit-address/add-edit-address.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { NgxMaskModule , IConfig } from 'ngx-mask';
+import { EffectsModule } from '@ngrx/effects';
+import { cartEffects } from './_store/effects/cart.effects';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './_store/reducers';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,14 @@ import { NgxMaskModule , IConfig } from 'ngx-mask';
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    EffectsModule.forRoot([cartEffects])
 
   ],
   providers: [],

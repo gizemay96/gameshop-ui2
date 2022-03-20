@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { getCart } from '@app/_store/actions/cart-actions';
+import { getUserCart } from '@app/_store/selectors/cart-selector';
+import { select, Store } from '@ngrx/store';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -28,17 +32,25 @@ export class CartComponent implements OnInit {
     ]),
   });
 
-  constructor() { }
+  userCart$: Observable<any> | any;
 
+  constructor(
+    private store: Store
+  ) {
+     this.store.select(getUserCart).subscribe(res => {
+       this.userCart$ = res;
+    });
+  }
+  
   ngOnInit(): void {
   }
 
-  goToNextStep(){
+  goToNextStep() {
     this.myStepper.next();
   }
 
-  payment(){
-    if(this.paymentForm.valid){
+  payment() {
+    if (this.paymentForm.valid) {
       this.goToNextStep();
       this.paymentForm.reset();
     }
