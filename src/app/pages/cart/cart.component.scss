@@ -13,38 +13,46 @@
 
     .product {
       margin-top: 30px;
-    }
 
-    .product-price {
-      font-style: normal;
-      font-weight: 300;
-      font-size: 14px;
-      line-height: 161.69%;
-      letter-spacing: 0.025em;
-    }
-
-    .info-case {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .order-info {
-
-        .product-name {
-          font-style: normal;
-          font-weight: 500;
-          font-size: 18px;
-          line-height: 161.69%;
-          letter-spacing: 0.025em;
-          margin: 4px 0;
+      .img {
+        img {
+          border-radius: 10px;
+          height: 170px;
+          object-fit: cover;
         }
+      }
 
-        .product-price {
-          font-style: normal;
-          font-weight: 300;
-          font-size: 14px;
-          line-height: 161.69%;
-          letter-spacing: 0.025em;
+      .product-price {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 161.69%;
+        letter-spacing: 0.025em;
+      }
+
+      .info-case {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .order-info {
+
+          .product-name {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 161.69%;
+            letter-spacing: 0.025em;
+            margin: 4px 0;
+          }
+
+          .product-price {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 161.69%;
+            letter-spacing: 0.025em;
+          }
         }
       }
 

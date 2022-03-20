@@ -8,22 +8,22 @@
         <ng-template matStepLabel>Order</ng-template>
         <div class="order-tab row w-100">
           <div class="order-side col-7">
-            
+
 
             <div class="product row" *ngFor="let item of userCart$.products">
               <div class="img col-2 p-0">
-                <img class="w-100" src="../../../assets/img/fortnite-poster 2.png" alt="">
+                <img class="w-100" [src]="item.product.image" alt="">
               </div>
               <div class="info-case  col-10">
                 <div class="order-info">
                   <div class="product-name">{{item.product.title}}</div>
-                  <div class="product-price">$ 120.00</div>
+                  <div class="product-price">{{item.product.price}}</div>
                   <div class="add-remove row">
                     <div class="decrement col-4 row-reset">
                       <img src="../../../assets/icons/orange-trash.png" alt="">
                     </div>
-                    <div class="count col-4 row-reset"> 1 </div>
-                    <div class="increment col-4 row-reset">
+                    <div class="count col-4 row-reset"> {{item.totalQty}} </div>
+                    <div class="increment col-4 row-reset" (click)="addToCart(item)">
                       <img src="../../../assets/icons/plus.png" alt="">
                     </div>
                   </div>
@@ -55,8 +55,8 @@
               <div class="total-card">
                 <div class="texts">
                   <div class="total-item">
-                    <div class="total-price">$ 360.00 </div>
-                    <div class="total-count">3 Items</div>
+                    <div class="total-price">{{userCart$.totalPrice}} </div>
+                    <div class="total-count"> {{userCart$.totalQty}} Items</div>
                   </div>
                   <div class="total-item">
                     <div class="price">$ 12.00 </div>
@@ -64,7 +64,7 @@
                   </div>
                 </div>
                 <div class="buttons d-flex">
-                  <span class="total-price col-6">$ 350.00</span>
+                  <span class="total-price col-6">$ {{userCart$.totalPrice + 12}}</span>
                   <span class="goto-payment col-6" (click)="goToNextStep()">Go to payment
                     <img src="../../../assets/icons/fluent_payment-28-filled.svg" alt="">
                     <img src="../../../assets/icons/arrow-rigth.png" alt="">

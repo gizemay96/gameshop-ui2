@@ -8,6 +8,8 @@ import { DataService } from '@app/services/data.service';
 import { ProductService } from '@app/services/product.service';
 import { UserService } from '@app/services/user.service';
 import { User } from '@app/types/user.type';
+import { getCart } from '@app/_store/actions/cart-actions';
+import { Store } from '@ngrx/store';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -34,6 +36,8 @@ export class HomeComponent implements OnInit {
     private productService: ProductService,
     private dataService: DataService,
     public dialog: MatDialog,
+    private cartService: CartService,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -68,13 +72,25 @@ export class HomeComponent implements OnInit {
   }
 
 
-  openProductDetail(product: any){
-    const data = { panelClass: 'modal-lgc' , data: product};
+  openProductDetail(product: any) {
+    const data = { panelClass: 'modal-lgc', data: product };
     const dialogRef = this.dialog.open(ProductDetailComponent, data);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  async addToCart(product: any) {
+    const params = {
+      userId: this.user.id,
+      productId: product._id,
+      increaseOrDecrease: 1
+    };
+    const response = await lastValueFrom(this.cartService.updateBasket(params));
+    if (response) {
+      this.store.dispatch(getCart());
+    }
   }
 
 

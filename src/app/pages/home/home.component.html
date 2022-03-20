@@ -24,7 +24,7 @@
         <div class="product-footer">
           <div class="price-add">
             <div class="price">$ {{product.price}}</div>
-            <div class="add-button">Add to Cart <span><img class="icon" src="../../../assets/icons/cart.png"
+            <div class="add-button" (click)="addToCart(product)">Add to Cart <span><img class="icon" src="../../../assets/icons/cart.png"
                   alt=""></span></div>
           </div>
         </div>
