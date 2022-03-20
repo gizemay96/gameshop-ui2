@@ -10,7 +10,7 @@ export type User = {
   lastName:string;
   email: string;
   cart?: Cart | number;
-  phone?:string;
+  phoneNumber?:string;
   address?: Address;
   avatar?: any;
   avatarUrl?: string;

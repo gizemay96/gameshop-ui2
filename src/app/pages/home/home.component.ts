@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailComponent } from '@app/components/product-detail/product-detail.component';
 import { CartService } from '@app/services/cart.service';
-import { DataService } from '@app/services/data.service';
+import { CommonService } from '@app/services/common.service';
 import { ProductService } from '@app/services/product.service';
+import { Product } from '@app/types/product.type';
 import { User } from '@app/types/user.type';
 import { getCart } from '@app/_store/actions/cart-actions';
 import { getAuthResponse } from '@app/_store/selectors/user-selector';
@@ -16,33 +17,34 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  user: User | any;
-  loading = false;
+
+  user: User;
 
   categories: any;
-  products: any;
+  products: Product[];
 
+  loading = false;
   page = 1;
   limit = 12;
-  totalCount: any
+  totalCount: number;
 
-  activeTab: any = '';
+  activeTab: string = '';
 
 
   constructor(
     private productService: ProductService,
-    private dataService: DataService,
+    private commonService: CommonService,
     public dialog: MatDialog,
     private cartService: CartService,
     private store: Store
-  ) { 
+  ) {
     this.store.select(getAuthResponse).subscribe(res => {
       this.user = res;
     });
   }
 
   ngOnInit(): void {
-    this.categories = this.dataService.getProductCategories();
+    this.categories = this.commonService.getProductCategories();
     this.getPage();
   }
 
@@ -58,7 +60,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  async getProducts(categoryId: any, type?: any) {
+  async getProducts(categoryId: string, type?: string) {
     const disabledPrevioustButton = (type === 'previousPage' && this.page === 1);
     const disabledNextButton = type === 'nextPage' && (this.limit * this.page > this.totalCount)
 
@@ -72,7 +74,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  openProductDetail(product: any) {
+  openProductDetail(product: Product) {
     const data = { panelClass: 'modal-lgc', data: product };
     const dialogRef = this.dialog.open(ProductDetailComponent, data);
 
@@ -81,7 +83,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  async addToCart(product: any) {
+  async addToCart(product: Product) {
     const params = {
       userId: this.user.id,
       productId: product._id,

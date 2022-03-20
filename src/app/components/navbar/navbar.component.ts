@@ -15,7 +15,7 @@ import { RegisterModalComponent } from '../register-modal/register-modal.compone
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  userCartCount$: Observable<any> | any;
+  userCartCount$: Observable<any>;
   user: any;
 
   constructor(
@@ -23,15 +23,13 @@ export class NavbarComponent implements OnInit {
     public translate: TranslateService,
     private store: Store,
   ) {
-
     this.store.select(getAuthResponse).subscribe(res => {
-      this.user = res;
+      this.user = res.userDetail || res;
     });
 
     this.store.select(getUserCart).subscribe(res => {
-      this.userCartCount$ = res.products?.length || 0;
+      this.userCartCount$ = res.totalQty || 0;
     });
-
 
   }
 
@@ -40,20 +38,12 @@ export class NavbarComponent implements OnInit {
 
   openLogin() {
     const data = { panelClass: 'modal-smc' };
-    const dialogRef = this.dialog.open(LoginModalComponent, data);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(LoginModalComponent, data);
   }
 
   openRegister() {
     const data = { panelClass: 'modal-smc' };
-    const dialogRef = this.dialog.open(RegisterModalComponent, data);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(RegisterModalComponent, data);
   }
 
   logOut() {

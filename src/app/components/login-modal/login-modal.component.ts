@@ -47,7 +47,6 @@ export class LoginModalComponent implements OnInit {
   }
 
   async login() {
-
     if (this.loginForm.valid) {
       this.isLoading = true;
       this.store.dispatch(loginUser(this.loginForm.getRawValue()));
@@ -56,7 +55,6 @@ export class LoginModalComponent implements OnInit {
       this.isLoading = false;
     }
   }
-
 
   closeModal() {
     this.dialogRef.close();

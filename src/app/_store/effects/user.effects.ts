@@ -4,6 +4,7 @@ import { AuthService } from "@app/services/auth.service";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, mergeMap, of } from "rxjs";
+import { getUserAddresses } from "../actions/address-actions";
 import { getCart } from "../actions/cart-actions";
 import { autoLogin, autoLogout, registerUser } from "../actions/user-actions";
 import { loginUser, authResponse } from "../actions/user-actions";
@@ -28,6 +29,7 @@ export class userEffects {
                          if (!data.error) {
                               this.authService.setUserToLocalStorage(data)
                               this.store.dispatch(getCart(data.userDetail));
+                              this.store.dispatch(getUserAddresses(data.userDetail));
                               return authResponse(data);
                          } else {
                               return authResponse(data);
@@ -46,6 +48,7 @@ export class userEffects {
                               this.authService.setUserToLocalStorage(data)
                               data.userDetail.id = data.userDetail._id;
                               this.store.dispatch(getCart(data.userDetail));
+                              this.store.dispatch(getUserAddresses(data.userDetail));
                               return authResponse(data);
                          } else {
                               return authResponse(data);
@@ -72,7 +75,10 @@ export class userEffects {
                ofType(autoLogin),
                mergeMap((action) => {
                     const user = this.authService.getUserFromLocalStorage();
-                    if (user) { this.store.dispatch(getCart(user)); }
+                    if (user) {
+                         this.store.dispatch(getCart(user));
+                         this.store.dispatch(getUserAddresses(user));
+                    }
                     return of(authResponse(user));
                })
           );

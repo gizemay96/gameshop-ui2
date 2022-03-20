@@ -35,6 +35,7 @@ import { cartEffects } from './_store/effects/cart.effects';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './_store/reducers';
 import { userEffects } from './_store/effects/user.effects';
+import { addressEffects } from './_store/effects/address.effects';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,7 @@ import { userEffects } from './_store/effects/user.effects';
         strictActionImmutability: true
       }
     }),
-    EffectsModule.forRoot([cartEffects , userEffects])
+    EffectsModule.forRoot([cartEffects , userEffects , addressEffects])
 
   ],
   providers: [],

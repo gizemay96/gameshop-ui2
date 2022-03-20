@@ -11,6 +11,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  login(loginForm: any) {
+    const request = this.http.post(`${env.url}/users/signin`, loginForm);
+    return request.pipe(map((response: any) => response.payload || {}), catchError((err) => of(err)));
+  }
+
   register(registerData: any) {
     const request = this.http.post(`${env.url}/users/signup`, registerData);
     return request.pipe(map((response: any) => response.payload || {}), catchError((err) => of(err)));
@@ -21,12 +26,7 @@ export class AuthService {
     window.sessionStorage.removeItem('user');
   }
 
-  login(loginForm: any) {
-    const request = this.http.post(`${env.url}/users/signin`, loginForm);
-    return request.pipe(map((response: any) => response.payload || {}), catchError((err) => of(err)));
-  }
-
-  setUserToLocalStorage(user: any){
+  setUserToLocalStorage(user: any) {
     window.sessionStorage.setItem('user', JSON.stringify(user.userDetail));
     window.sessionStorage.setItem('token', user.token);
   }
@@ -35,7 +35,6 @@ export class AuthService {
     const user = window.sessionStorage.getItem('user');
     if (user) {
       if (!user) { return; }
-
       return JSON.parse(user);
     }
   }

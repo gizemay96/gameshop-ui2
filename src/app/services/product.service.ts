@@ -24,11 +24,4 @@ export class ProductService {
       return res.payload || [];
     }), catchError(() => of([])));
   }
-
-  // getAllProducts(params: { items: any; }) {
-  //   delete params.items;
-  //   const query = this.commonService.getQuery(params);
-  //   const request = this.http.get<any[]>(`${env.url}/products?${query}`);
-  //   return request.pipe(map((res: any) => res.payload.products || []), catchError(() => of([])));
-  // }
 }

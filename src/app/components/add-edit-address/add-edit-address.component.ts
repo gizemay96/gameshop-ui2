@@ -46,6 +46,7 @@ export class AddEditAddressComponent implements OnInit {
         Validators.minLength(3),
       ]),
       id: new FormControl(addressData?._id || ''),
+      userId: new FormControl(this.data.user.id),
     });
   }
 
@@ -81,7 +82,7 @@ export class AddEditAddressComponent implements OnInit {
 
   async addAddress() {
     this.loading = true;
-    const response = await lastValueFrom(this.addressService.addUserAddress(this.data.user.id, this.addressForm.value));
+    const response = await lastValueFrom(this.addressService.addUserAddress(this.addressForm.value));
     if (response.error) {
       this.isError = true;
       this.errorMessage = response.error.responseMessage;
