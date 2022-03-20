@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent , canActivate:[AuthGuardGuard] },
 ];
 
 @NgModule({

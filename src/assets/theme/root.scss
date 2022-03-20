@@ -151,5 +151,16 @@ select:-webkit-autofill:focus {
   }
 }
 
+.errors{
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #24242454;
+  border-radius: 15px;
+  .error-message{
+    font-weight: 600;
+    color: red;
+  }
+}
+
 
 

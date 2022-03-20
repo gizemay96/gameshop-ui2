@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginModalComponent } from '@app/components/login-modal/login-modal.component';
 import { ProductDetailComponent } from '@app/components/product-detail/product-detail.component';
-import { RegisterModalComponent } from '@app/components/register-modal/register-modal.component';
 import { CartService } from '@app/services/cart.service';
 import { DataService } from '@app/services/data.service';
 import { ProductService } from '@app/services/product.service';
-import { UserService } from '@app/services/user.service';
 import { User } from '@app/types/user.type';
 import { getCart } from '@app/_store/actions/cart-actions';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
 import { Store } from '@ngrx/store';
 import { lastValueFrom } from 'rxjs';
 
@@ -32,16 +30,18 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    private userService: UserService,
     private productService: ProductService,
     private dataService: DataService,
     public dialog: MatDialog,
     private cartService: CartService,
     private store: Store
-  ) { }
+  ) { 
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res;
+    });
+  }
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
     this.categories = this.dataService.getProductCategories();
     this.getPage();
   }
@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
     };
     const response = await lastValueFrom(this.cartService.updateBasket(params));
     if (response) {
-      this.store.dispatch(getCart());
+      this.store.dispatch(getCart(this.user));
     }
   }
 

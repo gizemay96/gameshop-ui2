@@ -20,7 +20,6 @@ export class ProductDetailComponent implements OnInit {
     ) { 
       this.product = data;
       this.rating = this.product.rating;
-      console.log(this.rating);
     }
 
   ngOnInit(): void {

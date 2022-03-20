@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from '@app/services/auth.service';
-import { UserService } from '@app/services/user.service';
+import { autoLogout } from '@app/_store/actions/user-actions';
 import { getUserCart } from '@app/_store/selectors/cart-selector';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -19,19 +19,23 @@ export class NavbarComponent implements OnInit {
   user: any;
 
   constructor(
-    private userService: UserService,
     public dialog: MatDialog,
     public translate: TranslateService,
     private store: Store,
-    private authService: AuthService
   ) {
+
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res;
+    });
+
     this.store.select(getUserCart).subscribe(res => {
       this.userCartCount$ = res.products?.length || 0;
     });
-   }
+
+
+  }
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
   }
 
   openLogin() {
@@ -52,8 +56,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  logOut(){
-    this.authService.logout();
+  logOut() {
+    this.store.dispatch(autoLogout());
   }
 
 

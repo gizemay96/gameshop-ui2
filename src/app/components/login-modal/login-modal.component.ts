@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AuthService } from '@app/services/auth.service';
-import { CartService } from '@app/services/cart.service';
-import { DataService } from '@app/services/data.service';
-import { UserService } from '@app/services/user.service';
-import { lastValueFrom } from 'rxjs';
+import { loginUser } from '@app/_store/actions/user-actions';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -16,8 +14,8 @@ import { lastValueFrom } from 'rxjs';
 export class LoginModalComponent implements OnInit {
 
   isLoading = false;
-  serverErrors = '';
-  errorActive = false;
+  errorMessage = '';
+  isError = false;
 
   loginForm = new FormGroup({
     email: new FormControl(null, [
@@ -32,37 +30,27 @@ export class LoginModalComponent implements OnInit {
 
 
   constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private cartService: CartService,
-    private dataService: DataService,
-    public dialogRef: MatDialogRef<LoginModalComponent>
-  ) { }
+    public dialogRef: MatDialogRef<LoginModalComponent>,
+    private store: Store
+  ) {
+    this.store.select(getAuthResponse).subscribe(res => {
+      if(res.error){
+        this.isError = true;
+        this.errorMessage = res.error.responseMessage;
+      } else if(res && res.userDetail) {
+        this.closeModal();
+      }
+    });
+   }
 
   ngOnInit(): void {
   }
 
   async login() {
+
     if (this.loginForm.valid) {
       this.isLoading = true;
-      const response = await lastValueFrom(this.authService.login(this.loginForm.value));
-      if (response.error) {
-        this.serverErrors = response.error.responseMessage;
-        this.errorActive = true;
-        this.isLoading = false;
-      } else if (response) {
-        window.sessionStorage.setItem('user', JSON.stringify(response.userDetail));
-        this.authService.setToken(response.token);
-        this.userService.setUser(response.userDetail);
-
-        const userCart = await this.cartService.fetchUserBasket(response.userDetail.id).toPromise();
-        this.dataService.setData('userCart', userCart);
-
-        this.isLoading = false;
-        this.loginForm.reset();
-        this.userService.getDetails();
-        this.dialogRef.close();
-      }
+      this.store.dispatch(loginUser(this.loginForm.getRawValue()));
 
     } else {
       this.isLoading = false;
@@ -70,7 +58,7 @@ export class LoginModalComponent implements OnInit {
   }
 
 
-  close() {
+  closeModal() {
     this.dialogRef.close();
   }
 

@@ -17,7 +17,7 @@ export class AddressService {
     headers: { Authorization: `${this.token}` },
   };
 
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(private http: HttpClient) { }
 
   fetchUserAddress() {
     const userId = JSON.parse(sessionStorage.getItem('user') || '').id;
@@ -30,9 +30,9 @@ export class AddressService {
     return request.pipe(map((res: any) => res.payload || []), catchError(() => of([])));
   }
 
-  addUserAddress(address: Address) {
+  addUserAddress(userId: any ,address: Address) {
     const NewAddress = {
-      userId: this.userService.getUser().id,
+      userId,
       ...address,
     };
 

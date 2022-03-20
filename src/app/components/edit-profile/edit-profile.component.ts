@@ -39,7 +39,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
   async editData() {
@@ -47,7 +46,7 @@ export class EditProfileComponent implements OnInit {
     if (this.editForm.valid) {
 
       this.loading = true;
-      const res = await lastValueFrom(this.userService.editUser(this.editForm.value));
+      const res = await lastValueFrom(this.userService.editUser(this.data.id , this.editForm.value));
       if (res.error) {
         this.isError = true;
         this.errorMessage = res.error.responseMessage;
@@ -57,7 +56,6 @@ export class EditProfileComponent implements OnInit {
       else {
         res.id = res._id;
         window.sessionStorage.setItem('user', JSON.stringify(res));
-        this.userService.tryToLogin();
         this.loading = false;
         this.dialogRef.close({ isSave: true });
       }

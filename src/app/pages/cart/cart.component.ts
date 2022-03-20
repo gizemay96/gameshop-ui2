@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { CartService } from '@app/services/cart.service';
-import { UserService } from '@app/services/user.service';
 import { getCart } from '@app/_store/actions/cart-actions';
 import { getUserCart } from '@app/_store/selectors/cart-selector';
-import { select, Store } from '@ngrx/store';
-import { lastValueFrom, Observable, Subject, takeUntil } from 'rxjs';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
+import { Store } from '@ngrx/store';
+import { lastValueFrom, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -39,16 +39,19 @@ export class CartComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private cartService: CartService,
-    private userService: UserService
+    private cartService: CartService
   ) {
+
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res;
+    });
+
     this.store.select(getUserCart).subscribe(res => {
       this.userCart$ = res;
     });
   }
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
   }
 
   goToNextStep() {
@@ -70,7 +73,7 @@ export class CartComponent implements OnInit {
     };
     const response = await lastValueFrom(this.cartService.updateBasket(params));
     if (response) {
-      this.store.dispatch(getCart());
+      this.store.dispatch(getCart(this.user));
     }
   }
 

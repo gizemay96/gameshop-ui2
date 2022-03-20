@@ -2,19 +2,19 @@
      <ul class="nav justify-content-between align-items-center w-100">
           <div><img routerLink="/home" src="../../../assets/img/logo.png" alt=""></div>
           <div class="d-flex">
-               <li *ngIf="!user" class="nav-item">
+               <li *ngIf="!user.id" class="nav-item">
                     <a class="nav-link" (click)="openLogin()">Login <img class="icon"
                               src="../../../assets/icons/login.png" alt=""></a>
                </li>
-               <li *ngIf="!user" class="nav-item">
+               <li *ngIf="!user.id" class="nav-item">
                     <a class="nav-link" (click)="openRegister()">Register <img class="icon"
                               src="../../../assets/icons/login.png" alt=""></a>
                </li>
-               <li *ngIf="user" class="nav-item">
+               <li *ngIf="user.id" class="nav-item">
                     <a class="nav-link" routerLink="/profile">Profile <img class="icon"
                               src="../../../assets/icons/cart.png" alt=""></a>
                </li>
-               <li *ngIf="user" class="nav-item">
+               <li *ngIf="user.id" class="nav-item">
                     <a class="nav-link" routerLink="/cart">Cart <img class="icon"
                               src="../../../assets/icons/cart.png" alt=""> <span class="text-white cart-count">
                               {{userCartCount$}} </span> </a>
@@ -23,7 +23,7 @@
                <li class="nav-item">
                     <a class="nav-link">EN <img class="icon" src="../../../assets/icons/language.png" alt=""></a>
                </li>
-               <li *ngIf="user" class="nav-item">
+               <li *ngIf="user.id" class="nav-item">
                     <a class="nav-link" (click)="logOut()">LogOut <img class="icon"
                               src="../../../assets/icons/login.png" alt=""></a>
                </li>
