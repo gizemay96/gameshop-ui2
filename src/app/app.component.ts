@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginModalComponent } from './components/login-modal/login-modal.component';
-import { RegisterModalComponent } from './components/register-modal/register-modal.component';
-import { UserService } from './services/user.service';
-
 import { TranslateService } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { autoLogin } from './_store/actions/user-actions';
 
 @Component({
   selector: 'app-root',
@@ -12,37 +10,19 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  user: any
+  
   constructor(
-    private userService: UserService,
     public dialog: MatDialog,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private store: Store
   ) {
     translate.addLangs(['en', 'tr']);
     translate.setDefaultLang('en');
   }
 
   ngOnInit() {
-    this.userService.tryToLogin();
-    this.user = this.userService.getUser();
+    this.store.dispatch(autoLogin());
   }
 
-  openLogin() {
-    const data = { panelClass: 'modal-smc' };
-    const dialogRef = this.dialog.open(LoginModalComponent, data);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  openRegister() {
-    const data = { panelClass: 'modal-smc' };
-    const dialogRef = this.dialog.open(RegisterModalComponent, data);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 
 }

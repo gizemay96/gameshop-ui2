@@ -1,10 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddressService } from '@app/services/address.service';
-import { AuthService } from '@app/services/auth.service';
-import { CartService } from '@app/services/cart.service';
-import { UserService } from '@app/services/user.service';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -25,33 +22,31 @@ export class AddEditAddressComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<AddEditAddressComponent>,
-    private authService: AuthService,
-    private userService: UserService,
-    private cartService: CartService,
     private addressService: AddressService,
     private fb: FormBuilder
   ) {
-
+    const addressData = this.data.address;
     this.addressForm = this.fb.group({
-      title: new FormControl(this.data?.title || '', [
+      title: new FormControl(addressData?.title || '', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(10),
       ]),
-      building: new FormControl(this.data?.building || '', [
+      building: new FormControl(addressData?.building || '', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      street: new FormControl(this.data?.street || '', [Validators.required]),
-      city: new FormControl(this.data?.city || '', [
+      street: new FormControl(addressData?.street || '', [Validators.required]),
+      city: new FormControl(addressData?.city || '', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      country: new FormControl(this.data?.country || '', [
+      country: new FormControl(addressData?.country || '', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      id: new FormControl(this.data?._id || ''),
+      id: new FormControl(addressData?._id || ''),
+      userId: new FormControl(this.data.user.id),
     });
   }
 
@@ -81,7 +76,7 @@ export class AddEditAddressComponent implements OnInit {
       this.loading = false;
     } else {
       this.loading = false;
-      this.dialogRef.close({isSave: true});
+      this.close(true);
     }
   }
 
@@ -94,12 +89,12 @@ export class AddEditAddressComponent implements OnInit {
       this.loading = false;
     } else {
       this.loading = false;
-      this.dialogRef.close({isSave: true});
+      this.close(true);
     }
 
   }
 
-  close() {
-    this.dialogRef.close({isSave: false});
+  close(isSave = false) {
+    this.dialogRef.close({ isSave });
   }
 }

@@ -3,6 +3,11 @@
           <div class="logo d-flex justify-content-center">
                <img src="../../../assets/img/logo.png" alt="logo">
           </div>
+          <div class="errors" *ngIf="!isError">
+               <div class="error-message">
+                   {{errorMessage}}
+               </div>
+         </div>
           <div class="form mt-4" id="grayInput">
                <form [formGroup]="registerForm" (submit)="register()" autocomplete="off">
                     <!-- Full Name -->

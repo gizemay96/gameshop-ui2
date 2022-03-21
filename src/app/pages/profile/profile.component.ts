@@ -3,8 +3,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditAddressComponent } from '@app/components/add-edit-address/add-edit-address.component';
 import { EditProfileComponent } from '@app/components/edit-profile/edit-profile.component';
 import { AddressService } from '@app/services/address.service';
-import { UserService } from '@app/services/user.service';
+import { Address } from '@app/types/address.type';
 import { User } from '@app/types/user.type';
+import { getUserAddresses } from '@app/_store/actions/address-actions';
+import { autoLogin } from '@app/_store/actions/user-actions';
+import { getAddressResponse } from '@app/_store/selectors/address-selector';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom } from 'rxjs';
 
@@ -17,55 +22,51 @@ export class ProfileComponent implements OnInit {
   loading = false;
   activeTab = 0;
 
-  user: User | any;
-  userAddresses: any;
+  user: User;
+  userAddresses: Address[] = [];
 
   constructor(
-    private userService: UserService,
     private addressService: AddressService,
     public dialog: MatDialog,
-    public translate: TranslateService
-  ) { }
+    public translate: TranslateService,
+    private store: Store
+  ) {
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res.userDetail || res;
+    });
+
+    this.store.select(getAddressResponse).subscribe((res: Address[]) => {
+      this.userAddresses = res;
+    });
+  }
 
   ngOnInit(): void {
-    this.userInfo();
   }
 
-  
-  async userInfo() {
-    this.user = this.userService.getUser();
-    this.userAddresses = await lastValueFrom(this.addressService.fetchUserAddress());
-  }
 
-  addEditAddress(address?: any) {
-    const data = { panelClass: 'modal-smc', data: address };
-    console.log(data)
+  addEditAddress(address?: Address) {
+    const data = { panelClass: 'modal-smc', data: { address, user: this.user } };
     const dialogRef = this.dialog.open(AddEditAddressComponent, data);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.isSave) {
-        this.userInfo();
+        this.store.dispatch(getUserAddresses(this.user));
       }
     });
   }
 
-  async deleteAddress(address: any) {
+  async deleteAddress(address: Address) {
     const res = await lastValueFrom(this.addressService.deleteAddress(address._id));
     if (res) {
-      this.userInfo();
+      this.store.dispatch(getUserAddresses(this.user));
     }
   }
 
-
-  editProfile(){
+  editProfile() {
     const data = { panelClass: 'modal-smc', data: this.user };
-    console.log(data)
     const dialogRef = this.dialog.open(EditProfileComponent, data);
-
     dialogRef.afterClosed().subscribe(result => {
-      if (result.isSave) {
-        this.user = this.userService.getUser();
-      }
+      this.store.dispatch(autoLogin());
     });
   }
 

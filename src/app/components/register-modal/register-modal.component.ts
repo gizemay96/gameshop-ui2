@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AuthService } from '@app/services/auth.service';
-import { CartService } from '@app/services/cart.service';
-import { UserService } from '@app/services/user.service';
-import { lastValueFrom } from 'rxjs';
+import { registerUser } from '@app/_store/actions/user-actions';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
+import { Store } from '@ngrx/store';
 
 export const passwordMatchingValidatior: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password');
@@ -23,8 +22,8 @@ export const passwordMatchingValidatior: ValidatorFn = (control: AbstractControl
 export class RegisterModalComponent implements OnInit {
 
   isLoading = false;
-  serverErrors = '';
-  errorActive = false;
+  errorMessage = '';
+  isError = false;
 
   registerForm = new FormGroup({
     firstName: new FormControl('', [
@@ -49,10 +48,17 @@ export class RegisterModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<RegisterModalComponent>,
-    private authService: AuthService,
-    private userService: UserService,
-    private cartService: CartService,
-  ) { }
+    private store: Store
+  ) { 
+    this.store.select(getAuthResponse).subscribe(res => {
+      if(res.error){
+        this.isError = true;
+        this.errorMessage = res.error.responseMessage;
+      } else if(res && res.userDetail) {
+        this.closeModal();
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -61,30 +67,14 @@ export class RegisterModalComponent implements OnInit {
   async register() {
     if (this.registerForm.valid) {
       this.isLoading = true;
-      const response = await lastValueFrom(this.authService.register(this.registerForm.value));
+      this.store.dispatch(registerUser(this.registerForm.getRawValue()));
 
-      if (response.error) {
-        this.serverErrors = response.error.responseMessage;
-        this.errorActive = true;
-        this.isLoading = false;
-      } else if (response) {
-        response.userDetail.id = response.userDetail._id;
-        window.sessionStorage.setItem('user', JSON.stringify(response.userDetail));
-        await this.authService.setToken(response.token);
-        await this.userService.setUser(response.userDetail);
-        await this.cartService.updateBasket(response.userDetail._id);
-        this.registerForm.reset();
-
-        this.isLoading = false;
-        this.userService.getDetails();
-        this.dialogRef.close();
-      }
     } else {
       this.isLoading = false;
     }
   }
 
-  close() {
+  closeModal() {
     this.dialogRef.close();
   }
 

@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { autoLogout } from '@app/_store/actions/user-actions';
+import { getUserCart } from '@app/_store/selectors/cart-selector';
+import { getAuthResponse } from '@app/_store/selectors/user-selector';
+import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { RegisterModalComponent } from '../register-modal/register-modal.component';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +15,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  userCartCount$: Observable<any>;
+  user: any;
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+    public translate: TranslateService,
+    private store: Store,
+  ) {
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res.userDetail || res;
+    });
+
+    this.store.select(getUserCart).subscribe(res => {
+      this.userCartCount$ = res.totalQty || 0;
+    });
+
+  }
 
   ngOnInit(): void {
   }
+
+  openLogin() {
+    const data = { panelClass: 'modal-smc' };
+    this.dialog.open(LoginModalComponent, data);
+  }
+
+  openRegister() {
+    const data = { panelClass: 'modal-smc' };
+    this.dialog.open(RegisterModalComponent, data);
+  }
+
+  logOut() {
+    this.store.dispatch(autoLogout());
+  }
+
 
 }

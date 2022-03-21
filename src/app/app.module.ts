@@ -24,12 +24,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AddEditAddressComponent } from './components/add-edit-address/add-edit-address.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { NgxMaskModule , IConfig } from 'ngx-mask';
+
+
+import { NgxMaskModule } from 'ngx-mask';
+
+// State Managament
+import { EffectsModule } from '@ngrx/effects';
+import { cartEffects } from './_store/effects/cart.effects';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './_store/reducers';
+import { userEffects } from './_store/effects/user.effects';
+import { addressEffects } from './_store/effects/address.effects';
 
 @NgModule({
   declarations: [
@@ -58,6 +69,7 @@ import { NgxMaskModule , IConfig } from 'ngx-mask';
     NgxStarRatingModule,
     MatChipsModule,
     MatStepperModule,
+    MatRadioModule,
     NgxMaskModule.forRoot(),
 
     TranslateModule.forRoot({
@@ -66,7 +78,15 @@ import { NgxMaskModule , IConfig } from 'ngx-mask';
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    EffectsModule.forRoot([cartEffects , userEffects , addressEffects]),
+    
 
   ],
   providers: [],

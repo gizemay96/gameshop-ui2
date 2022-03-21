@@ -70,8 +70,8 @@
 
           <div class="mt-3 btn-case">
             <button [disabled]="userAddresses?.length === 3" class="btn btn-sm  btn-light" (click)="addEditAddress()">
-              <span *ngIf="userAddresses?.length < 3">Add Address</span>
-              <span *ngIf="userAddresses?.length === 3">Full</span>
+              <span *ngIf="userAddresses.length < 3">Add Address</span>
+              <span *ngIf="userAddresses.length === 3">Full</span>
             </button>
           </div>
         </div>

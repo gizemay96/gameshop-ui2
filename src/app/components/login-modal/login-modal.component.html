@@ -6,6 +6,11 @@
           <div class="d-flex justify-content-center mt-4">
                <h3 class="text-white">Welcome Back !</h3>
           </div>
+          <div class="errors" *ngIf="isError">
+               <div class="error-message">
+                   {{errorMessage}}
+               </div>
+         </div>
           <div class="form mt-4" id="grayInput">
                <form [formGroup]="loginForm" (submit)="login()">
                     <!-- E-mail -->

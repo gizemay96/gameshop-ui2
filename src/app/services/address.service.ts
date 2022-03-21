@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { UserService } from './user.service';
 import { Address } from '../types/address.type';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -12,41 +11,32 @@ import { of } from 'rxjs';
 export class AddressService {
   userAddresses: Address[] = [];
 
-  token = window.sessionStorage.getItem('token');
-  httpOptions = {
-    headers: { Authorization: `${this.token}` },
-  };
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient, private userService: UserService) { }
-
-  fetchUserAddress() {
-    const userId = JSON.parse(sessionStorage.getItem('user') || '').id;
-    const token = window.sessionStorage.getItem('token');
-    const httpOptions = {
+  getToken() {
+    let token = window.sessionStorage.getItem('token');
+    return {
       headers: { Authorization: `${token}` },
     };
+  }
 
-    const request = this.http.get(`${env.url}/users/userAddresses/${userId}`, httpOptions);
-    return request.pipe(map((res: any) => res.payload || []), catchError(() => of([])));
+  getUserAddress(userId: string) {
+    const request = this.http.get(`${env.url}/users/userAddresses/${userId}`, this.getToken());
+    return request.pipe(map((res: any) => res || []), catchError(() => of([])));
   }
 
   addUserAddress(address: Address) {
-    const NewAddress = {
-      userId: this.userService.getUser().id,
-      ...address,
-    };
-
-    const request = this.http.post(`${env.url}/users/userAddresses`, NewAddress, this.httpOptions);
+    const request = this.http.post(`${env.url}/users/userAddresses`, address, this.getToken());
     return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
   }
 
   editUserAddress(address: Address) {
-    const request = this.http.put(`${env.url}/users/userAddresses`, address, this.httpOptions);
+    const request = this.http.put(`${env.url}/users/userAddresses`, address, this.getToken());
     return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
   }
 
-  deleteAddress(addressId: number) {
-    const request = this.http.delete(`${env.url}/users/userAddresses/${addressId}`, this.httpOptions);
+  deleteAddress(addressId: string) {
+    const request = this.http.delete(`${env.url}/users/userAddresses/${addressId}`, this.getToken());
     return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
   }
 

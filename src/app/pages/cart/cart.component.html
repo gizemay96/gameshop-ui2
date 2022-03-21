@@ -1,5 +1,4 @@
 <div class="profile-page">
-
   <div class="page-body row w-100">
 
     <mat-stepper linear #stepper>
@@ -7,23 +6,25 @@
       <!-- Order Step -->
       <mat-step>
         <ng-template matStepLabel>Order</ng-template>
-        <div class="order-tab row w-100">
-          <div class="order-side col-7">
+        <div class="order-tab row w-100 ">
+          <div class="order-side col-lg-7 col-md-12">
 
-            <div class="product row">
-              <div class="img col-2 p-0">
-                <img class="w-100" src="../../../assets/img/fortnite-poster 2.png" alt="">
+            <!-- Cart Products -->
+            <div class="product row" *ngFor="let item of userCart$.products">
+              <div class="img col-xl-3 col-lg-4 p-0">
+                <img class="" [src]="item.product.image" alt="">
               </div>
-              <div class="info-case  col-10">
+              <div class="info-case col-xl-9 col-lg-8">
                 <div class="order-info">
-                  <div class="product-name">Fortnite</div>
-                  <div class="product-price">$ 120.00</div>
+                  <div class="product-name">$ {{item.product.title}}</div>
+                  <div class="product-price">$ {{item.product.price}}</div>
                   <div class="add-remove row">
-                    <div class="decrement col-4 row-reset">
-                      <img src="../../../assets/icons/orange-trash.png" alt="">
+                    <div class="decrement col-4 row-reset" (click)="deleteProduct(item)">
+                      <img *ngIf="item.totalQty === 1" src="../../../assets/icons/orange-trash.png" alt="">
+                      <span *ngIf="item.totalQty > 1"> - </span>
                     </div>
-                    <div class="count col-4 row-reset"> 1 </div>
-                    <div class="increment col-4 row-reset">
+                    <div class="count col-4 row-reset"> {{item.totalQty}} </div>
+                    <div class="increment col-4 row-reset" (click)="addToCart(item)">
                       <img src="../../../assets/icons/plus.png" alt="">
                     </div>
                   </div>
@@ -32,39 +33,40 @@
             </div>
 
           </div>
-          <div class="payment-side col-5">
-
+          <div class="payment-side col-lg-5 col-md-12">
+            <!-- User Addresses -->
             <div class="addresses">
-              <div class="inputs">
-                <div class="input-name">asd</div>
-                <div class="input">asd
+              <div class="inputs" *ngFor="let address of userAddresses$">
+                <div class="input-name">{{address.title}}</div>
+                <div class="input">
+                  {{ address.building | titlecase }} , {{ address.street | titlecase}} ,
+                  {{ address.city | titlecase}} / {{ address.country | titlecase}}
                 </div>
-                <div class="icon pt-1"><img src="../../../assets/icons/edit.png" alt="">
-                </div>
-              </div>
-              <div class="inputs">
-                <div class="input-name">asd</div>
-                <div class="input">asd
-                </div>
-                <div class="icon pt-1"><img src="../../../assets/icons/edit.png" alt="">
+                <div class="radio-btn">
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                    [(ngModel)]="selectedAddress">
+                    <mat-radio-button class="example-radio-button" [value]="address">
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </div>
               </div>
             </div>
 
+            <!-- Total Info -->
             <div class="total-info">
               <div class="total-card">
                 <div class="texts">
                   <div class="total-item">
-                    <div class="total-price">$ 360.00 </div>
-                    <div class="total-count">3 Items</div>
+                    <div class="total-price">${{userCart$.totalPrice | number:'1.2-2'}} </div>
+                    <div class="total-count">{{userCart$.totalQty}} Items</div>
                   </div>
                   <div class="total-item">
-                    <div class="price">$ 12.00 </div>
+                    <div class="price">$ {{12 | number:'1.2-2'}} </div>
                     <div class="delivery">Delivery</div>
                   </div>
                 </div>
                 <div class="buttons d-flex">
-                  <span class="total-price col-6">$ 350.00</span>
+                  <span class="total-price col-6">$ {{userCart$.totalPrice + 12 | number:'1.2-2'}}</span>
                   <span class="goto-payment col-6" (click)="goToNextStep()">Go to payment
                     <img src="../../../assets/icons/fluent_payment-28-filled.svg" alt="">
                     <img src="../../../assets/icons/arrow-rigth.png" alt="">
