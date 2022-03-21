@@ -31,8 +31,8 @@ export class ProfileComponent implements OnInit {
     public translate: TranslateService,
     private store: Store
   ) {
-    this.store.select(getAuthResponse).subscribe((res: User) => {
-      this.user = res;
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res.userDetail || res;
     });
 
     this.store.select(getAddressResponse).subscribe((res: Address[]) => {

@@ -24,12 +24,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AddEditAddressComponent } from './components/add-edit-address/add-edit-address.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { NgxMaskModule , IConfig } from 'ngx-mask';
+
+
+import { NgxMaskModule } from 'ngx-mask';
+
+// State Managament
 import { EffectsModule } from '@ngrx/effects';
 import { cartEffects } from './_store/effects/cart.effects';
 import { StoreModule } from '@ngrx/store';
@@ -64,6 +69,7 @@ import { addressEffects } from './_store/effects/address.effects';
     NgxStarRatingModule,
     MatChipsModule,
     MatStepperModule,
+    MatRadioModule,
     NgxMaskModule.forRoot(),
 
     TranslateModule.forRoot({
@@ -79,7 +85,8 @@ import { addressEffects } from './_store/effects/address.effects';
         strictActionImmutability: true
       }
     }),
-    EffectsModule.forRoot([cartEffects , userEffects , addressEffects])
+    EffectsModule.forRoot([cartEffects , userEffects , addressEffects]),
+    
 
   ],
   providers: [],

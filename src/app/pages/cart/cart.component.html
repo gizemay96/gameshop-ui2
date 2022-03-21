@@ -6,15 +6,15 @@
       <!-- Order Step -->
       <mat-step>
         <ng-template matStepLabel>Order</ng-template>
-        <div class="order-tab row w-100">
-          <div class="order-side col-7">
+        <div class="order-tab row w-100 ">
+          <div class="order-side col-lg-7 col-md-12">
 
             <!-- Cart Products -->
             <div class="product row" *ngFor="let item of userCart$.products">
-              <div class="img col-2 p-0">
-                <img class="w-100" [src]="item.product.image" alt="">
+              <div class="img col-xl-3 col-lg-4 p-0">
+                <img class="" [src]="item.product.image" alt="">
               </div>
-              <div class="info-case  col-10">
+              <div class="info-case col-xl-9 col-lg-8">
                 <div class="order-info">
                   <div class="product-name">$ {{item.product.title}}</div>
                   <div class="product-price">$ {{item.product.price}}</div>
@@ -33,7 +33,7 @@
             </div>
 
           </div>
-          <div class="payment-side col-5">
+          <div class="payment-side col-lg-5 col-md-12">
             <!-- User Addresses -->
             <div class="addresses">
               <div class="inputs" *ngFor="let address of userAddresses$">
@@ -42,7 +42,12 @@
                   {{ address.building | titlecase }} , {{ address.street | titlecase}} ,
                   {{ address.city | titlecase}} / {{ address.country | titlecase}}
                 </div>
-                <div class="icon pt-1"><img src="../../../assets/icons/edit.png" alt="">
+                <div class="radio-btn">
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                    [(ngModel)]="selectedAddress">
+                    <mat-radio-button class="example-radio-button" [value]="address">
+                    </mat-radio-button>
+                  </mat-radio-group>
                 </div>
               </div>
             </div>

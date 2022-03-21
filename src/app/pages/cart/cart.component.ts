@@ -42,6 +42,8 @@ export class CartComponent implements OnInit {
     ]),
   });
 
+  selectedAddress: any;
+
   constructor(
     private store: Store,
     private cartService: CartService

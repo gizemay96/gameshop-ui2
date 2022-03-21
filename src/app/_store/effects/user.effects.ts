@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "@app/services/auth.service";
+import { User } from "@app/types/user.type";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, mergeMap, of } from "rxjs";
@@ -28,8 +29,7 @@ export class userEffects {
                     }).pipe(map((data) => {
                          if (!data.error) {
                               this.authService.setUserToLocalStorage(data)
-                              this.store.dispatch(getCart(data.userDetail));
-                              this.store.dispatch(getUserAddresses(data.userDetail));
+                              this.getUserDetail(data.userDetail);
                               return authResponse(data);
                          } else {
                               return authResponse(data);
@@ -47,8 +47,7 @@ export class userEffects {
                          if (!data.error) {
                               this.authService.setUserToLocalStorage(data)
                               data.userDetail.id = data.userDetail._id;
-                              this.store.dispatch(getCart(data.userDetail));
-                              this.store.dispatch(getUserAddresses(data.userDetail));
+                              this.getUserDetail(data.userDetail);
                               return authResponse(data);
                          } else {
                               return authResponse(data);
@@ -76,14 +75,20 @@ export class userEffects {
                mergeMap((action) => {
                     const user = this.authService.getUserFromLocalStorage();
                     if (user) {
-                         this.store.dispatch(getCart(user));
-                         this.store.dispatch(getUserAddresses(user));
+                         this.getUserDetail(user);
                     }
                     return of(authResponse(user));
                })
           );
      });
 
+
+     getUserDetail(user: User) {
+          setTimeout(() => {
+               this.store.dispatch(getCart(user));
+               this.store.dispatch(getUserAddresses(user));
+          }, 200);
+     }
 
 
 
