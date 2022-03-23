@@ -22,7 +22,8 @@
     },
     "alert-messages":{
         "delete-product":"Are you sure you want to delete product ?",
-        "empty-card":"Are you sure you want to empty the cart ?"
+        "empty-card":"Are you sure you want to empty the cart ?",
+        "general-delete":"Are you sure you want to delete {{item}} ?"
     },
     "navbar": {
         "login": "Login",

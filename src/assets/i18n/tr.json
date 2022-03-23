@@ -22,7 +22,8 @@
     },
     "alert-messages": {
         "delete-product": "Ürünü silmek istediğinizden emin misiniz?",
-        "empty-card": "Sepeti boşaltmak istediğinizden emin misiniz?"
+        "empty-card": "Sepeti boşaltmak istediğinizden emin misiniz?",
+        "general-delete": "Silmek istediğinizden emin misiniz?"
     },
     "navbar": {
         "login": "Giriş Yap",

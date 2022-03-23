@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditAddressComponent } from '@app/components/add-edit-address/add-edit-address.component';
+import { ConfirmationModalComponent } from '@app/components/confirmation-modal/confirmation-modal.component';
 import { EditProfileComponent } from '@app/components/edit-profile/edit-profile.component';
 import { AddressService } from '@app/services/address.service';
 import { Address } from '@app/types/address.type';
@@ -66,7 +67,21 @@ export class ProfileComponent implements OnInit {
     const data = { panelClass: 'modal-smc', data: this.user };
     const dialogRef = this.dialog.open(EditProfileComponent, data);
     dialogRef.afterClosed().subscribe(result => {
-      this.store.dispatch(autoLogin());
+      if (result && result.isSave) {
+        this.store.dispatch(autoLogin());
+      }
+    });
+  }
+
+
+  confirmationModal(address: Address) {
+    const message = this.translate.instant('alert-messages.general-delete', { item: address.title });
+    const data = { panelClass: 'modal-smc', data: message };
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, data);
+    dialogRef.afterClosed().subscribe(answer => {
+      if (answer.isYes) {
+        this.deleteAddress(address);
+      }
     });
   }
 
