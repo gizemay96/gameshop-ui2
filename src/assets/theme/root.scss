@@ -91,17 +91,6 @@
   }
 }
 
-.btn-orange {
-  color: white;
-  border-radius: 15px;
-  height: 45px;
-  font-size: 20px;
-
-  &:hover {
-    color: white;
-  }
-}
-
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -163,6 +152,15 @@ select:-webkit-autofill:focus {
 }
 
 .click-disabled{
+  pointer-events: none;
+}
+
+.disabled{
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.nonpointer{
   pointer-events: none;
 }
 

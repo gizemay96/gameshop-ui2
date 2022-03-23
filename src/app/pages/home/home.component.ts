@@ -91,6 +91,7 @@ export class HomeComponent implements OnInit {
     const response = await lastValueFrom(this.cartService.updateBasket(params));
     if (response) {
       this.store.dispatch(getCart(this.user));
+      this.commonService.openSnackBar();
     }
   }
 

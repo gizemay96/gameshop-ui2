@@ -7,30 +7,43 @@
       <mat-step>
         <ng-template matStepLabel>Order</ng-template>
         <div class="order-tab row w-100 ">
-          <div class="order-side col-lg-7 col-md-12">
-            <!-- Cart Products -->
-            <div class="product row" *ngFor="let item of userCart$.products">
-              <div class="img col-xl-3 col-lg-4 p-0">
-                <img class="" [src]="item.product.image" alt="">
-              </div>
-              <div class="info-case col-xl-9 col-lg-8">
-                <div class="order-info">
-                  <div class="product-name">$ {{item.product.title}}</div>
-                  <div class="product-price">$ {{item.product.price}}</div>
-                  <div class="add-remove row">
-                    <div class="decrement col-4 row-reset"
-                      (click)="item.totalQty === 1 ? confirmationModal(item) : deleteProduct(item)">
-                      <img *ngIf="item.totalQty === 1" src="../../../assets/icons/orange-trash.png" alt="">
-                      <span *ngIf="item.totalQty > 1"> - </span>
-                    </div>
-                    <div class="count col-4 row-reset"> {{item.totalQty}} </div>
-                    <div class="increment col-4 row-reset" (click)="addToCart(item)">
-                      <img src="../../../assets/icons/plus.png" alt="">
+
+          <div class="left-side  col-lg-7 col-md-12">
+            <div class="order-side">
+              <!-- Cart Products -->
+              <div class="product row" *ngFor="let item of userCart$.products">
+                <div class="img col-xl-3 col-md-4 p-0">
+                  <img class="" [src]="item.product.image" alt="">
+                </div>
+                <div class="info-case col-xl-9 col-md-8">
+                  <div class="order-info">
+                    <div class="product-name">$ {{item.product.title}}</div>
+                    <div class="product-price">$ {{item.product.price}}</div>
+                    <div class="add-remove row">
+                      <!-- Increment Button -->
+                      <div class="decrement col-4 row-reset"
+                        (click)="item.totalQty === 1 ? confirmationModal(item) : deleteProduct(item)"
+                        [class.nonpointer]="progressProductId === item._id">
+                        <img *ngIf="item.totalQty === 1" src="../../../assets/icons/orange-trash.png" alt="">
+                        <span *ngIf="item.totalQty > 1"> - </span>
+                      </div>
+                      <!-- Item Total Quantity -->
+                      <div class="count col-4 row-reset"> 
+                        <span *ngIf="progressProductId !== item._id">{{item.totalQty}} </span>
+                        <span *ngIf="progressProductId === item._id"><mat-spinner [diameter]="20"></mat-spinner></span>
+                      </div>
+                      <!-- Decrement Button -->
+                      <div class="increment col-4 row-reset" (click)="addToCart(item)"
+                        [class.nonpointer]="progressProductId === item._id">
+                        <img src="../../../assets/icons/plus.png" alt="">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <button class="btn bg-orange w-100 mt-4 text-white" [disabled]="!userCart$?.products?.length"
+              (click)="confirmationModal()">Clear Cart</button>
           </div>
 
           <div class="payment-side col-lg-5 col-md-12">
@@ -67,7 +80,7 @@
                 </div>
                 <div class="buttons d-flex">
                   <span class="total-price col-6">$ {{userCart$.totalPrice + deliveryPrice | number:'1.2-2'}}</span>
-                  <span class="goto-payment col-6" [class.click-disabled]="!userCart$.products.length"
+                  <span class="goto-payment col-6" [class.click-disabled]="!userCart$?.products?.length"
                     (click)="goToNextStep()">Go to payment
                     <img src="../../../assets/icons/fluent_payment-28-filled.svg" alt="">
                     <img src="../../../assets/icons/arrow-rigth.png" alt="">
@@ -75,8 +88,6 @@
                 </div>
               </div>
             </div>
-            <button class="btn bg-orange w-100 mt-4 text-white" [disabled]="!userCart$.products.length"
-              (click)="confirmationModal()">Clear Cart</button>
           </div>
         </div>
       </mat-step>

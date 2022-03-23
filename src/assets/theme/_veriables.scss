@@ -2,7 +2,31 @@ $color-orange: #EF7F1A;
 $color-black: #010101;
 $color-green: rgb(0, 201, 0) ;
 $bg-gray: rgba(1, 1, 1, 0.76);
+$light-gray: rgb(167, 167, 167);
 
 .bg-orange{
      background-color: $color-orange;
 }
+
+.btn-gray{
+     color: white;
+     background-color: $light-gray;
+     border-radius: 15px;
+     height: 45px;
+     font-size: 20px;
+     &:hover {
+          color: white;
+        }
+}
+
+.btn-orange {
+     color: white;
+     border-radius: 15px;
+     height: 45px;
+     font-size: 20px;
+     background-color: $color-orange;
+   
+     &:hover {
+       color: white;
+     }
+   }

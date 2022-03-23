@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { ConfirmationModalComponent } from '@app/components/confirmation-modal/confirmation-modal.component';
 import { CartService } from '@app/services/cart.service';
+import { CommonService } from '@app/services/common.service';
 import { Address } from '@app/types/address.type';
 import { Cart, CartProduct } from '@app/types/cart.type';
 import { User } from '@app/types/user.type';
@@ -13,7 +15,7 @@ import { getUserCart } from '@app/_store/selectors/cart-selector';
 import { getAuthResponse } from '@app/_store/selectors/user-selector';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { lastValueFrom, Observable } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -27,7 +29,7 @@ export class CartComponent implements OnInit {
   userCart$: Cart;
   userAddresses$: Address[];
   deliveryPrice = 0;
-  loadingProgressId = 0;
+  progressProductId = '0';
 
   paymentForm = new FormGroup({
     cardNumber: new FormControl('', [
@@ -53,7 +55,8 @@ export class CartComponent implements OnInit {
     private store: Store,
     private cartService: CartService,
     public dialog: MatDialog,
-    private translate: TranslateService
+    private translate: TranslateService,
+    public commonService: CommonService
   ) {
 
     this.store.select(getAuthResponse).subscribe((res: User) => {
@@ -62,7 +65,8 @@ export class CartComponent implements OnInit {
 
     this.store.select(getUserCart).subscribe((res: Cart) => {
       this.userCart$ = res;
-      this.deliveryPrice = !this.userCart$.products.length ? 0 : 12;
+      this.deliveryPrice = !this.userCart$?.products?.length ? 0 : 12;
+      this.progressProductId = '0';
     });
 
     this.store.select(getAddressResponse).subscribe((res: Address[]) => {
@@ -86,6 +90,7 @@ export class CartComponent implements OnInit {
   }
 
   async addToCart(product: CartProduct) {
+    this.progressProductId = product._id;
     const params = {
       userId: this.user.id,
       productId: product.product._id,
@@ -94,10 +99,12 @@ export class CartComponent implements OnInit {
     const response = await lastValueFrom(this.cartService.updateBasket(params));
     if (response) {
       this.store.dispatch(getCart(this.user));
+      this.commonService.openSnackBar();
     }
   }
 
   async deleteProduct(product: CartProduct) {
+    this.progressProductId = product._id;
     const params = {
       userId: this.user.id,
       productId: product.product._id,
@@ -107,6 +114,7 @@ export class CartComponent implements OnInit {
     if (responseData.error) {
     } else {
       this.store.dispatch(getCart(this.user));
+      this.commonService.openSnackBar();
     }
   }
 
@@ -118,6 +126,7 @@ export class CartComponent implements OnInit {
     if (response.error) {
     } else {
       this.store.dispatch(getCart(this.user));
+      this.commonService.openSnackBar();
     }
   }
 

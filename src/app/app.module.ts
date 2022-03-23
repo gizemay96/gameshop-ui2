@@ -17,6 +17,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Rating
 import { NgxStarRatingModule } from 'ngx-star-rating';
+
 // Material Modules
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -25,6 +26,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
@@ -72,6 +75,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatChipsModule,
     MatStepperModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
     NgxMaskModule.forRoot(),
 
     TranslateModule.forRoot({
