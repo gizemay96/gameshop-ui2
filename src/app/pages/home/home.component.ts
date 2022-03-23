@@ -19,7 +19,6 @@ import { lastValueFrom } from 'rxjs';
 export class HomeComponent implements OnInit {
 
   user: User;
-
   categories: any;
   products: Product[];
 
@@ -56,7 +55,7 @@ export class HomeComponent implements OnInit {
     this.totalCount = response.totalCount;
     setTimeout(() => {
       this.loading = false;
-    }, 500);
+    }, 200);
   }
 
 

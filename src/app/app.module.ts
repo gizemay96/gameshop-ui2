@@ -41,6 +41,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './_store/reducers';
 import { userEffects } from './_store/effects/user.effects';
 import { addressEffects } from './_store/effects/address.effects';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { addressEffects } from './_store/effects/address.effects';
     NavbarComponent,
     ProductDetailComponent,
     AddEditAddressComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,

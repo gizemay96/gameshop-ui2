@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
+import { ConfirmationModalComponent } from '@app/components/confirmation-modal/confirmation-modal.component';
 import { CartService } from '@app/services/cart.service';
 import { Address } from '@app/types/address.type';
 import { Cart, CartProduct } from '@app/types/cart.type';
@@ -10,6 +12,7 @@ import { getAddressResponse } from '@app/_store/selectors/address-selector';
 import { getUserCart } from '@app/_store/selectors/cart-selector';
 import { getAuthResponse } from '@app/_store/selectors/user-selector';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom, Observable } from 'rxjs';
 
 @Component({
@@ -23,6 +26,8 @@ export class CartComponent implements OnInit {
   user: User;
   userCart$: Cart;
   userAddresses$: Address[];
+  deliveryPrice = 0;
+  loadingProgressId = 0;
 
   paymentForm = new FormGroup({
     cardNumber: new FormControl('', [
@@ -46,7 +51,9 @@ export class CartComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private cartService: CartService
+    private cartService: CartService,
+    public dialog: MatDialog,
+    private translate: TranslateService
   ) {
 
     this.store.select(getAuthResponse).subscribe((res: User) => {
@@ -55,6 +62,7 @@ export class CartComponent implements OnInit {
 
     this.store.select(getUserCart).subscribe((res: Cart) => {
       this.userCart$ = res;
+      this.deliveryPrice = !this.userCart$.products.length ? 0 : 12;
     });
 
     this.store.select(getAddressResponse).subscribe((res: Address[]) => {
@@ -100,6 +108,32 @@ export class CartComponent implements OnInit {
     } else {
       this.store.dispatch(getCart(this.user));
     }
+  }
+
+  async resetCart() {
+    const params = {
+      userId: this.user.id,
+    };
+    const response = await this.cartService.resetCart(params).toPromise();
+    if (response.error) {
+    } else {
+      this.store.dispatch(getCart(this.user));
+    }
+  }
+
+  confirmationModal(product?: CartProduct) {
+    const message = product ? this.translate.instant('alert-messages.delete-product') : this.translate.instant('alert-messages.empty-card');
+    const data = { panelClass: 'modal-smc', data: message };
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, data);
+    dialogRef.afterClosed().subscribe(answer => {
+      if (answer.isYes) {
+        if (product) {
+          this.deleteProduct(product);
+        } else {
+          this.resetCart();
+        }
+      }
+    });
   }
 
 }

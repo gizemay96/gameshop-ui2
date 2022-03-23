@@ -162,5 +162,9 @@ select:-webkit-autofill:focus {
   }
 }
 
+.click-disabled{
+  pointer-events: none;
+}
+
 
 
