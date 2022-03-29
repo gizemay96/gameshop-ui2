@@ -83,6 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   async addToCart(product: Product) {
+    console.log(this.user)
     const params = {
       userId: this.user.id,
       productId: product._id,
