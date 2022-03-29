@@ -59,8 +59,8 @@ export class CartComponent implements OnInit {
     public commonService: CommonService
   ) {
 
-    this.store.select(getAuthResponse).subscribe((res: User) => {
-      this.user = res;
+    this.store.select(getAuthResponse).subscribe(res => {
+      this.user = res.userDetail || res;
     });
 
     this.store.select(getUserCart).subscribe((res: Cart) => {
