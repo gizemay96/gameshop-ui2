@@ -28,9 +28,11 @@
                         <span *ngIf="item.totalQty > 1"> - </span>
                       </div>
                       <!-- Item Total Quantity -->
-                      <div class="count col-4 row-reset"> 
+                      <div class="count col-4 row-reset">
                         <span *ngIf="progressProductId !== item._id">{{item.totalQty}} </span>
-                        <span *ngIf="progressProductId === item._id"><mat-spinner [diameter]="20"></mat-spinner></span>
+                        <span *ngIf="progressProductId === item._id">
+                          <mat-spinner [diameter]="20"></mat-spinner>
+                        </span>
                       </div>
                       <!-- Decrement Button -->
                       <div class="increment col-4 row-reset" (click)="addToCart(item)"
@@ -95,7 +97,13 @@
       <!-- Payment Step -->
       <mat-step>
         <ng-template matStepLabel>Payment</ng-template>
+        <!-- Back Button -->
+        <button class="btn btn-sm btn-orange" mat-button matStepperPrevious>
+          <img class="back-icon" src="../../../assets/icons/back-arrow.svg" alt="">
+          Turn Back
+        </button>
         <div class="payment-page row">
+          <!-- Card Side -->
           <div class="card-side col-5">
             <div class="credit-card ">
               <img src="../../../assets/img/Group 189.png" alt="">
@@ -113,6 +121,7 @@
               </div>
             </div>
           </div>
+          <!-- Payment Form -->
           <div class="payment-form col-6">
             <form [formGroup]="paymentForm" (submit)="payment()" id="fillOrange">
               <!-- E-mail -->
@@ -145,7 +154,7 @@
                 </mat-form-field>
               </div>
 
-              <button type="submit" class="btn bg-orange w-100 btn-orange">Pay</button>
+              <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">Pay</button>
             </form>
           </div>
         </div>
@@ -154,10 +163,18 @@
       <!-- Success Message -->
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+        <div class="order-success-step d-flex justify-content-center">
+          <div class="message-actions">
+            <div>
+              <h2>
+                {{'payment.order-taken' | translate: ({'bougthOrderCount': userCart$.totalQty})}}
+              </h2>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </div>
         </div>
       </mat-step>
 

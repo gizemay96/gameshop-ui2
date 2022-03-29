@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     private store: Store
   ) {
     this.store.select(getAuthResponse).subscribe(res => {
-      this.user = res;
+      this.user = res.userDetail || res;
     });
   }
 
