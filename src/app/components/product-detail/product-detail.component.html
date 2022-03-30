@@ -8,12 +8,7 @@
                </ngx-star-rating>
           </div>
           <div class="description-body">
-               The Island you once knew has been turned upside down...literally. Step foot onto the new Island and
-               explore every corner of an undiscovered world in Fortnite Chapter 3 Season 1: Flipped.The Island you once
-               knew has been turned upside down...literally. Step foot onto the new Island and explore every corner of
-               an undiscovered world in Fortnite Chapter 3 Season 1: Flipped.The Island you once knew
-               has been turned upside down...literally. Step foot onto the new Island and explore every corner of an
-               undiscovered world in Fortnite Chapter 3 Season 1: Flipped.
+               {{product.description}}
           </div>
           <div class="genres d-flex align-items-center">
                <div class="title">Genres</div>
@@ -38,7 +33,7 @@
 
           <div class="product-footer">
                <div class="price-add">
-                    <div class="price">$ {{product.price}}</div>
+                    <div class="price">$ {{product.price | number:'1.2-2'}}</div>
                     <div class="add-button">Add to Cart <span><img class="icon" src="../../../assets/icons/cart.png"
                                    alt=""></span></div>
                </div>

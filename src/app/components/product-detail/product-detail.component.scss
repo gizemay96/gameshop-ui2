@@ -8,16 +8,15 @@
   }
 
   .description-body {
-    margin-top: -17px;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 300;
     font-size: 14px;
     line-height: 198.19%;
-
     letter-spacing: 0.025em;
-
     color: #FFFFFF;
+    height: 220px;
+    overflow: auto;
   }
 
   .genres,
@@ -36,7 +35,6 @@
 
     .img-case {
       position: absolute;
-      height: 450px;
 
       img {
         height: 100%;
