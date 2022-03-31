@@ -20,7 +20,7 @@ export class LoginModalComponent implements OnInit {
   loginForm = new FormGroup({
     email: new FormControl(null, [
       Validators.required,
-      Validators.minLength(3),
+      Validators.email,
     ]),
     password: new FormControl(null, [
       Validators.required,

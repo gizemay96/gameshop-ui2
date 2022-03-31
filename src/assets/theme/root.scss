@@ -140,29 +140,27 @@ select:-webkit-autofill:focus {
   }
 }
 
-.errors{
+.errors {
   margin-top: 10px;
   padding: 8px 15px;
   background: #24242454;
   border-radius: 15px;
-  .error-message{
+
+  .error-message {
     font-weight: 600;
     color: red;
   }
 }
 
-.click-disabled{
+.click-disabled {
   pointer-events: none;
 }
 
-.disabled{
+.disabled {
   opacity: 0.6;
   pointer-events: none;
 }
 
-.nonpointer{
+.nonpointer {
   pointer-events: none;
 }
-
-
-

@@ -6,9 +6,9 @@
       <!-- Order Step -->
       <mat-step>
         <ng-template matStepLabel>Order</ng-template>
-        <div class="order-tab row w-100 ">
+        <div class="order-tab row w-100">
 
-          <div class="left-side  col-lg-7 col-md-12">
+          <div class="left-side  col-xl-7 col-lg-6 col-md-12">
             <div class="order-side">
               <!-- Cart Products -->
               <div class="product row" *ngFor="let item of userCart$.products">
@@ -48,7 +48,7 @@
               (click)="confirmationModal()">Clear Cart</button>
           </div>
 
-          <div class="payment-side col-lg-5 col-md-12">
+          <div class="payment-side col-xl-5 col-lg-6 col-md-12 p-0">
             <!-- User Addresses -->
             <div class="addresses">
               <div class="inputs" *ngFor="let address of userAddresses$">
@@ -60,11 +60,15 @@
                 <div class="radio-btn">
                   <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                     [(ngModel)]="selectedAddress">
-                    <mat-radio-button class="example-radio-button" [value]="address">
+                    <mat-radio-button class="example-radio-button" [value]="address.title">
                     </mat-radio-button>
                   </mat-radio-group>
                 </div>
               </div>
+            </div>
+
+            <div *ngIf="isError" class="errors">
+              <span class="text-red"> {{errorMessage}} </span>
             </div>
 
             <!-- Total Info -->
@@ -81,9 +85,10 @@
                   </div>
                 </div>
                 <div class="buttons d-flex">
-                  <span class="total-price col-6">$ {{userCart$.totalPrice + deliveryPrice | number:'1.2-2'}}</span>
+                  <span class="total-price col-6 flex-xy-center">$ {{userCart$.totalPrice + deliveryPrice |
+                    number:'1.2-2'}}</span>
                   <span class="goto-payment col-6" [class.click-disabled]="!userCart$?.products?.length"
-                    (click)="goToNextStep()">Go to payment
+                    (click)="goToNextStep('payment')">Go to payment
                     <img src="../../../assets/icons/fluent_payment-28-filled.svg" alt="">
                     <img src="../../../assets/icons/arrow-rigth.png" alt="">
                   </span>
@@ -104,7 +109,7 @@
         </button>
         <div class="payment-page row">
           <!-- Card Side -->
-          <div class="card-side col-5">
+          <div class="card-side col-xl-5">
             <div class="credit-card ">
               <img src="../../../assets/img/Group 189.png" alt="">
               <div class="credit-card-info">
@@ -122,7 +127,7 @@
             </div>
           </div>
           <!-- Payment Form -->
-          <div class="payment-form col-6">
+          <div class="payment-form col-xl-6">
             <form [formGroup]="paymentForm" (submit)="payment()" id="fillOrange">
               <!-- E-mail -->
               <mat-form-field appearance="fill" class="w-100">

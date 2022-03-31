@@ -16,6 +16,7 @@
     .product {
       margin: 0;
       margin-top: 20px;
+
       .img {
         img {
           border-radius: 10px;
@@ -93,45 +94,49 @@
     }
   }
 
-
+  .payment-side {
+    padding-left: 15px !important;
+  }
 
 }
 
 
-.inputs {
-  display: flex;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.43);
-  border: 1px solid gray;
-  border-radius: 10px;
-  width: 100%;
-  ;
-  margin-top: 20px;
-  height: 40px;
-
-  .input-name {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 8.5px;
-    background: rgba(239, 127, 26, 0.39);
-    min-width: 100px;
-    white-space: nowrap;
-    font-size: 14px;
-  }
-
-  .input {
-    padding-left: 10px;
-    max-width: 330px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+.addresses{
+  .inputs {
+    color: white !important;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.43);
+    border: 1px solid gray;
+    border-radius: 10px;
     width: 100%;
-    white-space: nowrap;
-    font-size: 13px;
-  }
-
-  .icon {
-    cursor: pointer;
-    margin-right: 5px;
+    margin-top: 20px;
+    height: 40px;
+  
+    .input-name {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      padding: 8.5px;
+      background: rgba(239, 127, 26, 0.39);
+      min-width: 100px;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+  
+    .input {
+      padding-left: 10px;
+      max-width: 330px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+  
+    .icon {
+      cursor: pointer;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -254,8 +259,15 @@ mat-stepper {
   }
 
 }
-.back-icon{
+
+.back-icon {
   height: 18px;
   width: 18px;
   margin-bottom: 5px;
+}
+
+.errors {
+  margin-bottom: -35px;
+  margin-top: 15px !important;
+  color: red;
 }

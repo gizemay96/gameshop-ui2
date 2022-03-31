@@ -8,7 +8,7 @@ export class CommonService {
 
      constructor(private _snackBar: MatSnackBar) { }
 
-     openSnackBar(type = "cart") {
+     openSuccessSnackBar(type = "cart") {
           this._snackBar.open('Cart has been updated !  🥳', 'Ok', {
                horizontalPosition: 'right',
                verticalPosition: 'top',

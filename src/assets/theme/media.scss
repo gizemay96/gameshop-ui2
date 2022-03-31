@@ -1,0 +1,82 @@
+@import "_veriables.scss";
+
+@media screen and (max-width: 1024px) {
+
+  // Product Detail
+  .product-detail {
+    padding: 30px !important;
+
+    .img-case {
+      img {
+        max-width: 500px;
+      }
+    }
+
+    .description-body {
+      height: 165px !important;
+    }
+  }
+
+
+
+  // Payment Page
+  .payment-page {
+    .card-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+}
+
+
+
+@media screen and (max-width: 769px) {
+  .page-body {
+    padding: 0 !important;
+  }
+
+  .tabs {
+    padding: 0px 35px;
+  }
+
+  .addresses {
+    .input {
+      max-width: 100% !important;
+    }
+  }
+
+  .product-detail {
+    padding: 0 !important;
+
+    .img,
+    .genres,
+    .features {
+      display: none !important;
+    }
+
+    .img-mobile {
+      display: flex !important;
+      justify-content: center;
+      margin-bottom: 15px;
+      img {
+        width: auto;
+        max-height: 250px
+      }
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+}
+
+@media screen and (max-width: 550px) {
+  .nav-links {
+    display: none !important;
+  }
+
+}

@@ -30,6 +30,8 @@ export class CartComponent implements OnInit {
   userAddresses$: Address[];
   deliveryPrice = 0;
   progressProductId = '0';
+  isError = false;
+  errorMessage = '';
 
   paymentForm = new FormGroup({
     cardNumber: new FormControl('', [
@@ -49,7 +51,7 @@ export class CartComponent implements OnInit {
     ]),
   });
 
-  selectedAddress: any;
+  selectedAddress: any = '';
 
   constructor(
     private store: Store,
@@ -78,8 +80,15 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToNextStep() {
-    this.myStepper.next();
+  goToNextStep(whichStep = '') {
+    if (whichStep === 'payment' && this.selectedAddress.length > 0) {
+      this.myStepper.next();
+    } else if (whichStep === 'payment' && this.selectedAddress.length === 0) {
+      this.isError = true;
+      this.errorMessage = this.translate.instant('error-message.select-delivery-address');
+    } else {
+      this.myStepper.next();
+    }
   }
 
   payment() {
@@ -99,7 +108,7 @@ export class CartComponent implements OnInit {
     const response = await lastValueFrom(this.cartService.updateBasket(params));
     if (response) {
       this.store.dispatch(getCart(this.user));
-      this.commonService.openSnackBar();
+      this.commonService.openSuccessSnackBar();
     }
   }
 
@@ -114,7 +123,7 @@ export class CartComponent implements OnInit {
     if (responseData.error) {
     } else {
       this.store.dispatch(getCart(this.user));
-      this.commonService.openSnackBar();
+      this.commonService.openSuccessSnackBar();
     }
   }
 
@@ -126,7 +135,7 @@ export class CartComponent implements OnInit {
     if (response.error) {
     } else {
       this.store.dispatch(getCart(this.user));
-      this.commonService.openSnackBar();
+      this.commonService.openSuccessSnackBar();
     }
   }
 
