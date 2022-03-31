@@ -164,3 +164,25 @@ select:-webkit-autofill:focus {
 .nonpointer {
   pointer-events: none;
 }
+
+
+.modal-close-btn{
+  position: absolute;
+  margin: -40px;
+  cursor: pointer;
+  background: $bg-gray;
+  border-radius: 50%;
+  border: navajowhite;
+  padding: 13px;
+}
+
+.lg-modal-close-btn{
+  width: 80px;
+  position: absolute;
+  margin: -80px;
+  cursor: pointer;
+  background: $bg-gray;
+  border-radius: 50%;
+  border: navajowhite;
+  padding: 13px;
+}

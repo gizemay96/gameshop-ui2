@@ -60,6 +60,7 @@
       display: flex !important;
       justify-content: center;
       margin-bottom: 15px;
+
       img {
         width: auto;
         max-height: 250px
@@ -69,6 +70,21 @@
     .product-footer {
       display: flex;
       justify-content: center;
+    }
+  }
+
+  .modal-close-btn {
+    width: 70px !important;
+  }
+
+  .lg-modal-close-btn {
+    margin: -40px !important;
+  }
+
+  .order-tab {
+
+    .left-side {
+      margin-bottom: 30px;
     }
   }
 

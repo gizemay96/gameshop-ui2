@@ -1,7 +1,8 @@
-<div class="register">
+<div class="edit-profile">
+  <img (click)="closeModal()" class="modal-close-btn" src="../../../assets/icons/close.png" alt="">
   <div class="modal-body">
     <div class="logo d-flex justify-content-center">
-      <img src="../../../assets/img/logo.png" alt="logo">
+      <img  src="../../../assets/img/logo.png" alt="logo">
     </div>
     <div class="form mt-4" id="grayInput">
       <form [formGroup]="editForm" (submit)="editData()" autocomplete="off">
