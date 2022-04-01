@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { ConfirmationModalComponent } from '@app/components/confirmation-modal/confirmation-modal.component';
@@ -38,6 +37,7 @@ export class CartComponent implements OnInit {
 
   selectedAddress: any = '';
   activeTab = 0;
+  orderedItems = 0;
 
   constructor(
     private store: Store,
@@ -101,6 +101,7 @@ export class CartComponent implements OnInit {
     if (this.paymentForm.valid) {
       const responseData = await lastValueFrom(this.cartService.resetCart({ userId: this.user.id }));
       if (!responseData.error) {
+        this.orderedItems = this.userCart$.products.length;
         this.store.dispatch(getCart(this.user));
         this.goToNextStep();
         this.paymentForm.reset();

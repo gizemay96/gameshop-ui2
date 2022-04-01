@@ -159,7 +159,8 @@
                 </mat-form-field>
               </div>
 
-              <button [class.disabled]="paymentForm.invalid" type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">Pay</button>
+              <button [class.disabled]="paymentForm.invalid" type="submit"
+                class="btn bg-orange w-100 btn-orange btn-mdc">Pay</button>
             </form>
           </div>
         </div>
@@ -169,14 +170,17 @@
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <div class="order-success-step d-flex justify-content-center">
-          <div class="message-actions">
-            <div>
-              <h2>
-                {{'payment.order-taken' | translate: ({'bougthOrderCount': userCart$.totalQty})}}
+          <div class="message-actions mt-5">
+            <div class="flex-xy-center">
+              <img style="width: 100px;" src="https://media.giphy.com/media/fS3rHrEAFwOUKYDwdY/giphy.gif" alt="">
+            </div>
+            <div class="flex-xy-center mt-4">
+              <h2 class="text-white">
+                {{'payment.order-taken' | translate: ({'bougthOrderCount': orderedItems})}}
               </h2>
             </div>
-            <div>
-              <button mat-button (click)="resetCartItems()">Go To Home</button>
+            <div class="flex-xy-center mt-4">
+              <button class="btn btn-orange" mat-button (click)="resetCartItems()">Go To Home</button>
             </div>
           </div>
         </div>
