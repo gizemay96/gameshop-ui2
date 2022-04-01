@@ -85,7 +85,7 @@ mat-form-field {
   }
 }
 
-#fillOrange .mat-form-field:is(.mat-form-field-invalid) {
+#fillOrange .mat-form-field:is(.mat-form-field-invalid):not(.ng-pristine) {
   .mat-form-field-flex {
     border-bottom: 1px solid red !important;
   }
@@ -94,6 +94,7 @@ mat-form-field {
     color: red !important;
   }
 }
+
 
 #fillOrange .mat-form-field:is(.ng-valid) {
   .mat-form-field-flex {

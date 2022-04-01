@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 import { ConfirmationModalComponent } from '@app/components/confirmation-modal/confirmation-modal.component';
 import { CartService } from '@app/services/cart.service';
 import { CommonService } from '@app/services/common.service';
@@ -33,32 +34,19 @@ export class CartComponent implements OnInit {
   isError = false;
   errorMessage = '';
 
-  paymentForm = new FormGroup({
-    cardNumber: new FormControl('', [
-      Validators.required,
-    ]),
-    cardName: new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-    ]),
-    expDate: new FormControl('', [
-      Validators.required
-    ]),
-    cvv: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(3),
-    ]),
-  });
+  paymentForm = new FormGroup({});
 
   selectedAddress: any = '';
+  activeTab = 0;
 
   constructor(
     private store: Store,
     private cartService: CartService,
     public dialog: MatDialog,
     private translate: TranslateService,
-    public commonService: CommonService
+    public commonService: CommonService,
+    private router: Router,
+    private fb: FormBuilder
   ) {
 
     this.store.select(getAuthResponse).subscribe(res => {
@@ -75,26 +63,49 @@ export class CartComponent implements OnInit {
       this.userAddresses$ = res;
     });
 
+
+    this.paymentForm = this.fb.group({
+      cardNumber: new FormControl('', [
+        Validators.required,
+      ]),
+      cardName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
+      expDate: new FormControl('', [
+        Validators.required
+      ]),
+      cvv: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+      ]),
+    });
+
   }
 
   ngOnInit(): void {
   }
 
   goToNextStep(whichStep = '') {
-    if (whichStep === 'payment' && this.selectedAddress.length > 0) {
-      this.myStepper.next();
-    } else if (whichStep === 'payment' && this.selectedAddress.length === 0) {
+    if (whichStep === 'payment' && this.selectedAddress.length === 0) {
       this.isError = true;
       this.errorMessage = this.translate.instant('error-message.select-delivery-address');
     } else {
       this.myStepper.next();
+      this.activeTab = this.myStepper.selectedIndex;
     }
   }
 
-  payment() {
+  async payment() {
     if (this.paymentForm.valid) {
-      this.goToNextStep();
-      this.paymentForm.reset();
+      const responseData = await lastValueFrom(this.cartService.resetCart({ userId: this.user.id }));
+      if (!responseData.error) {
+        this.store.dispatch(getCart(this.user));
+        this.goToNextStep();
+        this.paymentForm.reset();
+        this.selectedAddress = '';
+      }
     }
   }
 
@@ -119,7 +130,7 @@ export class CartComponent implements OnInit {
       productId: product.product._id,
       increaseOrDecrease: -1
     };
-    const responseData = await this.cartService.updateBasket(params).toPromise();
+    const responseData = await lastValueFrom(this.cartService.updateBasket(params));
     if (responseData.error) {
     } else {
       this.store.dispatch(getCart(this.user));
@@ -131,7 +142,7 @@ export class CartComponent implements OnInit {
     const params = {
       userId: this.user.id,
     };
-    const response = await this.cartService.resetCart(params).toPromise();
+    const response = await lastValueFrom(this.cartService.resetCart(params));
     if (response.error) {
     } else {
       this.store.dispatch(getCart(this.user));
@@ -152,6 +163,12 @@ export class CartComponent implements OnInit {
         }
       }
     });
+  }
+
+
+  resetCartItems() {
+    this.myStepper.reset();
+    this.router.navigate(['home']);
   }
 
 }

@@ -157,7 +157,7 @@ select:-webkit-autofill:focus {
 }
 
 .disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -166,7 +166,7 @@ select:-webkit-autofill:focus {
 }
 
 
-.modal-close-btn{
+.modal-close-btn {
   position: absolute;
   margin: -40px;
   cursor: pointer;
@@ -176,7 +176,7 @@ select:-webkit-autofill:focus {
   padding: 13px;
 }
 
-.lg-modal-close-btn{
+.lg-modal-close-btn {
   width: 80px;
   position: absolute;
   margin: -80px;
