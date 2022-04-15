@@ -1,54 +1,58 @@
 <div class="product-detail row text-light">
-     <img (click)="closeModal()" class="lg-modal-close-btn" src="../../../assets/icons/close.png" alt="">
-     <div class="img-mobile col-lg-6">
-          <div class="img-case">
-               <img [src]="product.imageLogo" alt="">
-          </div>
-     </div>
-     <div class="desc col-lg-6">
-          <div>
-               <h3> {{product.title}} </h3>
-          </div>
-          <div class="stars">
-               <ngx-star-rating [disabled]="true" [(ngModel)]="rating" aria-readonly="true" [id]="'rating'">
-               </ngx-star-rating>
-          </div>
-          <div class="description-body">
-               {{product.description}}
-          </div>
-          <div class="genres d-flex align-items-center">
-               <div class="title">Genres</div>
-               <div class="chips">
-                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
-                         <mat-chip class="example-box" cdkDrag *ngFor="let genre of genres">
-                              {{genre}}
-                         </mat-chip>
-                    </mat-chip-list>
-               </div>
-          </div>
-          <div class="features d-flex align-items-center">
-               <div class="title">Features</div>
-               <div class="chips">
-                    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
-                         <mat-chip class="example-box" cdkDrag *ngFor="let feature of features">
-                              {{feature}}
-                         </mat-chip>
-                    </mat-chip-list>
-               </div>
-          </div>
+  <img (click)="closeModal()" class="lg-modal-close-btn" src="../../../assets/icons/close.png" alt="">
+  <div class="img-mobile col-lg-6">
+    <div class="img-case">
+      <img [src]="product.imageLogo" alt="">
+    </div>
+  </div>
+  <div class="desc col-lg-6">
+    <div>
+      <h3> {{product.title}} </h3>
+    </div>
+    <div class="stars">
+      <ngx-star-rating [disabled]="true" [(ngModel)]="rating" aria-readonly="true" [id]="'rating'">
+      </ngx-star-rating>
+    </div>
+    <div class="description-body">
+      {{product.description}}
+    </div>
+    <div class="genres d-flex align-items-center">
+      <div class="title">Genres</div>
+      <div class="chips">
+        <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+          <mat-chip class="example-box" cdkDrag *ngFor="let genre of genres">
+            {{genre}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+    <div class="features d-flex align-items-center">
+      <div class="title">Features</div>
+      <div class="chips">
+        <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+          <mat-chip class="example-box" cdkDrag *ngFor="let feature of features">
+            {{feature}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
 
-          <div class="product-footer">
-               <div class="price-add">
-                    <div class="price">$ {{product.price | number:'1.2-2'}}</div>
-                    <div class="add-button">Add to Cart <span><img class="icon" src="../../../assets/icons/cart.png"
-                                   alt=""></span></div>
-               </div>
-          </div>
+    <div class="product-footer">
+      <div class="price-add">
+        <div class="price">$ {{product.price | number:'1.2-2'}}</div>
+        <div class="add-button" (click)="addToCart(product)">
+          Add to Cart
+          <span>
+            <img class="icon" src="../../../assets/icons/cart.png" alt="">
+          </span>
+        </div>
+      </div>
+    </div>
 
-     </div>
-     <div class="img col-lg-6">
-          <div class="img-case">
-               <img [src]="product.imageLogo" alt="">
-          </div>
-     </div>
+  </div>
+  <div class="img col-lg-6">
+    <div class="img-case">
+      <img [src]="product.imageLogo" alt="">
+    </div>
+  </div>
 </div>

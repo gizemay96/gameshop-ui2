@@ -186,3 +186,30 @@ select:-webkit-autofill:focus {
   border: navajowhite;
   padding: 13px;
 }
+
+.paging {
+  padding: 30px 0;
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .paging-button{
+    margin: 0 20px;
+  }
+
+  .page-number{
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  .action-btn{
+    background-color: orange;
+    color: white;
+    padding: 10px 17px;
+    border-radius: 50%;
+    border: none;
+  }
+}

@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     this.getPage();
   }
 
-  async getPage(categoryId = '', page = this.page, limit = this.limit) {
+  async getPage(categoryId = '', page = this.page, limit = this.limit, isInıt = false) {
     this.loading = true;
     let params = { page, categoryId, limit };
     const response = await lastValueFrom(this.productService.getProductsWithPagination(params));
@@ -74,16 +74,11 @@ export class HomeComponent implements OnInit {
 
 
   openProductDetail(product: Product) {
-    const data = { panelClass: 'modal-lgc', data: product };
-    const dialogRef = this.dialog.open(ProductDetailComponent, data);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    const data = { panelClass: 'modal-lgc', data: { product, user: this.user } };
+    this.dialog.open(ProductDetailComponent, data);
   }
 
   async addToCart(product: Product) {
-    console.log(this.user)
     const params = {
       userId: this.user.id,
       productId: product._id,
