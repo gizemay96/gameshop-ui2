@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   page = 1;
   limit = 12;
   totalCount: number;
-
   activeTab: string = '';
 
 
@@ -47,7 +46,7 @@ export class HomeComponent implements OnInit {
     this.getPage();
   }
 
-  async getPage(categoryId = '', page = this.page, limit = this.limit, isInıt = false) {
+  async getPage(categoryId = '', page = this.page, limit = this.limit) {
     this.loading = true;
     let params = { page, categoryId, limit };
     const response = await lastValueFrom(this.productService.getProductsWithPagination(params));
@@ -55,10 +54,10 @@ export class HomeComponent implements OnInit {
     this.totalCount = response.totalCount;
     setTimeout(() => {
       this.loading = false;
-    }, 200);
+    }, 500);
   }
 
-
+  // Pagination Actions
   async getProducts(categoryId: string, type?: string) {
     const disabledPrevioustButton = (type === 'previousPage' && this.page === 1);
     const disabledNextButton = type === 'nextPage' && (this.limit * this.page > this.totalCount)

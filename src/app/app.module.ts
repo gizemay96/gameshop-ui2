@@ -47,6 +47,8 @@ import { reducers } from './_store/reducers';
 import { userEffects } from './_store/effects/user.effects';
 import { addressEffects } from './_store/effects/address.effects';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SketlonComponent } from './components/sketlon/sketlon.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     ProductDetailComponent,
     AddEditAddressComponent,
     EditProfileComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    SketlonComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +84,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatSnackBarModule,
     MatSidenavModule,
     MatIconModule,
+    NgxSkeletonLoaderModule.forRoot({ animation: 'progress', loadingText: 'This item is actually loading...' }),
     NgxMaskModule.forRoot(),
 
     TranslateModule.forRoot({
