@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDrawer } from '@angular/material/sidenav';
 import { autoLogout } from '@app/_store/actions/user-actions';
 import { getUserCart } from '@app/_store/selectors/cart-selector';
 import { getAuthResponse } from '@app/_store/selectors/user-selector';
@@ -15,7 +16,10 @@ import { RegisterModalComponent } from '../register-modal/register-modal.compone
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  userCartCount$: Observable<any>;
+  @Input() sideNav: MatDrawer;
+  @Input() navActions: any;
+  @Input() userCartCount: any;
+
   user: any;
 
   constructor(
@@ -26,11 +30,6 @@ export class NavbarComponent implements OnInit {
     this.store.select(getAuthResponse).subscribe(res => {
       this.user = res.userDetail || res;
     });
-
-    this.store.select(getUserCart).subscribe(res => {
-      this.userCartCount$ = res.totalQty || 0;
-    });
-
   }
 
   ngOnInit(): void {
@@ -49,6 +48,5 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.store.dispatch(autoLogout());
   }
-
 
 }

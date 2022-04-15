@@ -1,1 +1,26 @@
+.nav-items {
+    ul {
+        list-style: none;
+        padding: 0;
 
+        li,
+        a {
+            color: white;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding-left: 0 !important;
+            display: flex;
+            width: 100%;
+
+            .cart-count {
+                position: absolute;
+                margin-left: 34px;
+                margin-top: -12px;
+            }
+
+            img {
+                margin: 0 15px;
+            }
+        }
+    }
+}

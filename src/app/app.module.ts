@@ -28,6 +28,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
@@ -77,6 +79,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MatRadioModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatIconModule,
     NgxMaskModule.forRoot(),
 
     TranslateModule.forRoot({

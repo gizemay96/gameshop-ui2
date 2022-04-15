@@ -72,9 +72,6 @@ export class CommonService {
                     }
 
                }
-
-
-
           }
           return str.join('&');
      }
