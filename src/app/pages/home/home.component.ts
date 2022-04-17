@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   products: Product[];
 
   loading = false;
+  loadMore = false;
   page = 1;
   limit = 12;
   totalCount: number;
@@ -47,28 +48,33 @@ export class HomeComponent implements OnInit {
   }
 
   async getPage(categoryId = '', page = this.page, limit = this.limit) {
-    this.loading = true;
+    this.loading = !this.loadMore ? true : false;
     let params = { page, categoryId, limit };
     const response = await lastValueFrom(this.productService.getProductsWithPagination(params));
-    this.products = response.products;
+    this.products = this.products?.length > 0 ? this.products.concat(response.products) : response.products;
     this.totalCount = response.totalCount;
     setTimeout(() => {
       this.loading = false;
+      this.loadMore = false;
     }, 500);
   }
 
-  // Pagination Actions
-  async getProducts(categoryId: string, type?: string) {
-    const disabledPrevioustButton = (type === 'previousPage' && this.page === 1);
-    const disabledNextButton = type === 'nextPage' && (this.limit * this.page > this.totalCount)
-
-    if (disabledPrevioustButton || disabledNextButton) { return; }
-    else {
-      if (type) {
-        this.page = type === 'nextPage' ? this.page + 1 : this.page - 1;
-      }
-      this.getPage(categoryId);
+  loadMoreProduct() {
+    this.loadMore = true;
+    const noMoreProduct = this.limit * this.page > this.totalCount;
+    if (!noMoreProduct && this.products?.length > 0) {
+      this.page++
+      this.getPage(this.activeTab);
+    } else {
+      this.loadMore = false;
     }
+  }
+
+  changeTab(categoryId) {
+    this.products = [];
+    this.page = 1;
+    this.activeTab = categoryId;
+    this.getPage(this.activeTab);
   }
 
 
@@ -89,7 +95,6 @@ export class HomeComponent implements OnInit {
       this.commonService.openSuccessSnackBar();
     }
   }
-
 
 
 }

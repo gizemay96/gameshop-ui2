@@ -49,6 +49,7 @@ import { addressEffects } from './_store/effects/address.effects';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SketlonComponent } from './components/sketlon/sketlon.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { SketlonComponent } from './components/sketlon/sketlon.component';
     MatSnackBarModule,
     MatSidenavModule,
     MatIconModule,
+    InfiniteScrollModule,
     NgxSkeletonLoaderModule.forRoot({ animation: 'progress', loadingText: 'This item is actually loading...' }),
     NgxMaskModule.forRoot(),
 

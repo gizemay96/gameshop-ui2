@@ -40,8 +40,9 @@
     <div class="product-footer">
       <div class="price-add">
         <div class="price">$ {{product.price | number:'1.2-2'}}</div>
-        <div class="add-button" (click)="addToCart(product)">
-          Add to Cart
+        <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">
+          <span *ngIf="user.id">Add to Cart</span>
+          <span *ngIf="!user.id">Please Login</span>
           <span>
             <img class="icon" src="../../../assets/icons/cart.png" alt="">
           </span>

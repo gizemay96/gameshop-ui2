@@ -5,7 +5,7 @@
       <ul class="tabs nav">
         <span *ngFor="let category of categories">
           <li [ngClass]="activeTab === category.id || (activeTab === '' && category.id === '') ? 'active' : ''"
-            class="nav-item" (click)="page = 1 ;getPage(category.id); activeTab = category.id">
+            class="nav-item" (click)="changeTab(category.id);">
             <a class="nav-link">{{ 'product-tabs.' + category.translateKey | translate }}</a>
           </li>
         </span>
@@ -24,8 +24,8 @@
         <div class="product-footer">
           <div class="price-add">
             <div class="price">$ {{product.price}}</div>
-            <div class="add-button" (click)="addToCart(product)">Add to Cart <span><img class="icon"
-                  src="../../../assets/icons/cart.png" alt=""></span></div>
+            <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">Add to Cart <span><img
+                  class="icon" src="../../../assets/icons/cart.png" alt=""></span></div>
           </div>
         </div>
       </div>
@@ -39,13 +39,7 @@
     </div>
   </div>
 
-  <div class="paging">
-    <div class="buttons">
-      <div class="paging-button previous"><button (click)="getProducts(activeTab , 'previousPage')" class="action-btn">
-          <</button> </div> <div class="paging-button page-number pageNumber">{{page}}</div>
-      <div class="paging-button next"><button (click)="getProducts(activeTab , 'nextPage')"
-          class="action-btn">></button></div>
-    </div>
-  </div>
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000"
+    (scrolled)="loadMoreProduct()"></div>
 
 </div>
