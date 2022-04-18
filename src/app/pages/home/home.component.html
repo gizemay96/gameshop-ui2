@@ -43,6 +43,7 @@
           </div>
           <div class="list-item-footer">
             <div class="price-add">
+              <div class="price"><img style="width: 30px;" [src]="item.imageLogo" alt=""></div>
               <a [href]="item.url" target="_blank">
                 <div [class.disabled]="!user.id" class="add-button">
                   {{'game-news.read-more' | translate}}
