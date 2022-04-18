@@ -20,10 +20,10 @@ export class NewsService {
      }
 
      // GET USER BASKET FROM DB
-     getNews() {
-          const request = this.http.get(`https://bing-news-search1.p.rapidapi.com/news/search?q=xbox%20playstation&count=12&textDecorations=false&setLang=EN&freshness=Month&originalImg=true&textFormat=Raw&safeSearch=Off`,
-               this.getHeaders());
-          return request.pipe(map((res: any) => res.value || {}), catchError((err) => of(err)));
+     getNews(count , offset) {
+          const url = `https://bing-news-search1.p.rapidapi.com/news/search?q=xbox%20playstation&count=${count}&offset=${offset}&setLang=EN&freshness=Month&originalImg=true&textFormat=Raw&safeSearch=Off`;
+          const request = this.http.get(url, this.getHeaders());
+          return request.pipe(map((res: any) => res || {}), catchError((err) => of(err)));
      }
 
 }

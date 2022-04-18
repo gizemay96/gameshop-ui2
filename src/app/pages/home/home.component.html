@@ -5,7 +5,7 @@
       <ul class="tabs nav">
         <span *ngFor="let category of categories">
           <li [ngClass]="activeTab === category.id || (activeTab === '' && category.id === '') ? 'active' : ''"
-            class="nav-item" (click)="category.id === 'news' ? bla() : changeTab(category.id);">
+            class="nav-item" (click)="changeTab(category.id);">
             <a class="nav-link">{{ 'product-tabs.' + category.translateKey | translate }}</a>
           </li>
         </span>
@@ -19,9 +19,9 @@
   <div class="product-list">
     <!-- Product List -->
     <div class=" d-flex align-items-center row gx-5" *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
-      <div class="product col-lg-3 col-sm-6 mb-5" *ngFor="let product of products">
-        <img class="product-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
-        <div class="product-footer">
+      <div class="list-item col-lg-3 col-sm-6 mb-5" *ngFor="let product of products">
+        <img class="list-item-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
+        <div class="list-item-footer">
           <div class="price-add">
             <div class="price">$ {{product.price}}</div>
             <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">{{'product-detail.add-cart'
@@ -35,18 +35,20 @@
     <!-- News List -->
     <ng-template class="news" #newsListElement>
       <span class=" d-flex align-items-center row gx-5" *ngIf="!loading">
-        <div class="product col-lg-3 col-sm-6 mb-5" *ngFor="let product of news">
-          <div class="image-case">
-            <img class="product-img" [src]="product.image">
-            <div class="news-title">{{product.title}}</div>
-            <div class="news-description">{{product.description}}</div>
+        <div class="list-item col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let item of news">
+          <div class="news-image-case">
+            <img class="news-img" [src]="item.image">
+            <div class="news-title">{{item.title}}</div>
+            <div class="news-description">{{item.description}}</div>
           </div>
-          <div class="product-footer">
+          <div class="list-item-footer">
             <div class="price-add">
-              <div [class.disabled]="!user.id" class="add-button">
-                {{'game-news.read-more' | translate}}
-              </div>
-              <img style="display: none;" [src]="product.imageLogo" alt="">
+              <a [href]="item.url" target="_blank">
+                <div [class.disabled]="!user.id" class="add-button">
+                  {{'game-news.read-more' | translate}}
+                </div>
+              </a>
+              <img style="display: none;" [src]="item.imageLogo" alt="">
             </div>
           </div>
         </div>
@@ -64,12 +66,12 @@
   </div>
 
   <!-- Load More Progress -->
-  <div *ngIf="loadMore" class="loader flex-xy-center">
+  <div *ngIf="loadMoreProgress" class="loader flex-xy-center">
     <img style="width: 120px;" src="../../../assets/img/loader.gif" alt="">
   </div>
 
   <!-- Infınıte Scroll -->
-  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100"
-    (scrolled)="loadMoreProduct()"></div>
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="200"
+    (scrolled)="!loadMoreProgress ? loadMore() : null"></div>
 
 </div>

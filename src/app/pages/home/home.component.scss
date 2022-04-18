@@ -27,40 +27,11 @@
 .product-list {
   padding-top: 90px;
 
-  .product {
-    .image-case {
-      .news-title {
-        position: absolute;
-        margin-left: 0.5vw;
-        width: 280px;
-        color: wheat;
-        margin-top: -42vh;
-        font-weight: bold;
-    font-size: 15px;
-      }
-
-      .news-description{
-        color: aliceblue;
-        position: absolute;
-        width: 270px;
-        font-size: 13px;
-        height: 80px;
-        overflow: hidden;
-        margin-left: 0.5vw;
-        margin-top: -15vh;
-      }
-
-      &:hover {
-        .product-img {
-          filter: blur(2px) brightness(0.5);
-        }
-      }
-    }
-
-    .product-img {
-      max-width: 285px;
+  .list-item {
+    .list-item-img {
+      max-width: 295px;
       width: 100%;
-      height: 45vh;
+      height: 41vh;
       border-radius: 40px;
       cursor: pointer;
       object-fit: cover;
@@ -70,9 +41,50 @@
       text-align: center;
       padding: 0;
     }
+
+    .news-image-case {
+      .news-img {
+        filter: brightness(0.5);
+        @extend .list-item-img;
+      }
+
+      .news-title {
+        position: absolute;
+        margin-left: 0.5vw;
+        width: 14%;
+        color: wheat;
+        margin-top: -36vh;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      .news-description {
+        color: aliceblue;
+        position: absolute;
+        width: 14%;
+        font-size: 13px;
+        height: 80px;
+        overflow: hidden;
+        margin-left: 0.5vw;
+        margin-top: -15vh;
+        opacity: 0;
+      }
+
+      &:hover {
+        .list-item-img {
+          filter: blur(3px) brightness(0.2);
+        }
+
+        .news-description {
+          opacity: 1;
+          transition: opacity 1.5s;
+        }
+      }
+
+    }
   }
 
-  .product-footer {
+  .list-item-footer {
     display: flex;
     justify-content: center;
     padding: 15px 0;
@@ -109,7 +121,10 @@
         }
       }
 
-
+      a{
+        color: unset;
+        text-decoration: none;
+      }
 
     }
   }
