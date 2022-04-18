@@ -24,8 +24,8 @@
         <div class="product-footer">
           <div class="price-add">
             <div class="price">$ {{product.price}}</div>
-            <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">{{'product-detail.add-cart' | translate}} <span><img
-                  class="icon" src="../../../assets/icons/cart.png" alt=""></span></div>
+            <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">{{'product-detail.add-cart'
+              | translate}} <span><img class="icon" src="../../../assets/icons/cart.png" alt=""></span></div>
             <img style="display: none;" [src]="product.imageLogo" alt="">
           </div>
         </div>
@@ -43,7 +43,7 @@
 
   <!-- Load More Progress -->
   <div *ngIf="loadMore" class="loader flex-xy-center">
-    <img style="width: 100px;" src="../../../assets/img/loader.gif" alt="">
+    <img style="width: 120px;" src="../../../assets/img/loader.gif" alt="">
   </div>
 
   <!-- Infınıte Scroll -->
