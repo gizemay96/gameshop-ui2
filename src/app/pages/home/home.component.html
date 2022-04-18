@@ -5,7 +5,7 @@
       <ul class="tabs nav">
         <span *ngFor="let category of categories">
           <li [ngClass]="activeTab === category.id || (activeTab === '' && category.id === '') ? 'active' : ''"
-            class="nav-item" (click)="changeTab(category.id);">
+            class="nav-item" (click)="category.id === 'news' ? bla() : changeTab(category.id);">
             <a class="nav-link">{{ 'product-tabs.' + category.translateKey | translate }}</a>
           </li>
         </span>
@@ -16,9 +16,9 @@
   <div *ngIf="!loading" class="vertical-line full-width"></div>
   <mat-progress-bar *ngIf="loading" class="full-width" mode="indeterminate"></mat-progress-bar>
 
-  <!-- Product List -->
   <div class="product-list">
-    <div class=" d-flex align-items-center row gx-5" *ngIf="!loading">
+    <!-- Product List -->
+    <div class=" d-flex align-items-center row gx-5" *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
       <div class="product col-lg-3 col-sm-6 mb-5" *ngFor="let product of products">
         <img class="product-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
         <div class="product-footer">
@@ -31,6 +31,28 @@
         </div>
       </div>
     </div>
+
+    <!-- News List -->
+    <ng-template class="news" #newsListElement>
+      <span class=" d-flex align-items-center row gx-5" *ngIf="!loading">
+        <div class="product col-lg-3 col-sm-6 mb-5" *ngFor="let product of news">
+          <div class="image-case">
+            <img class="product-img" [src]="product.image">
+            <div class="news-title">{{product.title}}</div>
+            <div class="news-description">{{product.description}}</div>
+          </div>
+          <div class="product-footer">
+            <div class="price-add">
+              <div [class.disabled]="!user.id" class="add-button">
+                {{'game-news.read-more' | translate}}
+              </div>
+              <img style="display: none;" [src]="product.imageLogo" alt="">
+            </div>
+          </div>
+        </div>
+      </span>
+    </ng-template>
+
   </div>
 
   <!-- Sketlon -->

@@ -52,6 +52,12 @@ export class CommonService {
                     icon: 'fas fa-gamepad',
                     id: '6140f48b8406572e08022cd9'
                },
+               {
+                    categoryKey: 'gameNews',
+                    translateKey: 'game-news',
+                    icon: 'fas fa-gamepad',
+                    id: 'news'
+               },
           ];
      }
 

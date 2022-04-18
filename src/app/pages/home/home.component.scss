@@ -28,6 +28,35 @@
   padding-top: 90px;
 
   .product {
+    .image-case {
+      .news-title {
+        position: absolute;
+        margin-left: 0.5vw;
+        width: 280px;
+        color: wheat;
+        margin-top: -42vh;
+        font-weight: bold;
+    font-size: 15px;
+      }
+
+      .news-description{
+        color: aliceblue;
+        position: absolute;
+        width: 270px;
+        font-size: 13px;
+        height: 80px;
+        overflow: hidden;
+        margin-left: 0.5vw;
+        margin-top: -15vh;
+      }
+
+      &:hover {
+        .product-img {
+          filter: blur(2px) brightness(0.5);
+        }
+      }
+    }
+
     .product-img {
       max-width: 285px;
       width: 100%;

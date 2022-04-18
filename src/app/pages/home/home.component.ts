@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailComponent } from '@app/components/product-detail/product-detail.component';
 import { CartService } from '@app/services/cart.service';
 import { CommonService } from '@app/services/common.service';
+import { NewsService } from '@app/services/news.service';
 import { ProductService } from '@app/services/product.service';
 import { Product } from '@app/types/product.type';
 import { User } from '@app/types/user.type';
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   user: User;
   categories: any;
   products: Product[];
+  news = [];
 
   loading: boolean = false;
   loadMore: boolean = false;
@@ -35,7 +37,8 @@ export class HomeComponent implements OnInit {
     private commonService: CommonService,
     public dialog: MatDialog,
     private cartService: CartService,
-    private store: Store
+    private store: Store,
+    private newsService: NewsService
   ) {
     this.store.select(getAuthResponse).subscribe(res => {
       this.user = res.userDetail || res;
@@ -45,6 +48,29 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.categories = this.commonService.getProductCategories();
     this.getPage();
+  }
+
+  async bla() {
+    this.loading = true;
+    console.log('bla')
+    this.activeTab = 'news';
+    const data = await lastValueFrom(this.newsService.getNews());
+    this.news = data.reduce((arr, item) => {
+      const formattedData = {
+        _id: 0,
+        categoryId: 'news',
+        description: item.description,
+        image: item.image?.contentUrl || '../../../assets/img/default_news.avif',
+        imageLogo: '',
+        price: 0,
+        rating: 5,
+        title: item.name,
+      };
+      arr.push(formattedData);
+      return arr;
+    }, []);
+    console.log(this.news)
+    this.loading = false;
   }
 
   async getPage(categoryId = '', page = this.page, limit = this.limit) {
