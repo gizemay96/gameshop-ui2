@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
   categories: any;
   products: Product[];
 
-  loading = false;
-  loadMore = false;
-  page = 1;
-  limit = 12;
+  loading: boolean = false;
+  loadMore: boolean = false;
+  page: number = 1;
+  limit: number = 12;
   totalCount: number;
   activeTab: string = '';
 
@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
     this.loading = !this.loadMore ? true : false;
     let params = { page, categoryId, limit };
     const response = await lastValueFrom(this.productService.getProductsWithPagination(params));
+    // if is not init action, merge products data
     this.products = this.products?.length > 0 ? this.products.concat(response.products) : response.products;
     this.totalCount = response.totalCount;
     setTimeout(() => {
@@ -63,8 +64,7 @@ export class HomeComponent implements OnInit {
     this.loadMore = true;
     const noMoreProduct = this.limit * this.page > this.totalCount;
     if (!noMoreProduct && this.products?.length > 0) {
-      this.page++
-      this.getPage(this.activeTab);
+      setTimeout(() => { this.page++; this.getPage(this.activeTab); }, 900);
     } else {
       this.loadMore = false;
     }

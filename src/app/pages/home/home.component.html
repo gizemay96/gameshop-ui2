@@ -32,6 +32,7 @@
     </div>
   </div>
 
+  <!-- Sketlon -->
   <div class="sketlon" *ngIf="loading">
     <div class="item row gx-5 text-center" *ngFor="let list of [1,2,3]">
       <app-sketlon style="height: 350px;margin: 15px 0;" class="col-lg-3 col-sm-6 mb-5 sketlon-img"
@@ -39,7 +40,13 @@
     </div>
   </div>
 
-  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000"
+  <!-- Load More Progress -->
+  <div *ngIf="loadMore" class="loader flex-xy-center">
+    <img style="width: 100px;" src="../../../assets/img/loader.gif" alt="">
+  </div>
+
+  <!-- Infınıte Scroll -->
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100"
     (scrolled)="loadMoreProduct()"></div>
 
 </div>
