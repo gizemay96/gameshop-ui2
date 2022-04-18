@@ -5,9 +5,6 @@
         "join-us": "Bize Katıl",
         "delete": "Sil",
         "loading": "Yükleniyor....",
-        "name": " İsim",
-        "send": "Gönder",
-        "page": "Sayfa",
         "yes": "Evet",
         "no": "Hayır",
         "save": "Kaydet",
@@ -83,13 +80,7 @@
         "edit-profile": "Düzenle"
     },
     "check-out": {
-        "check-out-page": "Sipariş",
-        "order-list": "Sipariş Listesi",
-        "your-orders": "Siparişleriniz",
         "clear-cart": "Sepeti Temizle",
-        "bill": "Fatura",
-        "total-price": "Toplam Tutar",
-        "bill-name": "İsim",
         "select-address": "Teslimat Adresi Seçiniz",
         "payment": "Ödeme ",
         "item": "Ürün",
