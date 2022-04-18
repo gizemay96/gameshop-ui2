@@ -13,35 +13,35 @@
                <form [formGroup]="registerForm" (submit)="register()" autocomplete="off">
                     <!-- Full Name -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>Full Name</mat-label>
+                         <mat-label>{{'edit-profile.first-name' | translate}}</mat-label>
                          <input matInput type="text" formControlName="firstName" class="w-100">
                     </mat-form-field>
 
                     <!-- Username -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>Username</mat-label>
+                         <mat-label>{{'edit-profile.user-name' | translate}}</mat-label>
                          <input matInput type="text" class="w-100" formControlName="username">
                     </mat-form-field>
 
                     <!-- E-mail -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>E-Mail</mat-label>
+                         <mat-label>{{'edit-profile.email' | translate}}</mat-label>
                          <input matInput type="text" class="w-100" formControlName="email">
                     </mat-form-field>
 
                     <!-- Password -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>Password</mat-label>
+                         <mat-label>{{'login-register.password' | translate}}</mat-label>
                          <input matInput type="password" class="w-100" formControlName="password" autocomplete="new-password">
                     </mat-form-field>
 
                     <!-- Confirm Password -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>Confirm Password </mat-label>
+                         <mat-label>{{'login-register.confirm-password' | translate}}  </mat-label>
                          <input matInput type="password" class="w-100" formControlName="confirmPassword">
                     </mat-form-field>
 
-                    <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">Register</button>
+                    <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">{{'login-register.register' | translate}}</button>
                </form>
 
           </div>

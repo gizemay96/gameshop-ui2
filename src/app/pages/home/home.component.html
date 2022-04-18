@@ -24,8 +24,9 @@
         <div class="product-footer">
           <div class="price-add">
             <div class="price">$ {{product.price}}</div>
-            <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">Add to Cart <span><img
+            <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">{{'product-detail.add-cart' | translate}} <span><img
                   class="icon" src="../../../assets/icons/cart.png" alt=""></span></div>
+            <img style="display: none;" [src]="product.imageLogo" alt="">
           </div>
         </div>
       </div>

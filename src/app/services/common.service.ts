@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
      providedIn: 'root'
 })
 export class CommonService {
 
-     constructor(private _snackBar: MatSnackBar) { }
+     constructor(private _snackBar: MatSnackBar , private translate: TranslateService) { }
 
-     openSuccessSnackBar(type = "cart") {
-          this._snackBar.open('Cart has been updated !  🥳', 'Ok', {
+     openSuccessSnackBar(messageKey = "") {
+         const message = this.translate.instant(`success-messages.${messageKey}`);
+
+          this._snackBar.open(`${message}  🥳`, 'Ok', {
                horizontalPosition: 'right',
                verticalPosition: 'top',
                panelClass: 'snackbar-style',

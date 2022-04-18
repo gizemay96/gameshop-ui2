@@ -11,7 +11,9 @@
         "yes": "Evet",
         "no": "Hayır",
         "save": "Kaydet",
-        "edit": "Düzenle"
+        "edit": "Düzenle",
+        "turn-back": "Geri Dön",
+        "go-home": "Anasayfa"
     },
     "error-message": {
         "required": "Bu Alan Zorunludur !",
@@ -25,12 +27,16 @@
         "empty-card": "Sepeti boşaltmak istediğinizden emin misiniz?",
         "general-delete": "Silmek istediğinizden emin misiniz?"
     },
+    "success-messages": {
+        "cart-updated": "Sepet başarıyla güncellendi !"
+    },
     "navbar": {
         "login": "Giriş Yap",
         "register": "Kayıt Ol",
         "greeting": "Hoşgeldin",
         "profile": "Profil",
-        "log-out": "Çıkış Yap"
+        "log-out": "Çıkış Yap",
+        "cart": "Sepet"
     },
     "payment": {
         "order-taken": "{{bougthOrderCount}} Adet Siparişiniz Alınmıştır !",
@@ -38,12 +44,14 @@
         "card-number": "Kart Numarası",
         "security-code": "Günvelik Kodu",
         "exp-date": "SKT",
-        "enter-card-name": "Kart Üzerindeki İsim",
-        "enter-random-numbers": "Rastgele Sayılar Girin"
+        "card-name": "Kart Üzerindeki İsim",
+        "pay": "Öde"
     },
-    "detail-modal": {
+    "product-detail": {
         "please-login": "Giriş Yapın.",
-        "add-cart": "Sepete Ekle"
+        "add-cart": "Sepete Ekle",
+        "genres": "Türler",
+        "features": "Özellikler"
     },
     "edit-address": {
         "form-title": "Adresi Düzenle",
@@ -56,47 +64,51 @@
     "edit-profile": {
         "form-title": "Profili Düzenle",
         "user-name": "Kullanıcı Adı",
-        "first-name": "Ad",
-        "last-name": "Soy Ad",
+        "first-name": "İsim",
+        "last-name": "Soy İsim",
         "email": "E-Posta",
         "phone": "Telefon"
     },
     "login-register": {
         "password": "Parola",
         "confirm-password": "Parola Doğrula",
-        "register": "Kayıt"
+        "register": "Kayıt",
+        "welcomeBack": "Tekrar Hoşgeldin !"
     },
     "user-info": {
         "user-card": "Kullanıcı Kartı",
         "addresses": "Adresler",
-        "add-new": "Yeni Ekle",
-        "full": "DOLU"
+        "add-address": "Adres Ekle",
+        "full": "DOLU",
+        "edit-profile": "Düzenle"
     },
     "check-out": {
         "check-out-page": "Sipariş",
         "order-list": "Sipariş Listesi",
         "your-orders": "Siparişleriniz",
-        "empty-cart": "Sepeti Temizle",
+        "clear-cart": "Sepeti Temizle",
         "bill": "Fatura",
         "total-price": "Toplam Tutar",
         "bill-name": "İsim",
         "select-address": "Teslimat Adresi Seçiniz",
-        "payment": "Kart Bilgisi"
+        "payment": "Ödeme ",
+        "item": "Ürün",
+        "delivery": "Teslimat"
     },
     "profile-tabs": {
         "user-info": "Kullanıcı Bilgisi",
         "previous-orders": "Geçmiş Siparişler",
         "my-coupons": "Kuponlarım"
     },
-    "product-tabs":{
-        "game-news":"Oyun Haberleri",
-        "all-games":"Tüm Oyunlar",
-        "pc-games":"Bilgisayar Oyunları",
-        "playstation":"Playstation",
+    "product-tabs": {
+        "game-news": "Oyun Haberleri",
+        "all-games": "Tüm Oyunlar",
+        "pc-games": "Bilgisayar Oyunları",
+        "playstation": "Playstation",
         "xbox": "Xbox",
         "nintendo": "Nintendo"
     },
-    "game-news":{
-        "read-more":"Devamını Oku..."
+    "game-news": {
+        "read-more": "Devamını Oku..."
     }
 }

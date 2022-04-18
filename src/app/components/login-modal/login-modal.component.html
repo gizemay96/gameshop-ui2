@@ -5,7 +5,7 @@
                <img src="../../../assets/img/logo.png" alt="logo">
           </div>
           <div class="d-flex justify-content-center mt-4">
-               <h3 class="text-white">Welcome Back !</h3>
+               <h3 class="text-white">{{'login-register.welcomeBack' | translate}}</h3>
           </div>
           <div class="errors" *ngIf="isError">
                <div class="error-message">
@@ -16,17 +16,17 @@
                <form [formGroup]="loginForm" (submit)="login()">
                     <!-- E-mail -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>E-Mail</mat-label>
+                         <mat-label>{{'edit-profile.email' | translate}}</mat-label>
                          <input matInput type="email" class="w-100" formControlName="email" autocomplete="off">
                     </mat-form-field>
 
                     <!-- Password -->
                     <mat-form-field appearance="fill" class="w-100">
-                         <mat-label>Password</mat-label>
+                         <mat-label>{{'login-register.password' | translate}}</mat-label>
                          <input matInput type="password" class="w-100" formControlName="password" autocomplete="new-password">
                     </mat-form-field>
 
-                    <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">Login</button>
+                    <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">{{'general.press-start' | translate}}</button>
                </form>
 
           </div>

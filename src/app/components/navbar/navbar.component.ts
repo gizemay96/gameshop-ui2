@@ -35,6 +35,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeLang(lang){
+   this.translate.setDefaultLang(lang);
+   sessionStorage.setItem('defaultLang' , lang);
+  }
+
   openLogin() {
     const data = { panelClass: 'modal-smc' };
     this.dialog.open(LoginModalComponent, data);
@@ -47,6 +52,10 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.store.dispatch(autoLogout());
+  }
+
+  get ActiveLang(){
+   return sessionStorage.getItem('defaultLang');
   }
 
 }

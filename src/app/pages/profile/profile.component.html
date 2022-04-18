@@ -6,13 +6,13 @@
       <div class="tab-list">
         <ul class="tabs nav">
           <li [ngClass]="activeTab === 0 ? 'active' : ''" class="nav-item" (click)="activeTab = 0">
-            <a class="nav-link">User Information</a>
+            <a class="nav-link">{{'profile-tabs.user-info' | translate}}</a>
           </li>
           <li [ngClass]="activeTab === 1 ? 'active' : ''" class="nav-item" (click)="activeTab = 1">
-            <a class="nav-link">Pass Orders</a>
+            <a class="nav-link">{{'profile-tabs.previous-orders' | translate}}</a>
           </li>
           <li [ngClass]="activeTab === 2 ? 'active' : ''" class="nav-item" (click)="activeTab = 2">
-            <a class="nav-link">My Coupons</a>
+            <a class="nav-link">{{'profile-tabs.my-coupons' | translate}}</a>
           </li>
         </ul>
       </div>
@@ -23,27 +23,27 @@
 
       <div class="col user-info">
         <div class="header-case d-flex justify-content-center">
-          <div class="header d-flex align-items-center justify-content-center">User Card </div>
+          <div class="header d-flex align-items-center justify-content-center">{{'user-info.user-card' | translate}} </div>
         </div>
         <div class="profile-card user-card">
           <div class="inputs">
-            <div class="input-name">Full Name</div>
+            <div class="input-name">{{'edit-profile.first-name' | translate}}</div>
             <div class="input">{{user.firstName}}</div>
           </div>
 
           <div class="inputs">
-            <div class="input-name">Email</div>
+            <div class="input-name">{{'edit-profile.email' | translate}}</div>
             <div class="input">{{user.email}}</div>
           </div>
 
           <div class="inputs">
-            <div class="input-name">Phone</div>
+            <div class="input-name">{{'edit-profile.phone' | translate}}</div>
             <div class="input">{{user.phoneNumber}}</div>
           </div>
 
           <div class="mt-3 btn-case">
             <button class="btn btn-sm  btn-light" (click)="editProfile()">
-              Edit Profile
+              {{'user-info.edit-profile' | translate}}
             </button>
           </div>
 
@@ -52,7 +52,7 @@
 
       <div class="col addresses">
         <div class="header-case d-flex justify-content-center">
-          <div class="header d-flex align-items-center justify-content-center">Address Card</div>
+          <div class="header d-flex align-items-center justify-content-center">{{'user-info.addresses' | translate}}</div>
         </div>
         <div class="profile-card address-card">
 
@@ -70,8 +70,8 @@
 
           <div class="mt-3 btn-case">
             <button [disabled]="userAddresses?.length === 3" class="btn btn-sm  btn-light" (click)="addEditAddress()">
-              <span *ngIf="userAddresses.length < 3">Add Address</span>
-              <span *ngIf="userAddresses.length === 3">Full</span>
+              <span *ngIf="userAddresses.length < 3">{{'user-info.add-address' | translate}}</span>
+              <span *ngIf="userAddresses.length === 3">{{'user-info.full' | translate}}</span>
             </button>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { Product } from '@app/types/product.type';
 import { User } from '@app/types/user.type';
 import { getCart } from '@app/_store/actions/cart-actions';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -28,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
     private store: Store,
     private commonService: CommonService,
     private cartService: CartService,
+    public translate: TranslateService
   ) {
     this.product = data.product;
     this.rating = this.product.rating;
@@ -46,7 +48,7 @@ export class ProductDetailComponent implements OnInit {
     const response = await lastValueFrom(this.cartService.updateBasket(params));
     if (response) {
       this.store.dispatch(getCart(this.user));
-      this.commonService.openSuccessSnackBar();
+      this.commonService.openSuccessSnackBar('cart-updated');
     }
   }
 

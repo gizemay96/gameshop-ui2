@@ -30,6 +30,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule} from '@angular/material/menu';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
@@ -85,6 +86,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatSnackBarModule,
     MatSidenavModule,
     MatIconModule,
+    MatMenuModule,
     InfiniteScrollModule,
     NgxSkeletonLoaderModule.forRoot({ animation: 'progress', loadingText: 'This item is actually loading...' }),
     NgxMaskModule.forRoot(),

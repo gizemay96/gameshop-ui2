@@ -17,7 +17,7 @@
       {{product.description}}
     </div>
     <div class="genres d-flex align-items-center">
-      <div class="title">Genres</div>
+      <div class="title">{{'product-detail.genres' | translate}}</div>
       <div class="chips">
         <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
           <mat-chip class="example-box" cdkDrag *ngFor="let genre of genres">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="features d-flex align-items-center">
-      <div class="title">Features</div>
+      <div class="title">{{'product-detail.features' | translate}}</div>
       <div class="chips">
         <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
           <mat-chip class="example-box" cdkDrag *ngFor="let feature of features">
@@ -41,8 +41,8 @@
       <div class="price-add">
         <div class="price">$ {{product.price | number:'1.2-2'}}</div>
         <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">
-          <span *ngIf="user.id">Add to Cart</span>
-          <span *ngIf="!user.id">Please Login</span>
+          <span *ngIf="user.id">{{'product-detail.add-cart' | translate}}</span>
+          <span *ngIf="!user.id">{{'product-detail.please-login' | translate}}</span>
           <span>
             <img class="icon" src="../../../assets/icons/cart.png" alt="">
           </span>

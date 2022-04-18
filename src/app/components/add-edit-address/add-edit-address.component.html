@@ -8,35 +8,35 @@
       <form [formGroup]="addressForm" (submit)="saveAddress()" autocomplete="off">
         <!-- Name -->
         <mat-form-field appearance="fill" class="w-100">
-          <mat-label>Name</mat-label>
+          <mat-label>{{'edit-address.address-name' | translate}}</mat-label>
           <input matInput type="text" formControlName="title" class="w-100" maxlength="10">
         </mat-form-field>
 
         <!-- Building -->
         <mat-form-field appearance="fill" class="w-100">
-          <mat-label>Building</mat-label>
+          <mat-label>{{'edit-address.apartment' | translate}}</mat-label>
           <input matInput type="text" class="w-100" formControlName="building">
         </mat-form-field>
 
         <!-- Street -->
         <mat-form-field appearance="fill" class="w-100">
-          <mat-label>Street</mat-label>
+          <mat-label>{{'edit-address.street-name' | translate}}</mat-label>
           <input matInput type="text" class="w-100" formControlName="street">
         </mat-form-field>
 
         <!-- City -->
         <mat-form-field appearance="fill" class="w-100">
-          <mat-label>City</mat-label>
+          <mat-label>{{'edit-address.city' | translate}}</mat-label>
           <input matInput type="text" class="w-100" formControlName="city">
         </mat-form-field>
 
         <!-- Country -->
         <mat-form-field appearance="fill" class="w-100">
-          <mat-label>Country</mat-label>
+          <mat-label>{{'edit-address.country' | translate}}</mat-label>
           <input matInput type="text" class="w-100" formControlName="country">
         </mat-form-field>
 
-        <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">Save</button>
+        <button type="submit" class="btn bg-orange w-100 btn-orange btn-mdc">{{'general.save' | translate}}</button>
       </form>
 
     </div>

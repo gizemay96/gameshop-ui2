@@ -1,42 +1,52 @@
 <div class="navbar mb-3">
   <ul class="nav justify-content-between align-items-center w-100">
-
+    <!-- Logo -->
     <div><img routerLink="/home" src="../../../assets/img/logo.png" alt=""></div>
 
     <div class="d-flex nav-links">
+      <!-- Login -->
       <li *ngIf="!user.id" class="nav-item">
         <a class="nav-link" (click)="openLogin()">
-          <span>Login</span>
+          <span>{{'navbar.login' | translate}}</span>
           <img class="icon" src="../../../assets/icons/login.png" alt=""></a>
       </li>
+      <!-- Register -->
       <li *ngIf="!user.id" class="nav-item">
         <a class="nav-link" (click)="openRegister()">
-          <span>Register</span>
+          <span>{{'navbar.register' | translate}}</span>
           <img class="icon" src="../../../assets/icons/login.png" alt="">
         </a>
       </li>
+      <!-- Profile -->
       <li *ngIf="user.id" class="nav-item">
         <a class="nav-link" routerLink="/profile">
-          <span>Profile</span>
+          <span>{{'navbar.profile' | translate}}</span>
           <img class="icon" src="../../../assets/icons/profile.png" alt="">
         </a>
       </li>
+      <!-- Cart -->
       <li *ngIf="user.id" class="nav-item">
         <a class="nav-link" routerLink="/cart">
-          <span>Cart</span>
+          <span>{{'navbar.cart' | translate}}</span>
           <img class="icon" src="../../../assets/icons/cart.png" alt="">
           <span class="text-white cart-count"> {{userCartCount}} </span>
         </a>
       </li>
+      <!-- Language -->
       <li class="nav-item">
-        <a class="nav-link">
-          <span>EN</span>
+        <a class="nav-link" [matMenuTriggerFor]="menu">
+          {{ActiveLang | uppercase}}
+          <mat-menu #menu="matMenu">
+            <button (click)="changeLang('en')" mat-menu-item>EN</button>
+            <button (click)="changeLang('tr')" mat-menu-item>TR</button>
+          </mat-menu>
           <img class="icon" src="../../../assets/icons/language.png" alt="">
         </a>
       </li>
+      <!-- Log Out -->
       <li *ngIf="user.id" class="nav-item">
         <a class="nav-link" (click)="logOut()">
-          <span>LogOut</span>
+          <span>{{'navbar.log-out' | translate}}</span>
           <img class="icon" src="../../../assets/icons/login.png" alt="">
         </a>
       </li>

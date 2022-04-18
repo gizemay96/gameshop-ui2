@@ -45,7 +45,7 @@
               </div>
             </div>
             <button *ngIf="userCart$?.products?.length" class="btn bg-orange w-100 mt-4 text-white"
-              (click)="confirmationModal()">Clear Cart</button>
+              (click)="confirmationModal()">{{'check-out.clear-cart' | translate}}</button>
           </div>
 
           <div class="payment-side col-xl-5 col-lg-6 col-md-12 p-0">
@@ -77,18 +77,18 @@
                 <div class="texts">
                   <div class="total-item">
                     <div class="total-price">$ {{userCart$.totalPrice | number:'1.2-2'}} </div>
-                    <div class="total-count"> {{userCart$.totalQty}} Item</div>
+                    <div class="total-count"> {{userCart$.totalQty}} {{'check-out.item' | translate}}</div>
                   </div>
                   <div class="total-item">
                     <div class="price">$ {{deliveryPrice | number:'1.2-2'}} </div>
-                    <div class="delivery">Delivery</div>
+                    <div class="delivery">{{'check-out.delivery' | translate}}</div>
                   </div>
                 </div>
                 <div class="buttons d-flex">
                   <span class="total-price col-6 flex-xy-center">$ {{userCart$.totalPrice + deliveryPrice |
                     number:'1.2-2'}}</span>
                   <span class="goto-payment col-6" [class.disabled]="!userCart$?.products?.length"
-                    (click)="goToNextStep('payment')">Go to payment
+                    (click)="goToNextStep('payment')">{{'check-out.payment' | translate}}
                     <img src="../../../assets/icons/fluent_payment-28-filled.svg" alt="">
                     <img src="../../../assets/icons/arrow-rigth.png" alt="">
                   </span>
@@ -105,7 +105,7 @@
         <!-- Back Button -->
         <button (click)="paymentForm.reset()" class="btn btn-sm btn-orange" mat-button matStepperPrevious>
           <img class="back-icon" src="../../../assets/icons/back-arrow.svg" alt="">
-          Turn Back
+          {{'general.turn-back' | translate}} 
         </button>
         <div class="payment-page row">
           <!-- Card Side -->
@@ -131,14 +131,14 @@
             <form [formGroup]="paymentForm" (submit)="payment()" id="fillOrange">
               <!-- E-mail -->
               <mat-form-field appearance="fill" class="w-100">
-                <mat-label>CARD NUMBER</mat-label>
+                <mat-label>{{'payment.card-number' | translate}}</mat-label>
                 <input matInput mask="0000 0000 0000 0000" formControlName="cardNumber" type="text" class="w-100"
                   autocomplete="off">
               </mat-form-field>
 
               <!-- Password -->
               <mat-form-field appearance="fill" class="w-100">
-                <mat-label>CARDHOLDER NAME</mat-label>
+                <mat-label>{{'payment.card-name' | translate}}</mat-label>
                 <input matInput mask="S* S*" type="text" class="w-100" formControlName="cardName"
                   autocomplete="new-password">
               </mat-form-field>
@@ -146,7 +146,7 @@
               <div class="date-cvv row">
                 <!-- E-mail -->
                 <mat-form-field appearance="fill" class="col-6">
-                  <mat-label>EXPIRY DATE</mat-label>
+                  <mat-label>{{'payment.exp-date' | translate}} </mat-label>
                   <input matInput [showMaskTyped]="true" mask="00/00" formControlName="expDate" type="text"
                     class="w-100" autocomplete="off">
                 </mat-form-field>
@@ -160,7 +160,7 @@
               </div>
 
               <button [class.disabled]="paymentForm.invalid" type="submit"
-                class="btn bg-orange w-100 btn-orange btn-mdc">Pay</button>
+                class="btn bg-orange w-100 btn-orange btn-mdc">{{'payment.pay' | translate}}</button>
             </form>
           </div>
         </div>
@@ -180,7 +180,7 @@
               </h2>
             </div>
             <div class="flex-xy-center mt-4">
-              <button class="btn btn-orange" mat-button (click)="resetCartItems()">Go To Home</button>
+              <button class="btn btn-orange" mat-button (click)="resetCartItems()">{{'general.go-home' | translate}}</button>
             </div>
           </div>
         </div>

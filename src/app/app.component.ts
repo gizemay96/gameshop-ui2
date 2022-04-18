@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
   ) {
     translate.addLangs(['en', 'tr']);
     translate.setDefaultLang('en');
+    sessionStorage.setItem('defaultLang' , 'en');
 
     this.store.select(getAuthResponse).subscribe(res => {
       this.user = res.userDetail || res;
