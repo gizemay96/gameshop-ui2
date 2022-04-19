@@ -3,31 +3,39 @@
     <div class="nav-items">
       <ul>
         <li *ngIf="user.id" class="nav-item">
-          <a class="nav-link" (click)="navbarActions('/cart' , true)">
+          <a class="nav-link" (click)="navbarActions('/cart' , '' , true)">
             <span class="text-white cart-count">{{userCartCount$}} </span>
             <img class="icon" src="../../../assets/icons/cart.png" alt="">
-            <span style="padding-left: 5px;">Cart</span>
+            <span style="padding-left: 5px;">{{'navbar.cart' | translate}}</span>
           </a>
         </li>
         <li *ngIf="!user.id" class="nav-item">
           <a class="nav-link" (click)="navbarActions('openLogin')"> <img class="icon"
-              src="../../../assets/icons/login.png" alt="">Login</a>
+              src="../../../assets/icons/login.png" alt="">{{'navbar.login' | translate}}</a>
         </li>
         <li *ngIf="!user.id" class="nav-item">
           <a class="nav-link" (click)="navbarActions('openRegister')"> <img class="icon"
-              src="../../../assets/icons/login.png" alt=""> Register</a>
+              src="../../../assets/icons/login.png" alt=""> {{'navbar.register' | translate}}</a>
         </li>
         <li *ngIf="user.id" class="nav-item">
-          <a class="nav-link" (click)="navbarActions('/profile' , true)"> <img class="icon" src="../../../assets/icons/profile.png" alt="">
-            Profile</a>
+          <a class="nav-link" (click)="navbarActions('/profile' , '' , true)"> <img class="icon" src="../../../assets/icons/profile.png" alt="">
+            {{'navbar.profile' | translate}}</a>
         </li>
         <li *ngIf="user.id" class="nav-item">
           <a class="nav-link" (click)="navbarActions('logOut')"> <img class="icon" src="../../../assets/icons/login.png"
-              alt="">LogOut</a>
+              alt="">{{'navbar.log-out' | translate}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"> <img class="icon" src="../../../assets/icons/language.png" alt=""> EN</a>
-        </li>
+         <!-- Language -->
+      <li class="nav-item">
+        <a class="nav-link" [matMenuTriggerFor]="menu">
+          <img class="icon" src="../../../assets/icons/language.png" alt="">
+          {{ActiveLang | uppercase}}
+          <mat-menu #menu="matMenu" style="margin-left: 15px;">
+            <button [class.active-lang]="ActiveLang === 'en'" class="nav-item" (click)="navbarActions('changeLang' , 'en')" mat-menu-item>EN</button>
+            <button [class.active-lang]="ActiveLang === 'tr'" class="nav-item" (click)="navbarActions('changeLang' , 'tr')" mat-menu-item>TR</button>
+          </mat-menu>
+        </a>
+      </li>
       </ul>
     </div>
   </mat-drawer>

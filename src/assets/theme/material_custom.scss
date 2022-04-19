@@ -218,3 +218,17 @@ mat-form-field {
   color: white;
   padding: 20px 20px 20px 0;
 }
+
+.mat-menu-panel{
+  margin-left: 15px;
+  background: #020201c9;
+
+  .mat-menu-item{
+    color: orange;
+  }
+
+  .active-lang{
+    background: #484848b8;
+  }
+
+}

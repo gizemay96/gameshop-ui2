@@ -24,7 +24,7 @@
   }
 }
 
-.product-list {
+.page-list {
   padding-top: 90px;
 
   .list-item {
@@ -42,46 +42,35 @@
       padding: 0;
     }
 
-    .news-image-case {
-      .news-img {
-        filter: brightness(0.5);
-        @extend .list-item-img;
-      }
-
-      .news-title {
-        position: absolute;
-        margin-left: 0.5vw;
-        width: 14%;
-        color: wheat;
-        margin-top: -36vh;
-        font-weight: bold;
-        font-size: 15px;
-      }
-
-      .news-description {
-        color: aliceblue;
-        position: absolute;
-        width: 14%;
-        font-size: 13px;
-        height: 80px;
-        overflow: hidden;
-        margin-left: 0.5vw;
-        margin-top: -15vh;
-        opacity: 0;
-      }
-
-      &:hover {
-        .list-item-img {
-          filter: blur(3px) brightness(0.2);
-        }
-
-        .news-description {
-          opacity: 1;
-          transition: opacity 1.5s;
-        }
-      }
-
+    .news-desc{
+      height: 85px;
+      overflow: hidden;
+      margin-top: 11vh;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0;
     }
+
+      .news-img {
+        img{
+          filter: brightness(0.5);
+
+        }
+        @extend .list-item-img;
+
+        &:hover {
+          img {
+            filter: blur(3px) brightness(0.2);
+          }
+          .news-desc {
+            opacity: 1;
+            transition: opacity 1.5s;
+          }
+        }
+
+      }
+
+
   }
 
   .list-item-footer {
@@ -89,7 +78,7 @@
     justify-content: center;
     padding: 15px 0;
 
-    .price-add {
+    .list-item-add {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -97,13 +86,14 @@
       border: 1px solid gray;
       border-radius: 10px;
 
-      .price {
+      .list-item-price {
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
         padding: 5px;
         background: rgba(239, 127, 26, 0.39);
         width: 70px;
         text-align: center;
+
       }
 
       .add-button {

@@ -5,7 +5,7 @@
 
       <!-- Order Step -->
       <mat-step>
-        <ng-template matStepLabel>Order</ng-template>
+        <ng-template matStepLabel>{{'cart-stepper.order' | translate}}</ng-template>
         <div class="order-tab row w-100">
 
           <div class="left-side  col-xl-7 col-lg-6 col-md-12">
@@ -101,7 +101,7 @@
 
       <!-- Payment Step -->
       <mat-step>
-        <ng-template matStepLabel>Payment</ng-template>
+        <ng-template matStepLabel>{{'cart-stepper.payment' | translate}}</ng-template>
         <!-- Back Button -->
         <button (click)="paymentForm.reset()" class="btn btn-sm btn-orange" mat-button matStepperPrevious>
           <img class="back-icon" src="../../../assets/icons/back-arrow.svg" alt="">
@@ -168,7 +168,7 @@
 
       <!-- Success Message -->
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
+        <ng-template matStepLabel>{{'cart-stepper.done' | translate}}</ng-template>
         <div class="order-success-step d-flex justify-content-center">
           <div class="message-actions mt-5">
             <div class="flex-xy-center">

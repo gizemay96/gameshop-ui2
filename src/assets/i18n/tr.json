@@ -101,5 +101,10 @@
     },
     "game-news": {
         "read-more": "Devamını Oku..."
+    },
+    "cart-stepper": {
+        "order": "Sipariş",
+        "payment": "Ödeme",
+        "done": "Tamamlandı"
     }
 }

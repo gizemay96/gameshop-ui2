@@ -16,14 +16,14 @@
   <div *ngIf="!loading" class="vertical-line full-width"></div>
   <mat-progress-bar *ngIf="loading" class="full-width" mode="indeterminate"></mat-progress-bar>
 
-  <div class="product-list">
+  <div class="page-list">
     <!-- Product List -->
     <div class=" d-flex align-items-center row gx-5" *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
-      <div class="list-item col-lg-3 col-sm-6 mb-5" *ngFor="let product of products">
+      <div class="list-item col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let product of products">
         <img class="list-item-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
         <div class="list-item-footer">
-          <div class="price-add">
-            <div class="price">$ {{product.price}}</div>
+          <div class="list-item-add">
+            <div class="list-item-price">$ {{product.price}}</div>
             <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">{{'product-detail.add-cart'
               | translate}} <span><img class="icon" src="../../../assets/icons/cart.png" alt=""></span></div>
             <img style="display: none;" [src]="product.imageLogo" alt="">
@@ -34,16 +34,22 @@
 
     <!-- News List -->
     <ng-template class="news" #newsListElement>
-      <span class=" d-flex align-items-center row gx-5" *ngIf="!loading">
-        <div class="list-item col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let item of news">
-          <div class="news-image-case">
-            <img class="news-img" [src]="item.image">
-            <div class="news-title">{{item.title}}</div>
-            <div class="news-description">{{item.description}}</div>
+      <span class="flex-xy-center row gx-5" *ngIf="!loading">
+        <div class="list-item col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5 flex-xy-center" style="flex-direction: column;"
+          *ngFor="let item of news">
+
+          <div class="card bg-dark text-white news-img">
+            <img [src]="item.image" class="news-img" alt="..."
+              onerror="this.src = '../../../assets/img/default_news.jpg';">
+            <div class="card-img-overlay">
+              <h5 class="card-title mt-4">{{item.title}}</h5>
+              <p class="news-desc">{{item.description}}</p>
+            </div>
           </div>
+
           <div class="list-item-footer">
-            <div class="price-add">
-              <div class="price"><img style="width: 30px;" [src]="item.imageLogo" alt=""></div>
+            <div class="list-item-add">
+              <div class="list-item-price"><img style="width: 30px;" [src]="item.imageLogo" alt=""></div>
               <a [href]="item.url" target="_blank">
                 <div [class.disabled]="!user.id" class="add-button">
                   {{'game-news.read-more' | translate}}
@@ -52,6 +58,7 @@
               <img style="display: none;" [src]="item.imageLogo" alt="">
             </div>
           </div>
+
         </div>
       </span>
     </ng-template>
@@ -61,7 +68,7 @@
   <!-- Sketlon -->
   <div class="sketlon" *ngIf="loading">
     <div class="item row gx-5 text-center" *ngFor="let list of [1,2,3]">
-      <app-sketlon style="height: 350px;margin: 15px 0;" class="col-lg-3 col-sm-6 mb-5 sketlon-img"
+      <app-sketlon style="height: 350px;margin: 15px 0;" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5 sketlon-img"
         *ngFor="let list of [1,2,3,4]"></app-sketlon>
     </div>
   </div>

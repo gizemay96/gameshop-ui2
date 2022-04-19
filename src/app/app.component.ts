@@ -29,8 +29,9 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {
     translate.addLangs(['en', 'tr']);
-    translate.setDefaultLang('en');
-    sessionStorage.setItem('defaultLang' , 'en');
+    const defaultLang = sessionStorage.getItem('defaultLang') || 'en';
+    translate.setDefaultLang(defaultLang);
+    sessionStorage.setItem('defaultLang', defaultLang);
 
     this.store.select(getAuthResponse).subscribe(res => {
       this.user = res.userDetail || res;
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(autoLogin());
   }
 
-  navbarActions(action, forRouting = false) {
+  navbarActions(action, actionValue, forRouting = false) {
     if (forRouting) {
       this.router.navigate([action]);
       setTimeout(() => {
@@ -54,7 +55,11 @@ export class AppComponent implements OnInit {
       }, 150);
       return;
     }
-    this.navbar[action]();
+    this.navbar[action](actionValue);
+  }
+
+  get ActiveLang() {
+    return sessionStorage.getItem('defaultLang');
   }
 
 

@@ -98,5 +98,10 @@
     },
     "game-news": {
         "read-more": "Read More..."
+    },
+    "cart-stepper": {
+        "order": "Order",
+        "payment": "Payment",
+        "done": "Done"
     }
 }

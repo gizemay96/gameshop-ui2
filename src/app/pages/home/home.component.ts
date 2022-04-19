@@ -85,10 +85,10 @@ export class HomeComponent implements OnInit {
   }
 
   loadMore() {
-    this.loadMoreProgress = true;
     const noMoreProduct = this.limit * this.page > this.totalCount;
     if (!this.loadMoreProgress && (!noMoreProduct && this.products?.length > 0) || this.newsTotalCount > this.news.length) {
-      setTimeout(() => { this.page++; this.getPage(this.activeTab); }, 900);
+      this.loadMoreProgress = true;
+      setTimeout(() => { this.page++; this.getPage(this.activeTab); }, 1100);
     } else {
       this.loadMoreProgress = false;
     }

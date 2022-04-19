@@ -37,8 +37,8 @@
         <a class="nav-link" [matMenuTriggerFor]="menu">
           {{ActiveLang | uppercase}}
           <mat-menu #menu="matMenu">
-            <button (click)="changeLang('en')" mat-menu-item>EN</button>
-            <button (click)="changeLang('tr')" mat-menu-item>TR</button>
+            <button [class.active-lang]="ActiveLang === 'en'" (click)="changeLang('en')" mat-menu-item>EN</button>
+            <button [class.active-lang]="ActiveLang === 'tr'" (click)="changeLang('tr')" mat-menu-item>TR</button>
           </mat-menu>
           <img class="icon" src="../../../assets/icons/language.png" alt="">
         </a>
