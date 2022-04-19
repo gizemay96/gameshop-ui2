@@ -62,5 +62,9 @@ export class AppComponent implements OnInit {
     return sessionStorage.getItem('defaultLang');
   }
 
+  scrollTop(){
+    window.scrollTo(0,0)
+  }
+
 
 }

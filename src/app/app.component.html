@@ -40,6 +40,11 @@
     </div>
   </mat-drawer>
   <mat-drawer-content>
+   <div class="scroll-btn">
+    <button (click)="scrollTop()" class="btn-home-scroll btn btn-sm">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </button>
+   </div>
     <div class="container">
       <!-- Navbar -->
       <app-navbar [userCartCount]="userCartCount$" #nav [sideNav]="drawer"></app-navbar>
