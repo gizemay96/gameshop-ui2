@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Rating
 import { NgxStarRatingModule } from 'ngx-star-rating';
@@ -51,6 +51,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SketlonComponent } from './components/sketlon/sketlon.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { CommonInterceptor } from './interceptor/common.interceptor';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     
 
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS , useClass: CommonInterceptor , multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

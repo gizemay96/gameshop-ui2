@@ -8,10 +8,6 @@ import { of } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  token = window.sessionStorage.getItem('token');
-  httpOptions = {
-    headers: { Authorization: `${this.token}` },
-  };
 
   constructor(
     private http: HttpClient
@@ -20,7 +16,7 @@ export class UserService {
 
   editUser(userId: any , editedForm: any) {
     const requestData = { id: userId, ...editedForm };
-    const request = this.http.put(`${env.url}/users`, requestData, this.httpOptions);
+    const request = this.http.put(`${env.url}/users`, requestData);
     return request.pipe(map((res: any) => res.payload || []), catchError((err) => of(err)));
   }
 

@@ -16,29 +16,22 @@ export class CartService {
 
   constructor(private http: HttpClient, private commonService: CommonService, private authService: AuthService) { }
 
-  getToken() {
-    let token = window.sessionStorage.getItem('token');
-    return {
-      headers: { Authorization: `${token}` },
-    };
-  }
-
   // GET USER BASKET FROM DB
   fetchUserBasket(userId: string) {
-    const request = this.http.get(`${env.url}/carts/${userId}`, this.getToken());
+    const request = this.http.get(`${env.url}/carts/${userId}`);
     return request.pipe(map((res: any) => res.payload || {}), catchError((err) => of(err)));
   }
 
   // UPDATE BASKET ITEMS
   updateBasket(params: any) {
-    const request = this.http.post(`${env.url}/carts`, params, this.getToken());
+    const request = this.http.post(`${env.url}/carts`, params);
     return request.pipe(map((res: any) => res.payload || {}), catchError((err) => of(err)));
   }
 
   // DELETE ALL PRODUCTS
   resetCart(params: any) {
     const query = this.commonService.getQuery(params);
-    const request = this.http.delete(`${env.url}/carts?${query}`, this.getToken());
+    const request = this.http.delete(`${env.url}/carts?${query}`);
     return request.pipe(map((res: any) => res.payload || {}), catchError((err) => of(err)));
   }
 }
