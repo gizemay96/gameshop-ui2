@@ -1,3 +1,5 @@
+@import "_veriables.scss";
+
 .product-detail {
   padding: 35px 30px;
   padding-bottom: 0 !important;
@@ -18,7 +20,7 @@
     font-size: 14px;
     line-height: 198.19%;
     letter-spacing: 0.025em;
-    color: #FFFFFF;
+    color: $color-white;
     height: 220px;
     overflow: auto;
   }
@@ -57,7 +59,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: $color-white;
       border: 1px solid gray;
       border-radius: 10px;
 

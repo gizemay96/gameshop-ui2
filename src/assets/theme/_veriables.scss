@@ -1,8 +1,12 @@
+// colors
 $color-orange: #EF7F1A;
 $color-black: #010101;
 $color-green: rgb(0, 201, 0);
-$bg-gray: rgba(1, 1, 1, 0.76);
 $light-gray: rgb(167, 167, 167);
+$color-white: #eaeaea;
+
+
+$bg-gray: rgba(1, 1, 1, 0.76);
 
 
 .bg-orange {
@@ -10,22 +14,22 @@ $light-gray: rgb(167, 167, 167);
 }
 
 .btn-gray {
-  color: white;
+  color: $color-white;
   background-color: $light-gray;
   border-radius: 15px;
 
   &:hover {
-    color: white;
+    color: $color-white;
   }
 }
 
 .btn-orange {
-  color: white;
+  color: $color-white;
   border-radius: 15px;
   background-color: $color-orange;
 
   &:hover {
-    color: white;
+    color: $color-white;
   }
 }
 

@@ -1,3 +1,5 @@
+@import "_veriables.scss";
+
 .navbar {
   padding-top: 36px;
 
@@ -10,7 +12,7 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: white;
+    color: $color-white;
     font-weight: 300;
 
     .icon {
@@ -26,7 +28,7 @@
     margin-top: -27px;
     font-size: 14px;
     font-weight: 600;
-    color: orange !important;
+    color: $color-orange !important;
   }
 }
 

@@ -48,7 +48,7 @@
             border-radius: 10px;
             border: 1px solid gray;
             background-color: black;
-            color: white;
+            color: $color-white;
             margin-bottom: -15px;
         }
 
@@ -69,7 +69,7 @@
     .inputs {
         display: flex;
         align-items: center;
-        color: white;
+        color: $color-white;
         border: 1px solid gray;
         border-radius: 10px;
         width: 90%;

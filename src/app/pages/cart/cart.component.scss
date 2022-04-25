@@ -9,7 +9,7 @@
 
 
   .order-side {
-    color: white;
+    color: $color-white;
     max-height: 605px;
     overflow: auto;
 
@@ -89,7 +89,7 @@
 
       .increment {
         background: $color-orange;
-        color: white;
+        color: $color-white;
       }
     }
   }
@@ -103,7 +103,7 @@
 
 .addresses{
   .inputs {
-    color: white !important;
+    color: $color-white !important;
     display: flex;
     align-items: center;
     color: rgba(255, 255, 255, 0.43);
@@ -217,7 +217,7 @@ mat-stepper {
       position: absolute;
       margin-top: -105px;
       margin-left: 17px;
-      color: white;
+      color: $color-white;
       font-weight: 600;
       letter-spacing: 5px;
     }
