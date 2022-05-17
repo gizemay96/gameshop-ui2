@@ -20,6 +20,16 @@ export class CommonService {
           });
      }
 
+     errorSnackBar(errorMessage = "") {
+
+           this._snackBar.open(`${errorMessage}  😢`, 'Ok', {
+                horizontalPosition: 'right',
+                verticalPosition: 'top',
+                panelClass: 'error-snackbar',
+                duration: 9000
+           });
+      }
+
      getProductCategories() {
           return [
                {

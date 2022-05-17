@@ -13,7 +13,7 @@ export class AuthService {
 
   login(loginForm: any) {
     const request = this.http.post(`${env.url}/users/signin`, loginForm);
-    return request.pipe(map((response: any) => response.payload || {}), catchError((err) => of(err)));
+    return request.pipe(map((response: any) => response.payload || {}));
   }
 
   register(registerData: any) {

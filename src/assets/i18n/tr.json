@@ -13,11 +13,8 @@
         "go-home": "Anasayfa"
     },
     "error-message": {
-        "required": "Bu Alan Zorunludur !",
-        "min-character": "Lütfen minimum {{character}} karakter giriniz.",
-        "select-delivery-address": "Lütfen Teslimat Adresi Seçiniz.",
-        "empty-order": "Sepetinizde Ürün Bulunmamaktadır.",
-        "invalid-email": "Geçerli Bir Email Adresi Giriniz."
+        "error-header": "Hata ",
+        "empty-order": "Sepetinizde Ürün Bulunmamaktadır."
     },
     "alert-messages": {
         "delete-product": "Ürünü silmek istediğinizden emin misiniz?",

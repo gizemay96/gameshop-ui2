@@ -13,6 +13,7 @@
         "go-home": "Go To Home"
     },
     "error-message": {
+        "error-header": "Error ",
         "select-delivery-address": "Please Select Delivery Address"
     },
     "alert-messages": {

@@ -25,13 +25,13 @@ export class CartService {
   // UPDATE BASKET ITEMS
   updateBasket(params: any) {
     const request = this.http.post(`${env.url}/carts`, params);
-    return request.pipe(map((res: any) => res.payload || {}), catchError((err) => of(err)));
+    return request.pipe(map((res: any) => res), catchError((err) => of(err)));
   }
 
   // DELETE ALL PRODUCTS
   resetCart(params: any) {
     const query = this.commonService.getQuery(params);
     const request = this.http.delete(`${env.url}/carts?${query}`);
-    return request.pipe(map((res: any) => res.payload || {}), catchError((err) => of(err)));
+    return request.pipe(map((res: any) => res), catchError((err) => of(err)));
   }
 }

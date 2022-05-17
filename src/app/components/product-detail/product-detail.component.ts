@@ -46,7 +46,7 @@ export class ProductDetailComponent implements OnInit {
       increaseOrDecrease: 1
     };
     const response = await lastValueFrom(this.cartService.updateBasket(params));
-    if (response) {
+    if (response && !response.error) {
       this.store.dispatch(getCart(this.user));
       this.commonService.openSuccessSnackBar('cart-updated');
     }

@@ -118,9 +118,11 @@ export class CartComponent implements OnInit {
       increaseOrDecrease: 1
     };
     const response = await lastValueFrom(this.cartService.updateBasket(params));
-    if (response) {
+    if (response && !response.error) {
       this.store.dispatch(getCart(this.user));
       this.commonService.openSuccessSnackBar('cart-updated');
+    } else {
+      this.progressProductId = '0';
     }
   }
 
@@ -131,11 +133,12 @@ export class CartComponent implements OnInit {
       productId: product.product._id,
       increaseOrDecrease: -1
     };
-    const responseData = await lastValueFrom(this.cartService.updateBasket(params));
-    if (responseData.error) {
-    } else {
+    const response = await lastValueFrom(this.cartService.updateBasket(params));
+    if (response && !response.error) {
       this.store.dispatch(getCart(this.user));
       this.commonService.openSuccessSnackBar('cart-updated');
+    } else {
+      this.progressProductId = '0';
     }
   }
 

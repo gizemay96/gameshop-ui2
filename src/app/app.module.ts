@@ -51,7 +51,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SketlonComponent } from './components/sketlon/sketlon.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { CommonInterceptor } from './interceptor/common.interceptor';
+import { CommonInterceptor } from './_helpers/common.interceptor';
 
 @NgModule({
   declarations: [

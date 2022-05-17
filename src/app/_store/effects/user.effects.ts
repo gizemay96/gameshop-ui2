@@ -27,11 +27,9 @@ export class userEffects {
                          email: action.email,
                          password: action.password
                     }).pipe(map((data) => {
-                         if (!data.error) {
+                         if (data) {
                               this.authService.setUserToLocalStorage(data)
                               this.getUserDetail(data.userDetail);
-                              return authResponse(data);
-                         } else {
                               return authResponse(data);
                          }
                     }));
