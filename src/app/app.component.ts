@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
 
     setTimeout(() => {
       this.drawer.toggle();
-    }, 200);
+    }, 160);
   }
 
   get ActiveLang() {
