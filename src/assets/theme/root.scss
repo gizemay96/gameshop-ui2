@@ -183,14 +183,14 @@ select:-webkit-autofill:focus {
 }
 
 .lg-modal-close-btn {
-  width: 80px;
+  width: 55px;
   position: absolute;
-  margin: -80px;
+  margin: -75px 0px 0px -55px;
   cursor: pointer;
   background: $bg-gray;
   border-radius: 50%;
   border: navajowhite;
-  padding: 13px;
+  padding: 5px;
 }
 
 .paging {
@@ -235,4 +235,20 @@ select:-webkit-autofill:focus {
     margin-top: 93vh;
     margin-right: 15px;
   }
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-60 {
+  width: 60%;
 }

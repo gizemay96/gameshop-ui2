@@ -80,7 +80,7 @@
         "clear-cart": "Clear Cart",
         "total-price": "Total Price",
         "select-address": "Select Delivery Address",
-        "payment": "Go to payment",
+        "payment": "Payment",
         "item": "Item",
         "delivery": "Delivery"
     },
@@ -95,7 +95,7 @@
         "pc-games": "PC Games",
         "playstation": "Playstation",
         "xbox": "Xbox",
-        "nintendo": "nintendo"
+        "nintendo": "Nintendo"
     },
     "game-news": {
         "read-more": "Read More..."

@@ -44,7 +44,7 @@
                 </div>
               </div>
             </div>
-            <button *ngIf="userCart$?.products?.length" class="btn bg-orange w-100 mt-4 text-white"
+            <button *ngIf="userCart$?.products?.length" class="btn btn-orange btn-mdc w-80 mt-4 text-white"
               (click)="confirmationModal()">{{'check-out.clear-cart' | translate}}</button>
           </div>
 
@@ -103,9 +103,10 @@
       <mat-step>
         <ng-template matStepLabel>{{'cart-stepper.payment' | translate}}</ng-template>
         <!-- Back Button -->
-        <button (click)="paymentForm.reset()" class="btn btn-sm btn-orange" mat-button matStepperPrevious>
-          <img class="back-icon" src="../../../assets/icons/back-arrow.svg" alt="">
-          {{'general.turn-back' | translate}} 
+        <button (click)="paymentForm.reset()" class="btn btn-sm btn-orange flex-xy-center" mat-button
+          matStepperPrevious>
+          <img style="width: 13px; height:13px" class="back-icon m-0" src="../../../assets/icons/back-arrow.svg" alt="">
+          <span class="p-1"> {{'general.turn-back' | translate}} </span>
         </button>
         <div class="payment-page row">
           <!-- Card Side -->
@@ -180,7 +181,8 @@
               </h2>
             </div>
             <div class="flex-xy-center mt-4">
-              <button class="btn btn-orange" mat-button (click)="resetCartItems()">{{'general.go-home' | translate}}</button>
+              <button class="btn btn-orange w-80 btn-mdc" mat-button (click)="resetCartItems()">{{'general.go-home' |
+                translate}}</button>
             </div>
           </div>
         </div>
