@@ -43,8 +43,8 @@ export class userEffects {
                mergeMap((action) => {
                     return this.authService.register({ ...action }).pipe(map((data) => {
                          if (!data.error) {
-                              this.authService.setUserToLocalStorage(data)
                               data.userDetail.id = data.userDetail._id;
+                              this.authService.setUserToLocalStorage(data)
                               this.getUserDetail(data.userDetail);
                               return authResponse(data);
                          } else {
