@@ -13,8 +13,8 @@
         "go-home": "Anasayfa"
     },
     "error-message": {
-        "error-header": "Hata ",
-        "empty-order": "Sepetinizde Ürün Bulunmamaktadır."
+        "error-header": "Error ",
+        "select-delivery-address": "Lütfen Teslimat Adresi Seçiniz."
     },
     "alert-messages": {
         "delete-product": "Ürünü silmek istediğinizden emin misiniz?",

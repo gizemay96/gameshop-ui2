@@ -50,20 +50,21 @@ export class AppComponent implements OnInit {
   navbarActions(action, actionValue, forRouting = false) {
     if (forRouting) {
       this.router.navigate([action]);
-      setTimeout(() => {
-        this.drawer.toggle();
-      }, 150);
-      return;
+    } else {
+      this.navbar[action](actionValue);
     }
-    this.navbar[action](actionValue);
+
+    setTimeout(() => {
+      this.drawer.toggle();
+    }, 200);
   }
 
   get ActiveLang() {
     return sessionStorage.getItem('defaultLang');
   }
 
-  scrollTop(){
-    window.scrollTo(0,0)
+  scrollTop() {
+    window.scrollTo(0, 0)
   }
 
 

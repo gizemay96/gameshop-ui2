@@ -16,9 +16,9 @@
   <div *ngIf="!loading" class="vertical-line full-width"></div>
   <mat-progress-bar *ngIf="loading" class="full-width" mode="indeterminate"></mat-progress-bar>
 
-  <div class="page-list">
+  <div class="page-list flex-xy-center">
     <!-- Product List -->
-    <div class=" d-flex align-items-center row gx-5" *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
+    <div class=" d-flex align-items-center row gx-5 w-100" *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
       <div class="list-item col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let product of products">
         <img class="list-item-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
         <div class="list-item-footer">

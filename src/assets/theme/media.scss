@@ -32,13 +32,30 @@
 
 
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 770px) {
   .page-body {
     padding: 0 !important;
   }
 
+  .modal-body{
+    padding: 0 !important;
+  }
+
+  .mat-dialog-container{
+    padding: 20px 18px !important;
+  }
+
   .tabs {
     padding: 0px 35px;
+  }
+
+  .tab-list {
+    overflow: auto;
+
+    .nav {
+      display: inline-flex !important;
+      width: 250% !important;
+    }
   }
 
   .addresses {
@@ -82,10 +99,20 @@
   }
 
   .order-tab {
-
+    margin: 0 !important;
     .left-side {
       margin-bottom: 30px;
+      .info-case{
+        padding-left: 30px !important;
+      }
+      .btn-mdc {
+        width: 100%;
+      }
     }
+  }
+
+  .mat-horizontal-content-container {
+    padding: 0 !important;
   }
 
 }
