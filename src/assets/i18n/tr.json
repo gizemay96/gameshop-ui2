@@ -19,7 +19,8 @@
     "alert-messages": {
         "delete-product": "Ürünü silmek istediğinizden emin misiniz?",
         "empty-card": "Sepeti boşaltmak istediğinizden emin misiniz?",
-        "general-delete": "Silmek istediğinizden emin misiniz?"
+        "general-delete": "Silmek istediğinizden emin misiniz?",
+        "please-login": "Lütfen Üye Olun  Ya da Giriş Yapın"
     },
     "success-messages": {
         "cart-updated": "Sepet başarıyla güncellendi !"

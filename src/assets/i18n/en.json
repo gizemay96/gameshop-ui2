@@ -19,7 +19,8 @@
     "alert-messages": {
         "delete-product": "Are you sure you want to delete product ?",
         "empty-card": "Are you sure you want to empty the cart ?",
-        "general-delete": "Are you sure you want to delete {{item}} ?"
+        "general-delete": "Are you sure you want to delete {{item}} ?",
+        "please-login": "Please Login Or Register"
     },
     "success-messages": {
         "cart-updated": "Cart has been updated !"

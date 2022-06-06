@@ -28,14 +28,17 @@ export class CartComponent implements OnInit {
   user: User;
   userCart$: Cart;
   userAddresses$: Address[];
-  deliveryPrice = 0;
-  progressProductId = '0';
+
+  selectedAddress: Address;
+
   isError = false;
   errorMessage = '';
 
+  deliveryPrice = 0;
+  progressProductId = '0';
+
   paymentForm = new FormGroup({});
 
-  selectedAddress: any = '';
   activeTab = 0;
   orderedItems = 0;
 
@@ -88,12 +91,13 @@ export class CartComponent implements OnInit {
   }
 
   goToNextStep(whichStep = '') {
-    if (whichStep === 'payment' && this.selectedAddress.length === 0) {
+    if (whichStep === 'payment' && !this.selectedAddress) {
       this.isError = true;
       this.errorMessage = this.translate.instant('error-message.select-delivery-address');
     } else {
       this.myStepper.next();
       this.activeTab = this.myStepper.selectedIndex;
+      this.isError = false;
     }
   }
 
@@ -105,7 +109,7 @@ export class CartComponent implements OnInit {
         this.store.dispatch(getCart(this.user));
         this.goToNextStep();
         this.paymentForm.reset();
-        this.selectedAddress = '';
+        this.selectedAddress = null;
       }
     }
   }

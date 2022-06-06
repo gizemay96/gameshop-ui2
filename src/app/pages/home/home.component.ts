@@ -10,6 +10,7 @@ import { User } from '@app/types/user.type';
 import { getCart } from '@app/_store/actions/cart-actions';
 import { getAuthResponse } from '@app/_store/selectors/user-selector';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -40,7 +41,8 @@ export class HomeComponent implements OnInit {
     public dialog: MatDialog,
     private cartService: CartService,
     private store: Store,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private translate: TranslateService,
   ) {
     this.store.select(getAuthResponse).subscribe(res => {
       this.user = res.userDetail || res;
@@ -132,6 +134,10 @@ export class HomeComponent implements OnInit {
       title: item.name,
       url: item.url
     };
+  }
+
+  get tooltipMessage(){
+    return this.translate.instant('alert-messages.please-login');
   }
 
 

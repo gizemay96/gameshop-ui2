@@ -3,7 +3,6 @@ import { Address } from './address.type';
 
 export type User = {
   id: number;
-  _id: number;
   username: string;
   firstName: string;
   fullname?:string;

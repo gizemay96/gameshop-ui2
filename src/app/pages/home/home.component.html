@@ -18,14 +18,19 @@
 
   <div class="page-list flex-xy-center">
     <!-- Product List -->
-    <div class=" d-flex align-items-center row gx-5 w-100" *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
+    <div class=" d-flex align-items-center row gx-5 w-100"
+      *ngIf="(!loading && activeTab !== 'news'); else newsListElement">
       <div class="list-item col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5" *ngFor="let product of products">
         <img class="list-item-img" [src]="product.image" alt="" (click)="openProductDetail(product)">
         <div class="list-item-footer">
           <div class="list-item-add">
             <div class="list-item-price">$ {{product.price}}</div>
-            <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">{{'product-detail.add-cart'
-              | translate}} <span><img class="icon" src="../../../assets/icons/cart.png" alt=""></span></div>
+            <div [matTooltip]="!user.id ? tooltipMessage : ''" matTooltipClass="tooltip-red">
+              <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">
+                {{'product-detail.add-cart' | translate}}
+                <span><img class="icon" src="../../../assets/icons/cart.png" alt=""></span>
+              </div>
+            </div>
             <img style="display: none;" [src]="product.imageLogo" alt="">
           </div>
         </div>

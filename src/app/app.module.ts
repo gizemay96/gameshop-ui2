@@ -31,6 +31,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
@@ -89,6 +91,7 @@ import { CommonInterceptor } from './_helpers/common.interceptor';
     MatIconModule,
     MatMenuModule,
     InfiniteScrollModule,
+    MatTooltipModule,
     NgxSkeletonLoaderModule.forRoot({ animation: 'progress', loadingText: 'This item is actually loading...' }),
     NgxMaskModule.forRoot(),
 
