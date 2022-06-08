@@ -12,6 +12,7 @@ import { RegisterModalComponent } from '@app/components/register-modal/register-
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared.module';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CommonModule } from '@angular/common';
      ],
      imports: [
           CommonModule,
+          RouterModule,
           MaterialModule,
           SharedModule.forRoot(),
      ],
