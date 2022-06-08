@@ -1,6 +1,6 @@
 
 export type Product = {
-  _id: number;
+  _id: string;
   categoryId: string
   description: string;
   image: string;
@@ -9,4 +9,21 @@ export type Product = {
   rating: number;
   title: string;
 };
+
+export type getProductListRequestType = {
+  page: number,
+  categoryId: string,
+  limit: number,
+}
+
+export type getProductsResponseType =
+  {
+    responseMessage: string,
+    payload: {
+      products: Product[],
+      totalCount: number
+    },
+    isSucceed: boolean,
+    statusCode: number
+  }
 

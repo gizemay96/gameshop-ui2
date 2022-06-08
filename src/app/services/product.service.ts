@@ -4,6 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { CommonService } from './common.service';
 import { environment as env } from '../../environments/environment';
+import { getProductListRequestType, getProductsResponseType, Product } from '@app/types/product.type';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,12 @@ export class ProductService {
     private commonService: CommonService
   ) { }
 
-  getProductsWithPagination(params: any) {
-    delete params.items;
+  getProductsWithPagination(params: getProductListRequestType) {
     const query = this.commonService.getQuery(params);
-    const request = this.http.get<any[]>(`${env.url}/products?${query}`);
+    const request = this.http.get<getProductsResponseType>(`${env.url}/products?${query}`);
 
-    return request.pipe(map((res: any) => {
-      return res.payload || [];
-    }), catchError(() => of([])));
+    return request.pipe(map((res: getProductsResponseType) => {
+      return res.payload;
+    }), catchError(() => of({products:[] , totalCount: 0})));
   }
 }

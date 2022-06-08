@@ -20,8 +20,8 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  loading = false;
-  activeTab = 0;
+  loading: boolean = false;
+  activeTab: number = 0;
 
   user: User;
   userAddresses: Address[] = [];
@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.store.select(getAddressResponse).subscribe((res: Address[]) => {
+      console.log(res)
       this.userAddresses = res;
     });
   }

@@ -13,9 +13,9 @@ import { Store } from '@ngrx/store';
 })
 export class LoginModalComponent implements OnInit {
 
-  isLoading = false;
-  errorMessage = '';
-  isError = false;
+  isLoading: boolean = false;
+  errorMessage: string = '';
+  isError: boolean = false;
 
   loginForm = new FormGroup({
     email: new FormControl(null, [

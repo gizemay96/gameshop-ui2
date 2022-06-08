@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { authResponse } from '@app/types/authResponse.type';
+import { loginForm, registerForm } from '@app/types/forms.type';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
@@ -11,14 +13,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(loginForm: any) {
+  login(loginForm: loginForm) {
     const request = this.http.post(`${env.url}/users/signin`, loginForm);
-    return request.pipe(map((response: any) => response.payload || {}));
+    return request.pipe(map((response: authResponse) => response.payload || {}));
   }
 
-  register(registerData: any) {
+  register(registerData: registerForm) {
     const request = this.http.post(`${env.url}/users/signup`, registerData);
-    return request.pipe(map((response: any) => response.payload || {}), catchError((err) => of(err)));
+    return request.pipe(map((response: authResponse) => response.payload || {}), catchError((err) => of(err)));
   }
 
   logout() {

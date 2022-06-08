@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from '../app/pages/home/home.component'
-import { AuthGuardGuard } from './guards/auth-guard.guard';
-import { CartComponent } from './pages/cart/cart.component';
-import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent , canActivate:[AuthGuardGuard]},
-  { path: 'cart', component: CartComponent , canActivate:[AuthGuardGuard] },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+    data: {}
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule),
+    data: {}
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartPageModule),
+    data: {}
+  }
 ];
 
 @NgModule({

@@ -23,16 +23,19 @@ export class HomeComponent implements OnInit {
   user: User;
   categories: any;
   products: Product[];
-  news = [];
-  newsOffset = 0;
-  newsTotalCount = 0;
+
+  news: Array<[]> = [];
+  newsOffset: number = 0;
+  newsTotalCount: number = 0;
 
   loading: boolean = false;
   loadMoreProgress: boolean = false;
-  page: number = 1;
-  limit: number = 12;
+
   totalCount: number;
   activeTab: string = '';
+
+  page: number = 1;
+  limit: number = 12;
 
 
   constructor(
@@ -61,9 +64,11 @@ export class HomeComponent implements OnInit {
       let params = { page, categoryId, limit };
       // Get Product Data from service
       const response = await lastValueFrom(this.productService.getProductsWithPagination(params));
-      // if is not init action, merge products data
-      this.products = this.products?.length > 0 ? this.products.concat(response.products) : response.products;
-      this.totalCount = response.totalCount;
+      if (response) {
+        // if is not init action, merge products data
+        this.products = this.products?.length > 0 ? this.products.concat(response.products) : response.products;
+        this.totalCount = response.totalCount;
+      }
     } else { this.newsActions(); }
 
     setTimeout(() => {
@@ -136,7 +141,7 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  get tooltipMessage(){
+  get tooltipMessage() {
     return this.translate.instant('alert-messages.please-login');
   }
 

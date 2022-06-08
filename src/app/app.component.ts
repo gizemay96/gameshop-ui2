@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { getUserCart } from './_store/selectors/cart-selector';
 import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
+import { User } from './types/user.type';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   @ViewChild('nav') navbar: NavbarComponent;
   @ViewChild('drawer') drawer: MatDrawer;
 
-  user: any;
+  user: User;
   userCartCount$: Observable<any>;
 
   constructor(

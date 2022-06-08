@@ -1,14 +1,18 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "@app/services/auth.service";
-import { User } from "@app/types/user.type";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, mergeMap, of } from "rxjs";
+// Actions
 import { getUserAddresses } from "../actions/address-actions";
 import { getCart } from "../actions/cart-actions";
 import { autoLogin, autoLogout, registerUser } from "../actions/user-actions";
 import { loginUser, authResponse } from "../actions/user-actions";
+// Response Types
+import { authResponsePayload } from "@app/types/authResponse.type";
+import { User } from "@app/types/user.type";
+import { loginForm, registerForm } from "@app/types/forms.type";
 
 @Injectable()
 export class userEffects {
@@ -22,16 +26,16 @@ export class userEffects {
      loginUser$ = createEffect(() => {
           return this.actions$.pipe(
                ofType(loginUser),
-               mergeMap((action) => {
+               mergeMap((action: loginForm) => {
                     return this.authService.login({
                          email: action.email,
                          password: action.password
-                    }).pipe(map((data) => {
+                    }).pipe(map((data: authResponsePayload) => {
                          if (data) {
                               this.authService.setUserToLocalStorage(data)
                               this.getUserDetail(data.userDetail);
-                              return authResponse(data);
                          }
+                         return authResponse(data);
                     }));
                }))
      });
@@ -40,16 +44,14 @@ export class userEffects {
      registerUser$ = createEffect(() => {
           return this.actions$.pipe(
                ofType(registerUser),
-               mergeMap((action) => {
-                    return this.authService.register({ ...action }).pipe(map((data) => {
-                         if (!data.error) {
+               mergeMap((action: registerForm) => {
+                    return this.authService.register({ ...action }).pipe(map((data: authResponsePayload) => {
+                         if (data) {
                               data.userDetail.id = data.userDetail._id;
                               this.authService.setUserToLocalStorage(data)
                               this.getUserDetail(data.userDetail);
-                              return authResponse(data);
-                         } else {
-                              return authResponse(data);
                          }
+                         return authResponse(data);
                     }));
                }))
      });

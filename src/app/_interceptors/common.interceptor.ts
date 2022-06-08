@@ -16,11 +16,11 @@ export class CommonInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = window.sessionStorage.getItem('token');
-    return next.handle(request.clone({ setHeaders: { Authorization: `${token}` } }))
+    return next.handle(request.clone({ setHeaders: { Authorization: `${token}` } })) // set token to all requet
       .pipe(map((res: any) => res),
         catchError((error: HttpErrorResponse) => {
           let errorMessage = this.setError(error);
-          this.commonService.errorSnackBar(errorMessage);
+          this.commonService.errorSnackBar(errorMessage); // if there is any error , show on snack bar
           return throwError(error);
         }));
   }

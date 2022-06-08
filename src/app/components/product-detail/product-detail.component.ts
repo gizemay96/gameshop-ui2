@@ -16,8 +16,8 @@ import { lastValueFrom } from 'rxjs';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: any;
-  rating: any;
+  product: Product;
+  rating: number;
   user: User;
 
   genres = ['Action', 'Shooter'];

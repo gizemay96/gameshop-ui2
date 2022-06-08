@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./confirmation-modal.component.scss']
 })
 export class ConfirmationModalComponent implements OnInit {
-  confirmationMessage = '';
+  confirmationMessage: string = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

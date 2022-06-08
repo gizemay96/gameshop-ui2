@@ -11,11 +11,9 @@ import { lastValueFrom } from 'rxjs';
 })
 export class EditProfileComponent implements OnInit {
 
-
-
-  loading = false;
-  errorMessage = '';
-  isError = false;
+  loading: boolean = false;
+  errorMessage: string = '';
+  isError: boolean = false;
 
   editForm = new FormGroup({});
 

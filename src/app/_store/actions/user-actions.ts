@@ -1,7 +1,8 @@
+import { loginForm, registerForm } from "@app/types/forms.type";
 import { createAction, props } from "@ngrx/store";
 
-export const loginUser = createAction('Login User' , props<any>());
-export const registerUser = createAction('Register User', props<any>());
+export const loginUser = createAction('Login User' , props<loginForm>());
+export const registerUser = createAction('Register User', props<registerForm>());
 export const editUser = createAction('Edit User', props<any>());
 
 

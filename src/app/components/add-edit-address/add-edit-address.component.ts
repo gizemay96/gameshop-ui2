@@ -12,9 +12,9 @@ import { lastValueFrom } from 'rxjs';
 export class AddEditAddressComponent implements OnInit {
 
 
-  loading = false;
-  errorMessage = '';
-  isError = false;
+  loading: boolean = false;
+  errorMessage: string = '';
+  isError: boolean = false;
 
   addressForm = new FormGroup({});
 

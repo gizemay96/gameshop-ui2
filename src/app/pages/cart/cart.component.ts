@@ -103,7 +103,7 @@ export class CartComponent implements OnInit {
 
   async payment() {
     if (this.paymentForm.valid) {
-      const responseData = await lastValueFrom(this.cartService.resetCart({ userId: this.user.id }));
+      const responseData = await lastValueFrom(this.cartService.resetCart(this.user.id));
       if (!responseData.error) {
         this.orderedItems = this.userCart$.products.length;
         this.store.dispatch(getCart(this.user));
@@ -147,10 +147,7 @@ export class CartComponent implements OnInit {
   }
 
   async resetCart() {
-    const params = {
-      userId: this.user.id,
-    };
-    const response = await lastValueFrom(this.cartService.resetCart(params));
+    const response = await lastValueFrom(this.cartService.resetCart(this.user.id));
     if (response.error) {
     } else {
       this.store.dispatch(getCart(this.user));

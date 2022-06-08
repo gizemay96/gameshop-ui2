@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { User } from '@app/types/user.type';
 import { autoLogout } from '@app/_store/actions/user-actions';
 import { getUserCart } from '@app/_store/selectors/cart-selector';
 import { getAuthResponse } from '@app/_store/selectors/user-selector';
@@ -20,9 +22,10 @@ export class NavbarComponent implements OnInit {
   @Input() navActions: any;
   @Input() userCartCount: any;
 
-  user: any;
+  user: User;
 
   constructor(
+    public router: Router,
     public dialog: MatDialog,
     public translate: TranslateService,
     private store: Store,
@@ -56,6 +59,10 @@ export class NavbarComponent implements OnInit {
 
   get ActiveLang(){
    return sessionStorage.getItem('defaultLang');
+  }
+
+  navigate(page) {
+    this.router.navigateByUrl(page);
   }
 
 }

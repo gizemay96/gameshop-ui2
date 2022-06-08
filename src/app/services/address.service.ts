@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Address } from '../types/address.type';
+import { Address, addressResponseType } from '../types/address.type';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -15,22 +15,22 @@ export class AddressService {
 
   getUserAddress(userId: string) {
     const request = this.http.get(`${env.url}/users/userAddresses/${userId}`);
-    return request.pipe(map((res: any) => res || []), catchError(() => of([])));
+    return request.pipe(map((res: addressResponseType) => res || []), catchError(() => of([])));
   }
 
   addUserAddress(address: Address) {
     const request = this.http.post(`${env.url}/users/userAddresses`, address);
-    return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
+    return request.pipe(map((res: addressResponseType) => res.payload), catchError((err) => of(err)));
   }
 
   editUserAddress(address: Address) {
     const request = this.http.put(`${env.url}/users/userAddresses`, address);
-    return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
+    return request.pipe(map((res: addressResponseType) => res.payload), catchError((err) => of(err)));
   }
 
   deleteAddress(addressId: string) {
     const request = this.http.delete(`${env.url}/users/userAddresses/${addressId}`);
-    return request.pipe(map((res: any) => res.payload || null), catchError((err) => of(err)));
+    return request.pipe(map((res: any) => res.payload), catchError((err) => of(err)));
   }
 
 }

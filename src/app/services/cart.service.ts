@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { CommonService } from './common.service';
 import { AuthService } from './auth.service';
+import { cartResponseTye, updateCartRequestType } from '@app/types/cart.type';
 
 @Injectable({
   providedIn: 'root',
@@ -19,19 +20,18 @@ export class CartService {
   // GET USER BASKET FROM DB
   fetchUserBasket(userId: string) {
     const request = this.http.get(`${env.url}/carts/${userId}`);
-    return request.pipe(map((res: any) => res.payload || {}), catchError((err) => of(err)));
+    return request.pipe(map((res: cartResponseTye) => res.payload || {}), catchError((err) => of(err)));
   }
 
   // UPDATE BASKET ITEMS
-  updateBasket(params: any) {
+  updateBasket(params: updateCartRequestType) {
     const request = this.http.post(`${env.url}/carts`, params);
-    return request.pipe(map((res: any) => res), catchError((err) => of(err)));
+    return request.pipe(map((res: cartResponseTye) => res), catchError((err) => of(err)));
   }
 
   // DELETE ALL PRODUCTS
-  resetCart(params: any) {
-    const query = this.commonService.getQuery(params);
-    const request = this.http.delete(`${env.url}/carts?${query}`);
-    return request.pipe(map((res: any) => res), catchError((err) => of(err)));
+  resetCart(userId: string) {
+    const request = this.http.delete(`${env.url}/carts?${userId}`);
+    return request.pipe(map((res: cartResponseTye) => res), catchError((err) => of(err)));
   }
 }

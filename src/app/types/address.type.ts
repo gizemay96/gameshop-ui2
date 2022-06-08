@@ -6,4 +6,13 @@ export type Address = {
     street: string,
     title: string,
     userId: string,
+    createdAt: string
+    updatedAt: string
 }
+
+export type addressResponseType = {
+    responseMessage: string,
+    payload: Address[],
+    isSucceed: boolean,
+    statusCode: number
+  }

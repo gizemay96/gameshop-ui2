@@ -21,9 +21,9 @@ export const passwordMatchingValidatior: ValidatorFn = (control: AbstractControl
 })
 export class RegisterModalComponent implements OnInit {
 
-  isLoading = false;
-  errorMessage = '';
-  isError = false;
+  isLoading: boolean = false;
+  errorMessage: string = '';
+  isError: boolean = false;
 
   registerForm = new FormGroup({
     firstName: new FormControl('', [

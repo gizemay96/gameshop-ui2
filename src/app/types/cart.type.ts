@@ -1,6 +1,6 @@
 
 export type Cart = {
-    _id: string,
+    _id?: string,
     totalQty: number,
     totalPrice: number,
     products: CartProduct[],
@@ -15,10 +15,23 @@ export type CartProduct = {
 }
 
 export type ShortProductInfo = {
-    _id: number;
+    _id: string;
     image: string;
     price: any;
     title: string;
   };
+
+  export type cartResponseTye = {
+    responseMessage: "",
+    payload: Cart,
+    isSucceed: boolean,
+    statusCode: number
+  }
+
+  export type updateCartRequestType = {
+    userId: string,
+    productId: string,
+    increaseOrDecrease: number
+  }
 
 
