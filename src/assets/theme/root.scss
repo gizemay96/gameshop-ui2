@@ -173,13 +173,14 @@ select:-webkit-autofill:focus {
 
 
 .modal-close-btn {
+  width: 55px;
   position: absolute;
   margin: -40px;
   cursor: pointer;
   background: $bg-gray;
   border-radius: 50%;
   border: navajowhite;
-  padding: 13px;
+  padding: 5px;
 }
 
 .lg-modal-close-btn {

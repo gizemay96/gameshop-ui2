@@ -34,7 +34,6 @@ export class LoginModalComponent implements OnInit {
     private store: Store
   ) {
     this.store.select(getAuthResponse).subscribe(res => {
-      console.log(res)
       if(res.error){
         this.isError = true;
         this.errorMessage = res.error.responseMessage;

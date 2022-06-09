@@ -23,7 +23,8 @@
         "please-login": "Please Login Or Register"
     },
     "success-messages": {
-        "cart-updated": "Cart has been updated !"
+        "cart-updated": "Cart has been updated !",
+        "user-updated": "User has been updated !"
     },
     "navbar": {
         "login": "Login",

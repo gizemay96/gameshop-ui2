@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CommonService } from '@app/services/common.service';
 import { UserService } from '@app/services/user.service';
+import { User } from '@app/types/user.type';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -22,7 +24,8 @@ export class EditProfileComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditProfileComponent>,
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public commonService: CommonService
   ) {
 
     this.editForm = this.fb.group({
@@ -44,18 +47,14 @@ export class EditProfileComponent implements OnInit {
     if (this.editForm.valid) {
 
       this.loading = true;
-      const res = await lastValueFrom(this.userService.editUser(this.data.id , this.editForm.value));
-      if (res.error) {
-        this.isError = true;
-        this.errorMessage = res.error.responseMessage;
-        this.loading = false;
-        return;
-      }
-      else {
+      const res: User = await lastValueFrom(this.userService.editUser(this.data.id , this.editForm.value));
+      console.log(res)
+      if (res._id) {
         res.id = res._id;
         window.sessionStorage.setItem('user', JSON.stringify(res));
         this.loading = false;
         this.dialogRef.close({ isSave: true });
+        this.commonService.openSuccessSnackBar('user-updated');
       }
     } else {
       this.loading = false;

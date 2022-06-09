@@ -23,7 +23,8 @@
         "please-login": "Lütfen Üye Olun  Ya da Giriş Yapın"
     },
     "success-messages": {
-        "cart-updated": "Sepet başarıyla güncellendi !"
+        "cart-updated": "Sepet başarıyla güncellendi !",
+        "user-updated": "Kullanıcı başarıyla güncellendi !"
     },
     "navbar": {
         "login": "Giriş Yap",

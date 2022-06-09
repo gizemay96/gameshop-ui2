@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
     });
 
     this.store.select(getAddressResponse).subscribe((res: Address[]) => {
-      console.log(res)
       this.userAddresses = res;
     });
   }
