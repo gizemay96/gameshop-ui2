@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
 
   totalCount: number;
   activeTab: string = '';
+  progressProductId = '0';
 
   page: number = 1;
   limit: number = 12;
@@ -68,6 +69,7 @@ export class HomeComponent implements OnInit {
         // if is not init action, merge products data
         this.products = this.products?.length > 0 ? this.products.concat(response.products) : response.products;
         this.totalCount = response.totalCount;
+        this.progressProductId = '0';
       }
     } else { this.newsActions(); }
 
@@ -115,6 +117,7 @@ export class HomeComponent implements OnInit {
   }
 
   async addToCart(product: Product) {
+    this.progressProductId = product._id;
     const params = {
       userId: this.user.id,
       productId: product._id,
@@ -124,6 +127,7 @@ export class HomeComponent implements OnInit {
     if (response && !response.error) {
       this.store.dispatch(getCart(this.user));
       this.commonService.openSuccessSnackBar('cart-updated');
+      this.progressProductId = '0';
     }
   }
 

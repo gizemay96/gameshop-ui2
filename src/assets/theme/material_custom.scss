@@ -202,6 +202,11 @@ mat-form-field {
   stroke: $color-orange;
 }
 
+.mat-progress-spinner circle,
+.mat-spinner-white circle {
+  stroke: white !important;
+}
+
 // Snackbar
 
 .snackbar-style {
@@ -216,12 +221,14 @@ mat-form-field {
 
 .error-snackbar {
   background-color: red;
-  color:  white;
+  color: white;
+
   .mat-simple-snack-bar-content {
     font-weight: 500;
     font-size: 16px;
   }
-  .mat-simple-snackbar-action button{
+
+  .mat-simple-snackbar-action button {
     color: white !important;
   }
 }

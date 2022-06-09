@@ -30,8 +30,10 @@ export class CartService {
   }
 
   // DELETE ALL PRODUCTS
-  resetCart(userId: string) {
-    const request = this.http.delete(`${env.url}/carts?${userId}`);
+  resetCart(userId: string, productId = null) {
+    const params = { userId, productId };
+    const query = this.commonService.getQuery(params);
+    const request = this.http.delete(`${env.url}/carts?${query}`);
     return request.pipe(map((res: cartResponseTye) => res), catchError((err) => of(err)));
   }
 }

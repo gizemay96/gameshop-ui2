@@ -161,7 +161,12 @@
               </div>
 
               <button [class.disabled]="paymentForm.invalid" type="submit"
-                class="btn bg-orange w-100 btn-orange btn-mdc">{{'payment.pay' | translate}}</button>
+                class="btn bg-orange w-100 btn-orange btn-mdc">
+                <span *ngIf="!loading"> {{'payment.pay' | translate}}</span>
+                <span *ngIf="loading" class="flex-xy-center">
+                  <mat-spinner class="mat-spinner-white" [diameter]="20"></mat-spinner>
+                </span>
+              </button>
             </form>
           </div>
         </div>

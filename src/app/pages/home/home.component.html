@@ -27,7 +27,10 @@
             <div class="list-item-price">$ {{product.price}}</div>
             <div [matTooltip]="!user.id ? tooltipMessage : ''" matTooltipClass="tooltip-red">
               <div [class.disabled]="!user.id" class="add-button" (click)="addToCart(product)">
-                {{'product-detail.add-cart' | translate}}
+                <span *ngIf="progressProductId !== product._id">{{'product-detail.add-cart' | translate}} </span>
+                <span *ngIf="progressProductId === product._id" class="flex-xy-center" style="width: 64px; color: white;">
+                  <mat-spinner [diameter]="20"></mat-spinner>
+                </span>
                 <span><img class="icon" src="../../../assets/icons/cart.png" alt=""></span>
               </div>
             </div>

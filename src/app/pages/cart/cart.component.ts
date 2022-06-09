@@ -42,6 +42,8 @@ export class CartComponent implements OnInit {
   activeTab = 0;
   orderedItems = 0;
 
+  loading = false;
+
   constructor(
     private store: Store,
     private cartService: CartService,
@@ -102,14 +104,15 @@ export class CartComponent implements OnInit {
   }
 
   async payment() {
+    this.loading = true;
     if (this.paymentForm.valid) {
       const responseData = await lastValueFrom(this.cartService.resetCart(this.user.id));
       if (!responseData.error) {
         this.orderedItems = this.userCart$.products.length;
         this.store.dispatch(getCart(this.user));
-        this.goToNextStep();
         this.paymentForm.reset();
         this.selectedAddress = null;
+        this.goToNextStep();
       }
     }
   }
