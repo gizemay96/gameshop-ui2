@@ -29,6 +29,10 @@
   box-shadow: none;
 }
 
+input {
+  caret-color: $color-orange !important;
+}
+
 .nav-link {
   cursor: pointer;
 }
