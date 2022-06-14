@@ -30,7 +30,7 @@ export class AddressService {
 
   deleteAddress(addressId: string) {
     const request = this.http.delete(`${env.url}/users/userAddresses/${addressId}`);
-    return request.pipe(map((res: any) => res.payload), catchError((err) => of(err)));
+    return request.pipe(map((res: addressResponseType) => res.payload), catchError((err) => of(err)));
   }
 
 }

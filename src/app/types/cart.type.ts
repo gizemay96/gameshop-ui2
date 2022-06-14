@@ -21,7 +21,7 @@ export type ShortProductInfo = {
     title: string;
   };
 
-  export type cartResponseTye = {
+  export type cartResponseType = {
     responseMessage: "",
     payload: Cart,
     isSucceed: boolean,

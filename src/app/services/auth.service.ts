@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { authResponse } from '@app/types/authResponse.type';
+import { authResponse, authResponsePayload } from '@app/types/authResponse.type';
 import { loginForm, registerForm } from '@app/types/forms.type';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -28,7 +28,7 @@ export class AuthService {
     window.sessionStorage.removeItem('user');
   }
 
-  setUserToLocalStorage(user: any) {
+  setUserToLocalStorage(user: authResponsePayload) {
     window.sessionStorage.setItem('user', JSON.stringify(user.userDetail));
     window.sessionStorage.setItem('token', user.token);
   }

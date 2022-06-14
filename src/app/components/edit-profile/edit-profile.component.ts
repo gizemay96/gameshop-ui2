@@ -48,7 +48,7 @@ export class EditProfileComponent implements OnInit {
 
       this.loading = true;
       const res: User = await lastValueFrom(this.userService.editUser(this.data.id , this.editForm.value));
-      console.log(res)
+
       if (res._id) {
         res.id = res._id;
         window.sessionStorage.setItem('user', JSON.stringify(res));
